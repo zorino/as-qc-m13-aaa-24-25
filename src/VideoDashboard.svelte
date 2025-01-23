@@ -15,7 +15,7 @@ const seekVideo = (time) => {
       JSON.stringify({ event: 'command', func: 'pauseVideo' }),
       '*'
     );
-  }, 60000);
+  }, 6000);
 };
 </script>
 
