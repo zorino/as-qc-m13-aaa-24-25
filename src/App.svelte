@@ -11,10 +11,8 @@ const persons = [
 </script>
 
 <Router>
-  <Route path="/" component={VideoDashboard}/>
-  <Route path="/hockey-games" component={HockeyGamesPage} />
+  <main>
+    <Route path="/" component={VideoDashboard} />
+    <Route path="/hockey-games" component={HockeyGamesPage} />
+  </main>
 </Router>
-
-<main>
-  <VideoDashboard {videoId} {persons} />
-</main>
