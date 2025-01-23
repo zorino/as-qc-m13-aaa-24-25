@@ -27,6 +27,9 @@ const seekVideo = (time, duration) => {
 
 <div class="container mx-auto p-4">
   <h1 class="text-2xl font-bold mb-4">Video Dashboard</h1>
+  <div class="mb-4">
+    <a href="/hockey-games" class="text-blue-500 hover:underline">Go to Hockey Games</a>
+  </div>
   <div class="video mb-4">
     <iframe
       width="50%"
