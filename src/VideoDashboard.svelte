@@ -9,6 +9,12 @@ const seekVideo = (time) => {
     '*'
   );
 
+  // Autoplay the video after seeking
+  iframe.contentWindow.postMessage(
+    JSON.stringify({ event: 'command', func: 'playVideo' }),
+    '*'
+  );
+
   // Stop the video after 60 seconds
   setTimeout(() => {
     iframe.contentWindow.postMessage(
