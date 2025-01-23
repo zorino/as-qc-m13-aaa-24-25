@@ -8,6 +8,14 @@ const seekVideo = (time) => {
     JSON.stringify({ event: 'command', func: 'seekTo', args: [time, true] }),
     '*'
   );
+
+  // Stop the video after 60 seconds
+  setTimeout(() => {
+    iframe.contentWindow.postMessage(
+      JSON.stringify({ event: 'command', func: 'pauseVideo' }),
+      '*'
+    );
+  }, 60000);
 };
 </script>
 
