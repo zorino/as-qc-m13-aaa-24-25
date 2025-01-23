@@ -2,7 +2,7 @@
 export let videoId;
 export let persons = [];
 
-const seekVideo = (time) => {
+const seekVideo = (time, duration) => {
   const iframe = document.querySelector('iframe');
   iframe.contentWindow.postMessage(
     JSON.stringify({ event: 'command', func: 'seekTo', args: [time, true] }),
@@ -21,7 +21,7 @@ const seekVideo = (time) => {
       JSON.stringify({ event: 'command', func: 'pauseVideo' }),
       '*'
     );
-  }, 6000);
+  }, duration);
 };
 </script>
 
@@ -45,7 +45,7 @@ const seekVideo = (time) => {
           <li class="mb-2">
             <button
               class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
-              on:click={() => seekVideo(sequence.start)}
+              on:click={() => seekVideo(sequence.start, 6000)}
               >
               {sequence.label}
             </button>
