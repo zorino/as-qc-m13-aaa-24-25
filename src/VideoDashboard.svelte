@@ -2,6 +2,29 @@
 export let videoId;
 export let persons = [];
 
+let currentPage = {};
+const itemsPerPage = 5;
+
+const getPaginatedSequences = (sequences, personId) => {
+  const start = ((currentPage[personId] || 1) - 1) * itemsPerPage;
+  const end = start + itemsPerPage;
+  return sequences.slice(start, end);
+};
+
+const totalPages = (sequences) => Math.ceil(sequences.length / itemsPerPage);
+
+const nextPage = (personId) => {
+  if ((currentPage[personId] || 1) < totalPages(persons.find(p => p.id === personId).sequences)) {
+    currentPage[personId] = (currentPage[personId] || 1) + 1;
+  }
+};
+
+const prevPage = (personId) => {
+  if ((currentPage[personId] || 1) > 1) {
+    currentPage[personId] = (currentPage[personId] || 1) - 1;
+  }
+};
+
 const seekVideo = (start, end) => {
 
   const iframe = document.querySelector('iframe');
@@ -48,7 +71,7 @@ const seekVideo = (start, end) => {
       <h2 class="text-xl font-semibold">{person.name}</h2>
 
       <ul>
-        {#each person.sequences as sequence}
+        {#each getPaginatedSequences(person.sequences, person.id) as sequence}
           <li class="mb-2">
             <button
               class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
@@ -62,6 +85,23 @@ const seekVideo = (start, end) => {
 
     </div>
   {/each}
+
+  <div class="flex justify-center mt-4">
+    <button
+      class="px-4 py-2 bg-gray-300 text-black rounded hover:bg-gray-400 mr-2"
+      on:click={() => prevPage(person.id)}
+      disabled={(currentPage[person.id] || 1) === 1}
+    >
+      Previous
+    </button>
+    <button
+      class="px-4 py-2 bg-gray-300 text-black rounded hover:bg-gray-400"
+      on:click={() => nextPage(person.id)}
+      disabled={(currentPage[person.id] || 1) === totalPages(person.sequences)}
+    >
+      Next
+    </button>
+  </div>
 
 
 </div>
