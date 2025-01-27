@@ -42,6 +42,7 @@ const seekVideo = (start, end) => {
       allowfullscreen
     ></iframe>
   </div>
+
   {#each persons as person}
     <div class="mb-4">
       <h2 class="text-xl font-semibold">{person.name}</h2>
@@ -58,6 +59,9 @@ const seekVideo = (start, end) => {
           </li>
         {/each}
       </ul>
+
     </div>
   {/each}
+
+
 </div>
