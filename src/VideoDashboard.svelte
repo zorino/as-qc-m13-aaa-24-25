@@ -102,7 +102,7 @@ const goToPage = (page, sequences) => {
     </div>
   {/each}
 
-  <div class="video mb-4">
+  <div class="video mb-4" style="width: 100%; height: calc(100vh - 100px);">
     <div id="player"/>
   </div>
 
