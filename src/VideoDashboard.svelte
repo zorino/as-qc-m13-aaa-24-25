@@ -81,7 +81,7 @@ const goToPage = (page, sequences) => {
 </script>
 
 <div class="flex h-screen">
-  <div class="w-1/4 p-4 bg-gray-100 overflow-y-auto">
+  <div class="w-1/5 p-4 bg-gray-100 overflow-y-auto">
     {#each persons as person}
       <div class="mb-4">
         <div class="flex justify-center mt-4 flex-wrap space-x-2">
