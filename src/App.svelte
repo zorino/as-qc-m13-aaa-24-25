@@ -15,7 +15,7 @@ players.forEach((e, i) => {
   persons.push({
     name: shifts[i]['name'],
     sequences: shifts[i]['shifts'],
-    image: `/images/players/${e}.png`
+    image: `/images/players/${e}.webp`
   });
 });
 
