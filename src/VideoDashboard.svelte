@@ -102,8 +102,8 @@ const goToPage = (page, sequences) => {
   </div>
 
   <div class="flex-1">
-    <div class="video w-full h-full">
-      <div id="player"/>
+    <div class="video w-full h-full" style="width: 100%;">
+      <div id="player" style="width: 100%; height: 100%;"/>
     </div>
   </div>
 </div>
