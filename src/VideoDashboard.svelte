@@ -81,6 +81,11 @@ const goToPage = (page, sequences) => {
 </script>
 
 <div class="flex h-screen">
+  <div class="flex-1 w-4/5 h-full">
+    <div class="video w-full h-full">
+      <div id="player"/>
+    </div>
+  </div>
   <div class="w-1/5 p-4 bg-gray-100 overflow-y-auto">
     {#each persons as person}
       <div class="mb-4">
