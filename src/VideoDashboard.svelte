@@ -42,8 +42,8 @@ const goToPage = (page, sequences) => {
   var player;
   window.onYouTubeIframeAPIReady = function() {
     player = new YT.Player("player", {
-      "height": "580",
-      "width": "960",
+      "height": "100%",
+      "width": "100%",
       "videoId": videoId,
       "events": {
         "onReady": onPlayerReady,
@@ -82,24 +82,11 @@ const goToPage = (page, sequences) => {
 </script>
 
 <div class="container mx-auto p-4">
-  <h1 class="text-2xl font-bold mb-4">Video Dashboard</h1>
-  <div class="video mb-4">
-    <div id="player"/>
-    <!-- <iframe
-         id="youtube-vid"
-         title="game video"
-         width="960"
-         height="480"
-         src={`https://www.youtube.com/embed/${videoId}?enablejsapi=1`}
-         frameborder="0"
-         allow="autoplay; encrypted-media"
-         allowfullscreen
-         ></iframe> -->
-  </div>
+  <!-- <h1 class="text-2xl font-bold mb-4">Video Dashboard</h1> -->
 
   {#each persons as person}
     <div class="mb-4">
-      <h2 class="text-xl font-semibold">{person.name}</h2>
+      <!-- <h2 class="text-xl font-semibold">{person.name}</h2> -->
 
       <!-- Display all sequences as pagination -->
       <div class="flex justify-center mt-4 flex-wrap">
@@ -114,4 +101,9 @@ const goToPage = (page, sequences) => {
       </div>
     </div>
   {/each}
+
+  <div class="video mb-4">
+    <div id="player"/>
+  </div>
+
 </div>
