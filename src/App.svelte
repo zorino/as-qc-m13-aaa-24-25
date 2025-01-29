@@ -34,7 +34,7 @@ console.log(persons)
 </script>
 
 <div style="display: flex; align-items: flex-start; width: 100%;">
-  <div style="width: 250px; overflow-y: auto; max-height: 400px; border-right: 1px solid #ccc;">
+  <div style="width: 250px; overflow-y: auto; max-height: 600px; border-right: 1px solid #ccc;">
     {#each persons as person}
       <div
         on:click={() => selectedPlayer = person}
