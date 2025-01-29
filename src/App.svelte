@@ -9,6 +9,7 @@ import shifts from './data/player_shifts';
 // console.log(seq)
 
 let selectedPlayer = null;
+let isCollapsed = false;
 let persons = [];
 
 players.forEach((e, i) => {
@@ -34,7 +35,10 @@ console.log(persons)
 </script>
 
 <div style="display: flex; align-items: flex-start; width: 100%;">
-  <div style="width: 250px; overflow-y: auto; max-height: 600px; border-right: 1px solid #ccc;">
+  <button on:click={() => isCollapsed = !isCollapsed} style="margin-right: 10px;">
+    ☰
+  </button>
+  <div style="width: 250px; overflow-y: auto; max-height: 600px; border-right: 1px solid #ccc; display: {isCollapsed ? 'none' : 'block'};">
     {#each persons as person}
       <div
         on:click={() => selectedPlayer = person}
