@@ -107,4 +107,3 @@ const goToPage = (page, sequences) => {
     </div>
   </div>
 </div>
-import { onMount } from 'svelte';
