@@ -42,8 +42,8 @@ const goToPage = (page, sequences) => {
   var player;
   window.onYouTubeIframeAPIReady = function() {
     player = new YT.Player("player", {
-      // "height": "100%",
-      // "width": "100%",
+      "height": "100%",
+      "width": "100%",
       "videoId": videoId,
       "events": {
         "onReady": onPlayerReady,
