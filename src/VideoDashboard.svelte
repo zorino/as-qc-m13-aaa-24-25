@@ -43,6 +43,7 @@ const goToPage = (page, sequences) => {
   window.onYouTubeIframeAPIReady = function() {
     player = new YT.Player("player", {
       "videoId": videoId,
+      "width": "100%",
       "events": {
         "onReady": onPlayerReady,
         "onStateChange": onPlayerStateChange
