@@ -1,18 +1,25 @@
 <script>
-import { Router, Route } from 'svelte-routing';
-import VideoDashboard from './VideoDashboard.svelte';
-import HockeyGamesPage from './HockeyGamesPage.svelte';
+import VideoDashboard from './VideoDashboard.svelte'
 
-const videoId = 'rmEFIatl2Hw';
-const persons = [
-  { name: 'Person 1', sequences: [{ label: 'Scene 1', start: 10 }, { label: 'Scene 2', start: 30 }] },
-  { name: 'Person 2', sequences: [{ label: 'Opening', start: 60 }, { label: 'Interview', start: 120 }] },
-];
+const videoId = 'Q_FNGS4liw0';
+const players = ['01-goalie','02-lavallee','03-deraspe','04-beland','05-duchesne','06-gauthier','07-dion','08-drolet','10-parent','11-chaput','12-pelletier','13-trudelle','14-bergeron','15-rochette','16-dorval','17-gauthier']
+
+import shifts from './data/player_shifts';
+// console.log(seq)
+
+const persons = []
+players.forEach((e, i) => {
+  persons.push({name: shifts[i]['name'], sequences: shifts[i]['shifts']})
+});
+
+console.log(persons)
+// const persons = [
+//   { name: '01-lavallee', sequences: seq },
+//   { name: 'Person 2', sequences: [{ label: 'Opening', start: 60 }, { label: 'Interview', start: 120 }] },
+// ];
+//
 </script>
 
-<Router>
-  <main>
-    <Route path="/" component={VideoDashboard} />
-    <Route path="/hockey-games" component={HockeyGamesPage} />
-  </main>
-</Router>
+<main>
+  <VideoDashboard {videoId} {persons} />
+</main>

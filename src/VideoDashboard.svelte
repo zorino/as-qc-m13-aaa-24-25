@@ -1,107 +1,117 @@
 <script>
 export let videoId;
 export let persons = [];
+export let pauseVideoTime = 1;
 
-let currentPage = {};
-const itemsPerPage = 5;
-
-const getPaginatedSequences = (sequences, personId) => {
-  const start = ((currentPage[personId] || 1) - 1) * itemsPerPage;
-  const end = start + itemsPerPage;
-  return sequences.slice(start, end);
-};
-
-const totalPages = (sequences) => Math.ceil(sequences.length / itemsPerPage);
-
-const nextPage = (personId) => {
-  if ((currentPage[personId] || 1) < totalPages(persons.find(p => p.id === personId).sequences)) {
-    currentPage[personId] = (currentPage[personId] || 1) + 1;
-  }
-};
-
-const prevPage = (personId) => {
-  if ((currentPage[personId] || 1) > 1) {
-    currentPage[personId] = (currentPage[personId] || 1) - 1;
-  }
-};
+let currentPage = 1;
 
 const seekVideo = (start, end) => {
-
   const iframe = document.querySelector('iframe');
-
   iframe.contentWindow.postMessage(
     JSON.stringify({ event: 'command', func: 'seekTo', args: [start, true] }),
     '*'
   );
-
-  // Autoplay the video after seeking
   iframe.contentWindow.postMessage(
     JSON.stringify({ event: 'command', func: 'playVideo' }),
     '*'
   );
-
-  const duration = ((end-start)+3)*1000;
-
-  // Stop the video after 60 seconds
-  setTimeout(() => {
-    iframe.contentWindow.postMessage(
-      JSON.stringify({ event: 'command', func: 'pauseVideo' }),
-      '*'
-    );
-  }, duration);
+  pauseVideoTime = end;
 
 };
+
+const goToPage = (page, sequences) => {
+  currentPage = page;
+  const sequence = sequences[page - 1];
+  if (sequence) {
+    seekVideo(sequence.start, sequence.end);
+  }
+};
+
+(function() {
+
+  var stopPlayTimer;
+
+  // This code loads the IFrame Player API code asynchronously.
+  var tag = document.createElement("script");
+  tag.src = "//www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName("script")[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  // This function creates an <iframe> (and YouTube player)
+  // after the API code downloads.
+  var player;
+  window.onYouTubeIframeAPIReady = function() {
+    player = new YT.Player("player", {
+      "height": "580",
+      "width": "960",
+      "videoId": videoId,
+      "events": {
+        "onReady": onPlayerReady,
+        "onStateChange": onPlayerStateChange
+      }
+    });
+  }
+
+  // The API will call this function when the video player is ready.
+  // This automatically starts the video playback when the player is loaded.
+  function onPlayerReady(event) {
+    event.target.playVideo();
+  }
+
+  // The API calls this function when the player's state changes.
+  function onPlayerStateChange(event) {
+    var time, rate, remainingTime;
+    clearTimeout(stopPlayTimer);
+    if (event.data == YT.PlayerState.PLAYING) {
+      time = player.getCurrentTime();
+      // Add .4 of a second to the time in case it's close to the current time
+      // (The API kept returning ~9.7 when hitting play after stopping at 10s)
+      if (time + .4 < pauseVideoTime) {
+        rate = player.getPlaybackRate();
+        remainingTime = (pauseVideoTime - time) / rate;
+        stopPlayTimer = setTimeout(pauseVideo, remainingTime * 1000);
+      }
+    }
+  }
+  function pauseVideo() {
+    player.pauseVideo();
+  }
+})();
+
+
 </script>
 
 <div class="container mx-auto p-4">
   <h1 class="text-2xl font-bold mb-4">Video Dashboard</h1>
   <div class="video mb-4">
-    <iframe
-      width="960"
-      height="480"
-      src={`https://www.youtube.com/embed/${videoId}?enablejsapi=1`}
-      frameborder="0"
-      allow="autoplay; encrypted-media"
-      allowfullscreen
-    ></iframe>
+    <div id="player"/>
+    <!-- <iframe
+         id="youtube-vid"
+         title="game video"
+         width="960"
+         height="480"
+         src={`https://www.youtube.com/embed/${videoId}?enablejsapi=1`}
+         frameborder="0"
+         allow="autoplay; encrypted-media"
+         allowfullscreen
+         ></iframe> -->
   </div>
 
   {#each persons as person}
     <div class="mb-4">
       <h2 class="text-xl font-semibold">{person.name}</h2>
 
-      <ul>
-        {#each getPaginatedSequences(person.sequences, person.id) as sequence}
-          <li class="mb-2">
-            <button
-              class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
-              on:click={() => seekVideo(sequence.start, sequence.end)}
-              >
-              {sequence.label}
-            </button>
-          </li>
+      <!-- Display all sequences as pagination -->
+      <div class="flex justify-center mt-4 flex-wrap">
+        {#each person.sequences as _, index}
+          <button
+            class="px-4 py-2 m-1 bg-gray-300 rounded {currentPage === (index + 1) ? 'bg-blue-500 text-white' : 'hover:bg-gray-400 text-gray-700'}"
+            on:click={() => goToPage(index + 1, person.sequences)}
+            >
+            {index + 1}
+          </button>
         {/each}
-      </ul>
-
+      </div>
     </div>
   {/each}
-
-  <div class="flex justify-center mt-4">
-    <button
-      class="px-4 py-2 bg-gray-300 text-black rounded hover:bg-gray-400 mr-2"
-      on:click={() => prevPage(person.id)}
-      disabled={(currentPage[person.id] || 1) === 1}
-    >
-      Previous
-    </button>
-    <button
-      class="px-4 py-2 bg-gray-300 text-black rounded hover:bg-gray-400"
-      on:click={() => nextPage(person.id)}
-      disabled={(currentPage[person.id] || 1) === totalPages(person.sequences)}
-    >
-      Next
-    </button>
-  </div>
-
-
 </div>
