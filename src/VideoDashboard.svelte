@@ -81,7 +81,7 @@ const goToPage = (page, sequences) => {
 
 </script>
 
-<div class="container">
+<div class="container mx-auto p-4">
   <!-- <h1 class="text-2xl font-bold mb-4">Video Dashboard</h1> -->
 
   {#each persons as person}
@@ -89,10 +89,10 @@ const goToPage = (page, sequences) => {
       <!-- <h2 class="text-xl font-semibold">{person.name}</h2> -->
 
       <!-- Display all sequences as pagination -->
-      <div class="flex justify-center mt-4 flex-wrap">
+      <div class="flex justify-center mt-4 flex-wrap space-x-2">
         {#each person.sequences as _, index}
           <button
-            class="px-4 py-2 m-1 bg-gray-300 rounded {currentPage === (index + 1) ? 'bg-blue-500 text-white' : 'hover:bg-gray-400 text-gray-700'}"
+            class="px-4 py-2 m-1 bg-gray-300 rounded transition-colors duration-200 {currentPage === (index + 1) ? 'bg-blue-500 text-white' : 'hover:bg-gray-400 text-gray-700'}"
             on:click={() => goToPage(index + 1, person.sequences)}
             >
             {index + 1}
@@ -102,7 +102,7 @@ const goToPage = (page, sequences) => {
     </div>
   {/each}
 
-  <div class="video" style="width: 100%; height: calc(100vh - 100px);">
+  <div class="video w-full h-[calc(100vh-100px)]">
     <div id="player"/>
   </div>
 
