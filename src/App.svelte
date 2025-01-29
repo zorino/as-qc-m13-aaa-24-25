@@ -33,16 +33,22 @@ console.log(persons)
 //
 </script>
 
-<select bind:value={selectedPlayer}>
-  {#each persons as person}
-    <option value={person}>
-      <img src={person.image} alt={person.name} width="20" height="20" />
-      {person.name}
-    </option>
-  {/each}
-</select>
+<div style="display: flex; align-items: flex-start;">
+  <select bind:value={selectedPlayer}>
+    {#each persons as person}
+      <option value={person}>
+        <img src={person.image} alt={person.name} width="20" height="20" />
+        {person.name}
+      </option>
+    {/each}
+  </select>
 
-<main>
+  {#if selectedPlayer}
+    <VideoDashboard {videoId} persons={[selectedPlayer]} />
+  {/if}
+</div>
+
+<main style="margin-top: 20px;">
   {#if selectedPlayer}
     <VideoDashboard {videoId} persons={[selectedPlayer]} />
   {/if}
