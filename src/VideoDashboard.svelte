@@ -81,7 +81,7 @@ const goToPage = (page, sequences) => {
 
 </script>
 
-<div class="container mx-auto p-4">
+<div class="container mx-auto p-0">
   <!-- <h1 class="text-2xl font-bold mb-4">Video Dashboard</h1> -->
 
   {#each persons as person}
