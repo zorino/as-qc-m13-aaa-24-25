@@ -34,14 +34,17 @@ console.log(persons)
 </script>
 
 <div style="display: flex; align-items: flex-start; width: 100%;">
-  <select bind:value={selectedPlayer}>
+  <div style="width: 250px; overflow-y: auto; max-height: 400px; border-right: 1px solid #ccc;">
     {#each persons as person}
-      <option value={person}>
-        <img src={person.image} alt={person.name} width="20" height="20" />
-        {person.name}
-      </option>
+      <div
+        on:click={() => selectedPlayer = person}
+        style="display: flex; align-items: center; padding: 10px; cursor: pointer; background-color: {selectedPlayer === person ? '#f0f0f0' : 'transparent'};"
+      >
+        <img src={person.image} alt={person.name} width="40" height="40" style="margin-right: 10px;" />
+        <span>{person.name}</span>
+      </div>
     {/each}
-  </select>
+  </div>
 
   {#if selectedPlayer}
     <VideoDashboard {videoId} persons={[selectedPlayer]} />
