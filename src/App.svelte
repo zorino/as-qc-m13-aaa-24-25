@@ -1,5 +1,6 @@
 <script>
-import VideoDashboard from './VideoDashboard.svelte'
+import { onMount } from 'svelte';
+import VideoDashboard from './VideoDashboard.svelte';
 
 const videoId = 'Q_FNGS4liw0';
 const players = ['01-goalie','02-lavallee','03-deraspe','04-beland','05-duchesne','06-gauthier','07-dion','08-drolet','10-parent','11-chaput','12-pelletier','13-trudelle','14-bergeron','15-rochette','16-dorval','17-gauthier']
@@ -7,9 +8,21 @@ const players = ['01-goalie','02-lavallee','03-deraspe','04-beland','05-duchesne
 import shifts from './data/player_shifts';
 // console.log(seq)
 
-const persons = []
+let selectedPlayer = null;
+let persons = [];
+
 players.forEach((e, i) => {
-  persons.push({name: shifts[i]['name'], sequences: shifts[i]['shifts']})
+  persons.push({
+    name: shifts[i]['name'],
+    sequences: shifts[i]['shifts'],
+    image: `/images/players/${e}.png`
+  });
+});
+
+onMount(() => {
+  if (persons.length > 0) {
+    selectedPlayer = persons[0];
+  }
 });
 
 console.log(persons)
@@ -20,6 +33,17 @@ console.log(persons)
 //
 </script>
 
+<select bind:value={selectedPlayer}>
+  {#each persons as person}
+    <option value={person}>
+      <img src={person.image} alt={person.name} width="20" height="20" />
+      {person.name}
+    </option>
+  {/each}
+</select>
+
 <main>
-  <VideoDashboard {videoId} {persons} />
+  {#if selectedPlayer}
+    <VideoDashboard {videoId} persons={[selectedPlayer]} />
+  {/if}
 </main>
