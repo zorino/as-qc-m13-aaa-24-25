@@ -80,13 +80,13 @@ const goToPage = (page, sequences) => {
 
 </script>
 
-<div class="flex h-screen">
-  <div class="flex-1 w-4/5 h-full">
+<div class="flex ...">
+  <div class="w-3/4 ...">
     <div class="video w-full h-full">
       <div id="player"/>
     </div>
   </div>
-  <div class="w-1/5 p-4 bg-gray-100 overflow-y-auto">
+  <div class="w-1/4 ...">
     {#each persons as person}
       <div class="mb-4">
         <div class="flex justify-center mt-4 flex-wrap space-x-2">
@@ -101,11 +101,5 @@ const goToPage = (page, sequences) => {
         </div>
       </div>
     {/each}
-  </div>
-
-  <div class="flex-1">
-    <div class="video w-full h-full">
-      <div id="player"/>
-    </div>
   </div>
 </div>
