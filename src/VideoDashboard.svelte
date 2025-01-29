@@ -1,4 +1,6 @@
 <script>
+import { onMount } from 'svelte';
+
 export let videoId;
 export let persons = [];
 export let pauseVideoTime = 1;
