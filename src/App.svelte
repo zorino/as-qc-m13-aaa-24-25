@@ -15,7 +15,7 @@ players.forEach((e, i) => {
   persons.push({
     name: shifts[i]['name'],
     sequences: shifts[i]['shifts'],
-    image: `/images/players/${e}.webp`
+    image: `/images/players/${e}.png`
   });
 });
 
@@ -33,18 +33,15 @@ console.log(persons)
 //
 </script>
 
-<div style="display: flex; align-items: flex-start; width: 100%;">
-  <div style="width: 250px; overflow-y: auto; max-height: 400px; border-right: 1px solid #ccc;">
+<div style="display: flex; align-items: flex-start;">
+  <select bind:value={selectedPlayer}>
     {#each persons as person}
-      <div
-        on:click={() => selectedPlayer = person}
-        style="display: flex; align-items: center; padding: 10px; cursor: pointer; background-color: {selectedPlayer === person ? '#f0f0f0' : 'transparent'};"
-      >
-        <img src={person.image} alt={person.name} width="40" height="40" style="margin-right: 10px;" />
-        <span>{person.name}</span>
-      </div>
+      <option value={person}>
+        <img src={person.image} alt={person.name} width="20" height="20" />
+        {person.name}
+      </option>
     {/each}
-  </div>
+  </select>
 
   {#if selectedPlayer}
     <VideoDashboard {videoId} persons={[selectedPlayer]} />
