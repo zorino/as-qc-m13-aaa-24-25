@@ -33,7 +33,7 @@ console.log(persons)
 //
 </script>
 
-<div style="display: flex; align-items: flex-start;">
+<div style="display: flex; align-items: flex-start; width: 100%;">
   <select bind:value={selectedPlayer}>
     {#each persons as person}
       <option value={person}>
