@@ -49,7 +49,4 @@ console.log(persons)
 </div>
 
 <main style="margin-top: 20px;">
-  {#if selectedPlayer}
-    <VideoDashboard {videoId} persons={[selectedPlayer]} />
-  {/if}
 </main>
