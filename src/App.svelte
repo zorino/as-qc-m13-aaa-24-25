@@ -40,7 +40,7 @@ console.log(persons)
         on:click={() => selectedPlayer = person}
         style="display: flex; align-items: center; padding: 10px; cursor: pointer; background-color: {selectedPlayer === person ? '#f0f0f0' : 'transparent'};"
       >
-        <img src={person.image} alt={person.name} width="40" height="40" style="margin-right: 10px;" />
+        <img src={person.image} alt={person.name} width="auto" height="40" style="margin-right: 10px;" />
         <span>{person.name}</span>
       </div>
     {/each}
@@ -49,8 +49,8 @@ console.log(persons)
   {#if selectedPlayer}
     <VideoDashboard {videoId} persons={[selectedPlayer]} />
   {/if}
-</div>
 
+</div>
 
 <main style="margin-top: 20px;">
 </main>

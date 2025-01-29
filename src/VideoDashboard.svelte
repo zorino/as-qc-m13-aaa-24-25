@@ -44,7 +44,7 @@ const goToPage = (page, sequences) => {
   var player;
   window.onYouTubeIframeAPIReady = function() {
     player = new YT.Player("player", {
-      "height": "100%",
+      // "height": "100%",
       "width": "100%",
       "videoId": videoId,
       "events": {
@@ -83,27 +83,26 @@ const goToPage = (page, sequences) => {
 
 </script>
 
-<div class="flex h-screen">
-  <div class="w-1/4 p-4 bg-gray-100 overflow-y-auto">
-    {#each persons as person}
-      <div class="mb-4">
-        <div class="flex justify-center mt-4 flex-wrap space-x-2">
-          {#each person.sequences as _, index}
-            <button
-              class="px-4 py-2 m-1 bg-gray-300 rounded transition-colors duration-200 {currentPage === (index + 1) ? 'bg-blue-500 text-white' : 'hover:bg-gray-400 text-gray-700'}"
-              on:click={() => goToPage(index + 1, person.sequences)}
-              >
-              {index + 1}
-            </button>
-          {/each}
-        </div>
+<div style="width: 100%; height: 500px;">
+
+  {#each persons as person}
+    <div class="mb-4">
+      <div class="flex justify-center mt-4 flex-wrap space-x-2">
+        {#each person.sequences as _, index}
+          <button
+            class="px-4 py-2 m-1 bg-gray-300 rounded transition-colors duration-200 {currentPage === (index + 1) ? 'bg-blue-500 text-white' : 'hover:bg-gray-400 text-gray-700'}"
+            on:click={() => goToPage(index + 1, person.sequences)}
+            >
+            {index + 1}
+          </button>
+        {/each}
       </div>
-    {/each}
+    </div>
+  {/each}
+
+  <div class="video" style="width: 100%; height: 100%;">
+    <div id="player" style="width: 100%; height: 100%;"/>
   </div>
 
-  <div class="flex-1">
-    <div class="video w-full h-full" style="width: 100%;">
-      <div id="player" style="width: 100%; height: 100%;"/>
-    </div>
-  </div>
 </div>
+
