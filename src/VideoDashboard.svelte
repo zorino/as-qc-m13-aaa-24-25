@@ -151,7 +151,7 @@ onMount(() => {
           class="px-4 py-2 bg-gray-300 rounded transition-colors duration-200 hover:bg-gray-400 text-gray-700"
           on:click={togglePlayPause}
         >
-          {isPlaying ? 'Pause' : 'Play'}
+          {isPlaying ? '⏸️' : '▶️'}
         </button>
       </div>
     </div>
