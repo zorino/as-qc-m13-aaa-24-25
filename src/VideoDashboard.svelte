@@ -120,39 +120,38 @@ onMount(() => {
   {#each persons as person}
     <div class="mb-4">
       <div class="flex justify-center mt-4 items-center space-x-4">
-        <img src={person.image} alt={person.name} class="h-8 rounded-full" />
-        <div class="flex items-center space-x-2">
-          <button
-            class="px-4 py-2 bg-gray-300 rounded transition-colors duration-200 hover:bg-gray-400 text-gray-700"
-            on:click={() => goToPage(Math.max(currentPage - 1, 1), person.sequences)}
-            disabled={currentPage === 1}
+        <img src={person.image} alt={person.name} class="h-8 rounded-full" style="height: 80px;" />
+
+        <button
+          class="px-4 py-2 bg-gray-300 rounded transition-colors duration-200 hover:bg-gray-400 text-gray-700"
+          on:click={() => goToPage(Math.max(currentPage - 1, 1), person.sequences)}
+          disabled={currentPage === 1}
           >
-            Previous
-          </button>
-          <select
-            class="px-4 py-2 bg-gray-300 rounded transition-colors duration-200"
-            on:change={(event) => goToPage(parseInt(event.target.value), person.sequences)}
+          Previous
+        </button>
+        <select
+          class="px-4 py-2 bg-gray-300 rounded transition-colors duration-200"
+          on:change={(event) => goToPage(parseInt(event.target.value), person.sequences)}
           >
-            {#each person.sequences as _, index}
-              <option value={index + 1} selected={currentPage === (index + 1)}>
-                Sequence {index + 1}
-              </option>
-            {/each}
-          </select>
-          <button
-            class="px-4 py-2 bg-gray-300 rounded transition-colors duration-200 hover:bg-gray-400 text-gray-700"
-            on:click={() => goToPage(Math.min(currentPage + 1, person.sequences.length), person.sequences)}
-            disabled={currentPage === person.sequences.length}
+          {#each person.sequences as _, index}
+            <option value={index + 1} selected={currentPage === (index + 1)}>
+              Sequence {index + 1}
+            </option>
+          {/each}
+        </select>
+        <button
+          class="px-4 py-2 bg-gray-300 rounded transition-colors duration-200 hover:bg-gray-400 text-gray-700"
+          on:click={() => goToPage(Math.min(currentPage + 1, person.sequences.length), person.sequences)}
+          disabled={currentPage === person.sequences.length}
           >
-            Next
-          </button>
-          <button
-            class="px-4 py-2 bg-gray-300 rounded transition-colors duration-200 hover:bg-gray-400 text-gray-700"
-            on:click={togglePlayPause}
-          >
-            {isPlaying ? 'Pause' : 'Play'}
-          </button>
-        </div>
+          Next
+        </button>
+        <button
+          class="px-4 py-2 bg-gray-300 rounded transition-colors duration-200 hover:bg-gray-400 text-gray-700"
+          on:click={togglePlayPause}
+        >
+          {isPlaying ? 'Pause' : 'Play'}
+        </button>
       </div>
     </div>
   {/each}
