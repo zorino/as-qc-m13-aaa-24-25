@@ -128,7 +128,7 @@ onMount(() => {
           on:click={() => goToPage(Math.max(currentPage - 1, 1), person.sequences)}
           disabled={currentPage === 1}
           >
-          ⬅️
+          <span style="color: yellow;">⬅️</span>
         </button>
         <select
           class="px-4 py-2 bg-gray-300 rounded transition-colors duration-200"
@@ -145,13 +145,13 @@ onMount(() => {
           on:click={() => goToPage(Math.min(currentPage + 1, person.sequences.length), person.sequences)}
           disabled={currentPage === person.sequences.length}
           >
-          ➡️
+          <span style="color: yellow;">➡️</span>
         </button>
         <button
           class="px-4 py-2 bg-gray-300 rounded transition-colors duration-200 hover:bg-gray-400 text-gray-700"
           on:click={togglePlayPause}
         >
-          {isPlaying ? '⏸️' : '▶️'}
+          <span style="color: yellow;">{isPlaying ? '⏸️' : '▶️'}</span>
         </button>
       </div>
     </div>
