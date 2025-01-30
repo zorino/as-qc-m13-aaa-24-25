@@ -1,7 +1,7 @@
 <script>
 import { onMount } from 'svelte';
 
-export let videoId;
+export let videoId = '';
 export let persons = [];
 export let pauseVideoTime = 1;
 
@@ -46,15 +46,19 @@ const goToPage = (page, sequences) => {
   // after the API code downloads.
   var player;
   window.onYouTubeIframeAPIReady = function() {
-    player = new YT.Player("player", {
-      // "height": "100%",
-      "width": "100%",
-      "videoId": videoId,
-      "events": {
-        "onReady": onPlayerReady,
-        "onStateChange": onPlayerStateChange
-      }
-    });
+    if (videoId) {
+      player = new YT.Player("player", {
+        // "height": "100%",
+        "width": "100%",
+        "videoId": videoId,
+        "events": {
+          "onReady": onPlayerReady,
+          "onStateChange": onPlayerStateChange
+        }
+      });
+    } else {
+      console.error('Video ID is not defined');
+    }
   }
 
   // The API will call this function when the video player is ready.
