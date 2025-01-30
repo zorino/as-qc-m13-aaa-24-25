@@ -85,7 +85,10 @@ const goToPage = (page, sequences) => {
 
 <div style="width: 100%; height: 500px;">
 
-  {#each persons as person}
+  {#each persons as person, personIndex}
+    {#if personIndex === 0}
+      {goToPage(1, person.sequences)}
+    {/if}
     <div class="mb-4">
       <div class="flex justify-center mt-4 items-center space-x-2">
         <button
