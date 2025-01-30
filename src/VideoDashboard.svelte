@@ -121,7 +121,7 @@ onMount(() => {
     <div class="mb-4">
       <div class="flex justify-center mt-4 items-center space-x-2">
         <div class="flex items-center space-x-2">
-          <img src={person.photo || '/path/to/default-image.png'} alt={person.name} class="w-12 h-12 rounded-full" />
+          <img src={person.image} alt={person.name} class="w-12 h-12 rounded-full" />
           <span class="text-lg font-semibold">{person.name}</span>
         </div>
         <button
