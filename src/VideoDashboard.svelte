@@ -87,15 +87,17 @@ const goToPage = (page, sequences) => {
 
   {#each persons as person}
     <div class="mb-4">
-      <div class="flex justify-center mt-4 flex-wrap space-x-2">
-        {#each person.sequences as _, index}
-          <button
-            class="px-4 py-2 m-1 bg-gray-300 rounded transition-colors duration-200 {currentPage === (index + 1) ? 'bg-blue-500 text-white' : 'hover:bg-gray-400 text-gray-700'}"
-            on:click={() => goToPage(index + 1, person.sequences)}
-            >
-            {index + 1}
-          </button>
-        {/each}
+      <div class="flex justify-center mt-4">
+        <select
+          class="px-4 py-2 m-1 bg-gray-300 rounded transition-colors duration-200"
+          on:change={(event) => goToPage(parseInt(event.target.value), person.sequences)}
+        >
+          {#each person.sequences as _, index}
+            <option value={index + 1} selected={currentPage === (index + 1)}>
+              Sequence {index + 1}
+            </option>
+          {/each}
+        </select>
       </div>
     </div>
   {/each}
