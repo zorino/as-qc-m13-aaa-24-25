@@ -127,12 +127,6 @@ onMount(() => {
         >
           Previous
         </button>
-        <button
-          class="px-4 py-2 bg-gray-300 rounded transition-colors duration-200 hover:bg-gray-400 text-gray-700"
-          on:click={togglePlayPause}
-        >
-          {isPlaying ? 'Pause' : 'Play'}
-        </button>
         <select
           class="px-4 py-2 bg-gray-300 rounded transition-colors duration-200"
           on:change={(event) => goToPage(parseInt(event.target.value), person.sequences)}
@@ -149,6 +143,12 @@ onMount(() => {
           disabled={currentPage === person.sequences.length}
         >
           Next
+        </button>
+        <button
+          class="px-4 py-2 bg-gray-300 rounded transition-colors duration-200 hover:bg-gray-400 text-gray-700"
+          on:click={togglePlayPause}
+        >
+          {isPlaying ? 'Pause' : 'Play'}
         </button>
       </div>
     </div>
