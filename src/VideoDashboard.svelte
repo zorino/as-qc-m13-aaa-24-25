@@ -5,7 +5,14 @@ export let videoId = '';
 export let persons = [];
 export let pauseVideoTime = 1;
 
-let currentPage = 1;
+let currentPage;
+
+const initializePage = () => {
+  currentPage = 1;
+  if (persons.length > 0) {
+    goToPage(1, persons[0].sequences);
+  }
+};
 
 const seekVideo = (start, end) => {
   const iframe = document.querySelector('iframe');
@@ -33,6 +40,7 @@ const goToPage = (page, sequences) => {
 };
 
 onMount(() => {
+  initializePage();
   var stopPlayTimer;
 
   // This code loads the IFrame Player API code asynchronously.
@@ -90,10 +98,7 @@ onMount(() => {
 
 <div style="width: 100%; height: 500px;">
 
-  {#each persons as person, personIndex}
-    {#if personIndex === 0}
-      {goToPage(1, person.sequences)}
-    {/if}
+  {#each persons as person}
     <div class="mb-4">
       <div class="flex justify-center mt-4 items-center space-x-2">
         <button
