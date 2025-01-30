@@ -9,16 +9,19 @@ let currentPage = 1;
 
 const seekVideo = (start, end) => {
   const iframe = document.querySelector('iframe');
-  iframe.contentWindow.postMessage(
-    JSON.stringify({ event: 'command', func: 'seekTo', args: [start, true] }),
-    '*'
-  );
-  iframe.contentWindow.postMessage(
-    JSON.stringify({ event: 'command', func: 'playVideo' }),
-    '*'
-  );
-  pauseVideoTime = end;
-
+  if (iframe && iframe.contentWindow) {
+    iframe.contentWindow.postMessage(
+      JSON.stringify({ event: 'command', func: 'seekTo', args: [start, true] }),
+      '*'
+    );
+    iframe.contentWindow.postMessage(
+      JSON.stringify({ event: 'command', func: 'playVideo' }),
+      '*'
+    );
+    pauseVideoTime = end;
+  } else {
+    console.error('Iframe not loaded');
+  }
 };
 
 const goToPage = (page, sequences) => {
