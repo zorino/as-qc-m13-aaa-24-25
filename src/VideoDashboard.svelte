@@ -120,6 +120,10 @@ onMount(() => {
   {#each persons as person}
     <div class="mb-4">
       <div class="flex justify-center mt-4 items-center space-x-2">
+        <div class="flex items-center space-x-2">
+          <img src={person.photo} alt={person.name} class="w-12 h-12 rounded-full" />
+          <span class="text-lg font-semibold">{person.name}</span>
+        </div>
         <button
           class="px-4 py-2 bg-gray-300 rounded transition-colors duration-200 hover:bg-gray-400 text-gray-700"
           on:click={() => goToPage(Math.max(currentPage - 1, 1), person.sequences)}
