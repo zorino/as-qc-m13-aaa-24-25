@@ -6,6 +6,25 @@ export let persons = [];
 export let pauseVideoTime = 1;
 
 let currentPage;
+let isPlaying = false;
+
+const togglePlayPause = () => {
+  const iframe = document.querySelector('iframe');
+  if (iframe && iframe.contentWindow) {
+    if (isPlaying) {
+      iframe.contentWindow.postMessage(
+        JSON.stringify({ event: 'command', func: 'pauseVideo' }),
+        '*'
+      );
+    } else {
+      iframe.contentWindow.postMessage(
+        JSON.stringify({ event: 'command', func: 'playVideo' }),
+        '*'
+      );
+    }
+    isPlaying = !isPlaying;
+  }
+};
 
 const initializePage = () => {
   currentPage = 1;
@@ -107,6 +126,12 @@ onMount(() => {
           disabled={currentPage === 1}
         >
           Previous
+        </button>
+        <button
+          class="px-4 py-2 bg-gray-300 rounded transition-colors duration-200 hover:bg-gray-400 text-gray-700"
+          on:click={togglePlayPause}
+        >
+          {isPlaying ? 'Pause' : 'Play'}
         </button>
         <select
           class="px-4 py-2 bg-gray-300 rounded transition-colors duration-200"
