@@ -32,8 +32,7 @@ const goToPage = (page, sequences) => {
   }
 };
 
-(function() {
-
+onMount(() => {
   var stopPlayTimer;
 
   // This code loads the IFrame Player API code asynchronously.
@@ -85,8 +84,7 @@ const goToPage = (page, sequences) => {
   function pauseVideo() {
     player.pauseVideo();
   }
-})();
-
+});
 
 </script>
 
