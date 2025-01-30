@@ -16,13 +16,14 @@ const togglePlayPause = () => {
         JSON.stringify({ event: 'command', func: 'pauseVideo' }),
         '*'
       );
+      isPlaying = false;
     } else {
       const sequence = persons[0].sequences[currentPage - 1];
       if (sequence) {
         seekVideo(sequence.start, sequence.end);
       }
+      isPlaying = true;
     }
-    isPlaying = !isPlaying;
   }
 };
 
