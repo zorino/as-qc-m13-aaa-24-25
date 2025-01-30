@@ -45,6 +45,7 @@ const seekVideo = (start, end) => {
       '*'
     );
     pauseVideoTime = end;
+    isPlaying = true;
   } else {
     console.error('Iframe not loaded');
   }
