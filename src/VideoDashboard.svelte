@@ -11,18 +11,18 @@ let isPlaying = false;
 const togglePlayPause = () => {
   const iframe = document.querySelector('iframe');
   if (iframe && iframe.contentWindow) {
-    if (isPlaying) {
-      iframe.contentWindow.postMessage(
-        JSON.stringify({ event: 'command', func: 'pauseVideo' }),
-        '*'
-      );
-    } else {
-      iframe.contentWindow.postMessage(
-        JSON.stringify({ event: 'command', func: 'playVideo' }),
-        '*'
-      );
+    const sequence = persons[0].sequences[currentPage - 1];
+    if (sequence) {
+      if (isPlaying) {
+        iframe.contentWindow.postMessage(
+          JSON.stringify({ event: 'command', func: 'pauseVideo' }),
+          '*'
+        );
+      } else {
+        seekVideo(sequence.start, sequence.end);
+      }
+      isPlaying = !isPlaying;
     }
-    isPlaying = !isPlaying;
   }
 };
 
