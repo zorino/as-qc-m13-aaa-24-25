@@ -119,7 +119,7 @@ onMount(() => {
 
   {#each persons as person}
     <div class="mb-4">
-      <div class="flex justify-center mt-4 items-center space-x-4">
+      <div class="flex justify-center items-center space-x-4 mt-4">
         <img src={person.image} alt={person.name} class="h-8 rounded-full" style="height: 80px;" />
 
         <button
