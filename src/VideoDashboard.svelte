@@ -71,22 +71,26 @@ $: {
 
   // This function creates an <iframe> (and YouTube player)
   // after the API code downloads.
+  import { onMount } from 'svelte';
+
   let player;
-  window.onYouTubeIframeAPIReady = function() {
-    if (videoId) {
-      player = new YT.Player("player", {
-        // "height": "100%",
-        "width": "100%",
-        "videoId": videoId,
-        "events": {
-          "onReady": onPlayerReady,
-          "onStateChange": onPlayerStateChange
-        }
-      });
-    } else {
-      console.error('Video ID is not defined');
+  onMount(() => {
+    window.onYouTubeIframeAPIReady = function() {
+      if (videoId) {
+        player = new YT.Player("player", {
+          // "height": "100%",
+          "width": "100%",
+          "videoId": videoId,
+          "events": {
+            "onReady": onPlayerReady,
+            "onStateChange": onPlayerStateChange
+          }
+        });
+      } else {
+        console.error('Video ID is not defined');
+      }
     }
-  }
+  });
 
   // The API will call this function when the video player is ready.
   // This automatically starts the video playback when the player is loaded.
