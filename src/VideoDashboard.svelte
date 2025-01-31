@@ -65,65 +65,59 @@ const goToPage = (page, sequences) => {
 
 let stopPlayTimer;
 
-$: {
-  if (!currentPage) {
-    initializePage();
-  }
+let player;
 
-  // This code loads the IFrame Player API code asynchronously.
+$: if (!currentPage) {
+  initializePage();
+}
+
+// This code loads the IFrame Player API code asynchronously.
+onMount(() => {
   const tag = document.createElement("script");
-  tag.src = "//www.youtube.com/iframe_api";
+  tag.src = "https://www.youtube.com/iframe_api";
   const firstScriptTag = document.getElementsByTagName("script")[0];
   firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-  let player;
-
-  $: if (player && videoId) {
-    player.loadVideoById(videoId);
-  }
-
-  onMount(() => {
-    const tag = document.createElement("script");
-    tag.src = "https://www.youtube.com/iframe_api";
-    const firstScriptTag = document.getElementsByTagName("script")[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    window.onYouTubeIframeAPIReady = function() {
-      player = new YT.Player("player", {
-        "width": "100%",
-        "videoId": videoId,
-        "events": {
-          "onReady": onPlayerReady,
-          "onStateChange": onPlayerStateChange
-        }
-      });
-    };
-  });
-
-  // The API will call this function when the video player is ready.
-  // This automatically starts the video playback when the player is loaded.
-  function onPlayerReady(event) {
-    event.target.playVideo();
-  }
-
-  // The API calls this function when the player's state changes.
-  function onPlayerStateChange(event) {
-    let time, rate, remainingTime;
-    clearTimeout(stopPlayTimer);
-    if (event.data == YT.PlayerState.PLAYING) {
-      time = player.getCurrentTime();
-      // Add .4 of a second to the time in case it's close to the current time
-      // (The API kept returning ~9.7 when hitting play after stopping at 10s)
-      if (time + .4 < pauseVideoTime) {
-        rate = player.getPlaybackRate();
-        remainingTime = (pauseVideoTime - time) / rate;
-        stopPlayTimer = setTimeout(pauseVideo, remainingTime * 1000);
+  window.onYouTubeIframeAPIReady = function() {
+    player = new YT.Player("player", {
+      "width": "100%",
+      "videoId": videoId,
+      "events": {
+        "onReady": onPlayerReady,
+        "onStateChange": onPlayerStateChange
       }
+    });
+  };
+});
+
+// Update the video when videoId changes
+$: if (player && videoId) {
+  player.loadVideoById(videoId);
+}
+
+// The API will call this function when the video player is ready.
+function onPlayerReady(event) {
+  event.target.playVideo();
+}
+
+// The API calls this function when the player's state changes.
+function onPlayerStateChange(event) {
+  let time, rate, remainingTime;
+  clearTimeout(stopPlayTimer);
+  if (event.data == YT.PlayerState.PLAYING) {
+    time = player.getCurrentTime();
+    // Add .4 of a second to the time in case it's close to the current time
+    // (The API kept returning ~9.7 when hitting play after stopping at 10s)
+    if (time + .4 < pauseVideoTime) {
+      rate = player.getPlaybackRate();
+      remainingTime = (pauseVideoTime - time) / rate;
+      stopPlayTimer = setTimeout(pauseVideo, remainingTime * 1000);
     }
   }
-  function pauseVideo() {
-    player.pauseVideo();
-  }
+}
+
+function pauseVideo() {
+  player.pauseVideo();
 }
 
 </script>
