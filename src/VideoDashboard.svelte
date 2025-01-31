@@ -131,7 +131,7 @@ function pauseVideo() {
 
 </script>
 
-<div style="width: 100%; height: 500px;">
+<div style="width: 100%; height: 100vh;">
 
   {#each persons as person}
     <div class="mb-4">
