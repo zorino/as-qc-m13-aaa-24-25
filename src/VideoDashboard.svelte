@@ -78,11 +78,16 @@ $: {
 
 
   let player;
+  $: {
+    if (player && videoId) {
+      player.loadVideoById(videoId);
+    }
+  }
+
   onMount(() => {
     window.onYouTubeIframeAPIReady = function() {
       if (videoId) {
         player = new YT.Player("player", {
-          // "height": "100%",
           "width": "100%",
           "videoId": videoId,
           "events": {
