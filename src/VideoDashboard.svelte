@@ -73,22 +73,31 @@ $: if (!currentPage) {
 
 // This code loads the IFrame Player API code asynchronously.
 onMount(() => {
-  const tag = document.createElement("script");
-  tag.src = "https://www.youtube.com/iframe_api";
-  const firstScriptTag = document.getElementsByTagName("script")[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  if (!window.YT) {
+    const tag = document.createElement("script");
+    tag.src = "https://www.youtube.com/iframe_api";
+    const firstScriptTag = document.getElementsByTagName("script")[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  } else {
+    initializePlayer();
+  }
 
-  window.onYouTubeIframeAPIReady = function() {
-    player = new YT.Player("player", {
-      "width": "100%",
-      "videoId": videoId,
-      "events": {
-        "onReady": onPlayerReady,
-        "onStateChange": onPlayerStateChange
-      }
-    });
-  };
+  window.onYouTubeIframeAPIReady = initializePlayer;
 });
+
+function initializePlayer() {
+  if (player) {
+    player.destroy();
+  }
+  player = new YT.Player("player", {
+    "width": "100%",
+    "videoId": videoId,
+    "events": {
+      "onReady": onPlayerReady,
+      "onStateChange": onPlayerStateChange
+    }
+  });
+}
 
 // Update the video when videoId changes
 $: if (player && videoId) {
