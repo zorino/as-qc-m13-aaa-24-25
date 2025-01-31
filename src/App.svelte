@@ -34,6 +34,9 @@ console.log(persons)
 
 {#if selectedVideo}
   <div style="display: flex; align-items: flex-start; width: 100%;">
+    <button on:click={() => selectedVideo = null} style="margin-right: 10px;">
+      Back to Video List
+    </button>
     <button on:click={() => isCollapsed = !isCollapsed} style="margin-right: 10px;">
       ☰
     </button>
