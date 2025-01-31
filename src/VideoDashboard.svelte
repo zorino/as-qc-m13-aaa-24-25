@@ -1,5 +1,4 @@
 <script>
-import { onMount } from 'svelte';
 
 export let videoId = '';
 export let persons = [];
@@ -60,19 +59,19 @@ const goToPage = (page, sequences) => {
   }
 };
 
-onMount(() => {
+$: {
   initializePage();
-  var stopPlayTimer;
+  let stopPlayTimer;
 
   // This code loads the IFrame Player API code asynchronously.
-  var tag = document.createElement("script");
+  const tag = document.createElement("script");
   tag.src = "//www.youtube.com/iframe_api";
-  var firstScriptTag = document.getElementsByTagName("script")[0];
+  const firstScriptTag = document.getElementsByTagName("script")[0];
   firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
   // This function creates an <iframe> (and YouTube player)
   // after the API code downloads.
-  var player;
+  let player;
   window.onYouTubeIframeAPIReady = function() {
     if (videoId) {
       player = new YT.Player("player", {
@@ -97,7 +96,7 @@ onMount(() => {
 
   // The API calls this function when the player's state changes.
   function onPlayerStateChange(event) {
-    var time, rate, remainingTime;
+    let time, rate, remainingTime;
     clearTimeout(stopPlayTimer);
     if (event.data == YT.PlayerState.PLAYING) {
       time = player.getCurrentTime();
@@ -113,7 +112,7 @@ onMount(() => {
   function pauseVideo() {
     player.pauseVideo();
   }
-});
+}
 
 </script>
 

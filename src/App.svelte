@@ -1,5 +1,4 @@
 <script>
-import { onMount } from 'svelte';
 import VideoDashboard from './VideoDashboard.svelte';
 
 const videoId = 'Q_FNGS4liw0';
@@ -20,11 +19,9 @@ players.forEach((e, i) => {
   });
 });
 
-onMount(() => {
-  if (persons.length > 0) {
-    selectedPlayer = persons[0];
-  }
-});
+$: if (persons.length > 0 && !selectedPlayer) {
+  selectedPlayer = persons[0];
+}
 
 console.log(persons)
 // const persons = [
