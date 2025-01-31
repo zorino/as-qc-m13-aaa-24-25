@@ -58,7 +58,7 @@ const goToPage = (page, sequences) => {
   currentPage = page;
   const sequence = sequences[page - 1];
   if (sequence) {
-    console.log(sequence)
+    // console.log(sequence)
     seekVideo(sequence.start, sequence.end);
   }
 };
