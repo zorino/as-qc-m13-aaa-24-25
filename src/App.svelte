@@ -1,7 +1,8 @@
 <script>
 import VideoDashboard from './VideoDashboard.svelte';
+import VideoList from './VideoList.svelte';
 
-const videoId = 'Q_FNGS4liw0';
+let selectedVideo = null;
 const players = ['01-goalie','02-lavallee','03-deraspe','04-beland','05-duchesne','06-gauthier','07-dion','08-drolet','10-parent','11-chaput','12-pelletier','13-trudelle','14-bergeron','15-rochette','16-dorval','17-gauthier']
 
 import shifts from './data/player_shifts';
@@ -31,27 +32,11 @@ console.log(persons)
 //
 </script>
 
-<div style="display: flex; align-items: flex-start; width: 100%;">
-  <button on:click={() => isCollapsed = !isCollapsed} style="margin-right: 10px;">
-    ☰
-  </button>
-  <div style="width: 250px; overflow-y: auto; max-height: 600px; border-right: 1px solid #ccc; display: {isCollapsed ? 'none' : 'block'};">
-    {#each persons as person}
-      <button
-        on:click={() => selectedPlayer = person}
-        style="display: flex; align-items: center; padding: 10px; cursor: pointer; background-color: {selectedPlayer === person ? '#f0f0f0' : 'transparent'};"
-      >
-        <img src={person.image} alt={person.name} width="auto" height="40" style="margin-right: 10px;" />
-        <span>{person.name}</span>
-      </button>
-    {/each}
-  </div>
-
-  {#if selectedPlayer}
-    <VideoDashboard {videoId} persons={[selectedPlayer]} />
-  {/if}
-
-</div>
+{#if selectedVideo}
+  <VideoDashboard {videoId} persons={[selectedPlayer]} />
+{:else}
+  <VideoList on:select={(event) => selectedVideo = event.detail} />
+{/if}
 
 <main style="margin-top: 20px;">
 </main>
