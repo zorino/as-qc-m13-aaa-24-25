@@ -119,43 +119,15 @@ onMount(() => {
 
 <div style="width: 100%; height: 500px;">
 
-  <div class="flex justify-stretch items-center space-x-4 mt-4">
-    <button
-      class="px-4 py-2 bg-gray-300 rounded transition-colors duration-200 hover:bg-gray-400 text-gray-700"
-      on:click={() => goToPage(Math.max(currentPage - 1, 1), persons[0].sequences)}
-      disabled={currentPage === 1}
-    >
-      <span style="color: yellow;">⬅️</span>
-    </button>
-    <select
-      class="px-4 py-2 bg-gray-300 rounded transition-colors duration-200"
-      on:change={(event) => goToPage(parseInt(event.target.value), persons[0].sequences)}
-    >
-      {#each persons[0].sequences as _, index}
-        <option value={index + 1} selected={currentPage === (index + 1)}>
-          Sequence {index + 1}
-        </option>
-      {/each}
-    </select>
-    <button
-      class="px-4 py-2 bg-gray-300 rounded transition-colors duration-200 hover:bg-gray-400 text-gray-700"
-      on:click={() => goToPage(Math.min(currentPage + 1, persons[0].sequences.length), persons[0].sequences)}
-      disabled={currentPage === persons[0].sequences.length}
-    >
-      <span style="color: yellow;">➡️</span>
-    </button>
-    <button
-      class="px-4 py-2 bg-gray-300 rounded transition-colors duration-200 hover:bg-gray-400 text-gray-700"
-      on:click={togglePlayPause}
-    >
-      <span style="color: yellow;">{isPlaying ? '⏸️' : '▶️'}</span>
-    </button>
-  </div>
-
   {#each persons as person}
     <div class="mb-4">
       <div class="flex justify-stretch items-center space-x-4 items-center">
-        <img src={person.image} alt={person.name} style="height: 60px;" />
+        <!-- <img src={person.image} alt={person.name} style="height: 60px;" /> -->
+        <button
+          class="px-4 py-2 bg-gray-300 rounded transition-colors duration-200 hover:bg-gray-400 text-gray-700">
+          <span style="color: black;">{person.name}</span>
+        </button>
+
         <button
           class="px-4 py-2 bg-gray-300 rounded transition-colors duration-200 hover:bg-gray-400 text-gray-700"
           on:click={() => goToPage(Math.max(currentPage - 1, 1), person.sequences)}
