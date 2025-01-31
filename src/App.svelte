@@ -33,7 +33,7 @@ console.log(persons)
 </script>
 
 {#if selectedVideo}
-  <VideoDashboard {videoId} persons={[selectedPlayer]} />
+  <VideoDashboard videoId={selectedVideo.id} persons={[selectedPlayer]} />
 {:else}
   <VideoList on:select={(event) => selectedVideo = event.detail} />
 {/if}
