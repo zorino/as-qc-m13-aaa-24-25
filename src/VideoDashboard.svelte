@@ -78,27 +78,28 @@ $: {
 
 
   let player;
-  $: {
-    if (player && videoId) {
-      player.loadVideoById(videoId);
-    }
+  let player;
+
+  $: if (player && videoId) {
+    player.loadVideoById(videoId);
   }
 
   onMount(() => {
+    const tag = document.createElement("script");
+    tag.src = "https://www.youtube.com/iframe_api";
+    const firstScriptTag = document.getElementsByTagName("script")[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
     window.onYouTubeIframeAPIReady = function() {
-      if (videoId) {
-        player = new YT.Player("player", {
-          "width": "100%",
-          "videoId": videoId,
-          "events": {
-            "onReady": onPlayerReady,
-            "onStateChange": onPlayerStateChange
-          }
-        });
-      } else {
-        console.error('Video ID is not defined');
-      }
-    }
+      player = new YT.Player("player", {
+        "width": "100%",
+        "videoId": videoId,
+        "events": {
+          "onReady": onPlayerReady,
+          "onStateChange": onPlayerStateChange
+        }
+      });
+    };
   });
 
   // The API will call this function when the video player is ready.
