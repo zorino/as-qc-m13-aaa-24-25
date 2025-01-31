@@ -50,7 +50,7 @@ const seekVideo = (start, end) => {
     pauseVideoTime = end;
     isPlaying = true;
   } else {
-    console.error('Iframe not loaded');
+    console.log('Iframe not yet loaded');
   }
 };
 
