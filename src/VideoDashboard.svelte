@@ -138,7 +138,7 @@ function pauseVideo() {
       <div class="flex justify-stretch items-center space-x-4 items-center">
         <!-- <img src={person.image} alt={person.name} style="height: 60px;" /> -->
         <button
-          class="px-4 py-2 bg-gray-300 rounded transition-colors duration-200 hover:bg-gray-400 text-gray-700">
+          class="w-full px-4 py-2 bg-gray-300 rounded transition-colors duration-200 hover:bg-gray-400 text-gray-700">
           <span style="color: black;">{person.name}</span>
         </button>
 
