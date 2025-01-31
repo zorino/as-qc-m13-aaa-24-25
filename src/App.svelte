@@ -37,13 +37,13 @@ console.log(persons)
   </button>
   <div style="width: 250px; overflow-y: auto; max-height: 600px; border-right: 1px solid #ccc; display: {isCollapsed ? 'none' : 'block'};">
     {#each persons as person}
-      <div
+      <button
         on:click={() => selectedPlayer = person}
         style="display: flex; align-items: center; padding: 10px; cursor: pointer; background-color: {selectedPlayer === person ? '#f0f0f0' : 'transparent'};"
       >
         <img src={person.image} alt={person.name} width="auto" height="40" style="margin-right: 10px;" />
         <span>{person.name}</span>
-      </div>
+      </button>
     {/each}
   </div>
 
