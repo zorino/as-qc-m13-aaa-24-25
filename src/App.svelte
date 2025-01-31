@@ -33,7 +33,26 @@ console.log(persons)
 </script>
 
 {#if selectedVideo}
-  <VideoDashboard videoId={selectedVideo.id} persons={[selectedPlayer]} />
+  <div style="display: flex; align-items: flex-start; width: 100%;">
+    <button on:click={() => isCollapsed = !isCollapsed} style="margin-right: 10px;">
+      ☰
+    </button>
+    <div style="width: 250px; overflow-y: auto; max-height: 600px; border-right: 1px solid #ccc; display: {isCollapsed ? 'none' : 'block'};">
+      {#each persons as person}
+        <button
+          on:click={() => selectedPlayer = person}
+          style="display: flex; align-items: center; padding: 10px; cursor: pointer; background-color: {selectedPlayer === person ? '#f0f0f0' : 'transparent'};"
+        >
+          <img src={person.image} alt={person.name} width="auto" height="40" style="margin-right: 10px;" />
+          <span>{person.name}</span>
+        </button>
+      {/each}
+    </div>
+
+    {#if selectedPlayer}
+      <VideoDashboard videoId={selectedVideo.id} persons={[selectedPlayer]} />
+    {/if}
+  </div>
 {:else}
   <VideoList on:select={(event) => selectedVideo = event.detail} />
 {/if}
