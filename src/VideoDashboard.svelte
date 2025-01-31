@@ -63,9 +63,12 @@ const goToPage = (page, sequences) => {
   }
 };
 
+let stopPlayTimer;
+
 $: {
-  initializePage();
-  let stopPlayTimer;
+  if (!currentPage) {
+    initializePage();
+  }
 
   // This code loads the IFrame Player API code asynchronously.
   const tag = document.createElement("script");
