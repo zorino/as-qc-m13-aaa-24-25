@@ -92,11 +92,7 @@ onMount(() => {
 
 // Update the video when videoId changes
 $: if (player && videoId) {
-  if (typeof player.loadVideoById === 'function') {
-    player.loadVideoById(videoId);
-  } else {
-    console.error('Player is not ready or loadVideoById is not a function');
-  }
+  player.cueVideoById(videoId);
 }
 
 // The API will call this function when the video player is ready.
