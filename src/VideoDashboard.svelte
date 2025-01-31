@@ -76,8 +76,6 @@ $: {
   const firstScriptTag = document.getElementsByTagName("script")[0];
   firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-
-  let player;
   let player;
 
   $: if (player && videoId) {
