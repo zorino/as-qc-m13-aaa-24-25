@@ -140,7 +140,10 @@ $: {
         </button>
         <select
           class="px-4 py-2 bg-gray-300 rounded transition-colors duration-200"
-          on:change={(event) => goToPage(parseInt(event.target.value), person.sequences)}
+          on:change={(event) => {
+            const selectedPage = parseInt(event.target.value);
+            goToPage(selectedPage, person.sequences);
+          }}
           >
           {#each person.sequences as _, index}
             <option value={index + 1} selected={currentPage === (index + 1)}>
