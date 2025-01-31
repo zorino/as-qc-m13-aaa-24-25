@@ -1,4 +1,7 @@
 <script>
+// This function creates an <iframe> (and YouTube player)
+// after the API code downloads.
+import { onMount } from 'svelte';
 
 export let videoId = '';
 export let persons = [];
@@ -69,9 +72,6 @@ $: {
   const firstScriptTag = document.getElementsByTagName("script")[0];
   firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-  // This function creates an <iframe> (and YouTube player)
-  // after the API code downloads.
-  import { onMount } from 'svelte';
 
   let player;
   onMount(() => {
