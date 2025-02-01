@@ -37,7 +37,7 @@ export default {
 		sourcemap: true,
 		format: 'iife',
 		name: 'app',
-		file: 'public/build/bundle.js'
+		file: 'public/bundle.js'
 	},
 	plugins: [
         json(),
@@ -60,7 +60,7 @@ export default {
 		resolve({
 			browser: true,
 			dedupe: ['svelte'],
-			exportConditions: ['svelte4']
+			exportConditions: ['svelte5']
 		}),
 		commonjs(),
 
