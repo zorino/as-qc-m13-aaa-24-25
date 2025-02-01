@@ -1,2 +1,6505 @@
-var app=function(){"use strict";const t=globalThis.process?.env?.NODE_ENV;var e=t&&!t.toLowerCase().startsWith("prod"),n=Array.isArray,r=Array.prototype.indexOf,a=Array.from,s=Object.defineProperty,l=Object.getOwnPropertyDescriptor,o=Object.getOwnPropertyDescriptors,i=Object.prototype,u=Array.prototype,d=Object.getPrototypeOf;function f(t){return t()}function c(t){for(var e=0;e<t.length;e++)t[e]()}const v=32,p=64,h=128,y=256,g=512,w=1024,m=2048,_=4096,b=8192,x=16384,E=65536,S=1<<18,$=1<<20,k=Symbol("$state"),O=Symbol("$state metadata"),q=Symbol("legacy props"),T=Symbol("");function N(t){return t===this.v}function A(t){return e=t,n=this.v,!(e!=e?n==n:e!==n||null!==e&&"object"==typeof e||"function"==typeof e);var e,n}let P=!1;const j=Symbol(),C=Symbol("filename");var M="font-weight: bold",I="font-weight: normal";function V(t,n){e?console.warn(`%c[svelte] ownership_invalid_mutation\n%c${t?`${t} mutated a value owned by ${n}. This is strongly discouraged. Consider passing values to child components with \`bind:\`, or use a callback instead`:"Mutating a value outside the component that created it is strongly discouraged. Consider passing values to child components with `bind:`, or use a callback instead"}\nhttps://svelte.dev/e/ownership_invalid_mutation`,M,I):console.warn("https://svelte.dev/e/ownership_invalid_mutation")}function D(t){e?console.warn(`%c[svelte] state_proxy_equality_mismatch\n%cReactive \`$state(...)\` proxies and the values they proxy have different identities. Because of this, comparisons with \`${t}\` will produce unexpected results\nhttps://svelte.dev/e/state_proxy_equality_mismatch`,M,I):console.warn("https://svelte.dev/e/state_proxy_equality_mismatch")}const L={},W=/at (?:.+ \()?(.+):(\d+):(\d+)\)?$/,R=/@(.+):(\d+):(\d+)$/;function B(){const t=function(){const t=(new Error).stack;if(!t)return null;const e=[];for(const n of t.split("\n")){let t=W.exec(n)??R.exec(n);t&&e.push({file:t[1],line:+t[2],column:+t[3]})}return e}()?.slice(4);if(!t)return null;for(let e=0;e<t.length;e++){const n=t[e],r=L[n.file];if(r)for(const t of r){if(null==t.end)return null;if(t.start.line<n.line&&t.end.line>n.line)return t.component}else if(0===e)return null}return null}function Y(t,e){if(null!==e.owners)for(;t;){if(null===t.owners){e.owners=null;break}for(const n of t.owners)e.owners.add(n);t=t.parent}}function J(t,e){return null===t.owners||(t.owners.has(e)||[...t.owners].some((t=>t[C]===e?.[C]))||null!==t.parent&&J(t.parent,e))}function F(t){return t?.owners?.values().next().value??F(t.parent)}function G(t){const e=B();if(e&&!J(t,e)){let n=F(t);n[C]!==e[C]?V(e[C],n[C]):V()}}function K(t){if(e){const e=new Error(`lifecycle_outside_component\n\`${t}(...)\` can only be used during component initialisation\nhttps://svelte.dev/e/lifecycle_outside_component`);throw e.name="Svelte error",e}throw new Error("https://svelte.dev/e/lifecycle_outside_component")}let z=null;function H(t){z=t}let Q=null;function U(t){Q=t}function X(t,n=!1,r){z={p:z,c:null,e:null,m:!1,s:t,x:null,l:null},P&&!n&&(z.l={s:null,u:null,r1:[],r2:rt(!1)}),e&&(z.function=r,Q=r)}function Z(t){const n=z;if(null!==n){void 0!==t&&(n.x=t);const o=n.e;if(null!==o){var r=de,a=oe;n.e=null;try{for(var s=0;s<o.length;s++){var l=o[s];fe(l.effect),ue(l.reaction),Nt(l.fn)}}finally{fe(r),ue(a)}}z=n.p,e&&(Q=n.p?.function??null),n.m=!0}return t||{}}function tt(){return!P||null!==z&&null===z.l}let et=new Set;function nt(t){et=t}function rt(t,e){var n={f:0,v:t,reactions:null,equals:N,rv:0,wv:0};return n}function at(t,e=!1){const n=rt(t);return e||(n.equals=A),P&&null!==z&&null!==z.l&&(z.l.s??=[]).push(n),n}function st(t,e=!1){return function(t){null!==oe&&!ie&&2&oe.f&&(null===ce?ce=[t]:ce.push(t));return t}(at(t,e))}function lt(t,n){return null!==oe&&!ie&&tt()&&18&oe.f&&(null===ce||!ce.includes(t))&&function(){if(e){const t=new Error("state_unsafe_mutation\nUpdating state inside a derived or a template expression is forbidden. If the value should not be reactive, declare it without `$state`\nhttps://svelte.dev/e/state_unsafe_mutation");throw t.name="Svelte error",t}throw new Error("https://svelte.dev/e/state_unsafe_mutation")}(),ot(t,n)}function ot(t,n){if(!t.equals(n)){t.v;if(t.v=n,t.wv=me(),it(t,m),tt()&&null!==de&&de.f&w&&!(96&de.f)&&(null===he?function(t){he=t}([t]):he.push(t)),e&&et.size>0){const t=Array.from(et);var r=te;ne(!0);try{for(const e of t)e.f&w&&De(e,_),_e(e)&&qe(e)}finally{ne(r)}et.clear()}}return n}function it(t,n){var r=t.reactions;if(null!==r)for(var a=tt(),s=r.length,l=0;l<s;l++){var o=r[l],i=o.f;i&m||(a||o!==de)&&(e&&i&S?et.add(o):(De(o,n),1280&i&&(2&i?it(o,_):je(o))))}}function ut(t,r=null,a){if("object"!=typeof t||null===t||k in t)return t;const s=d(t);if(s!==i&&s!==u)return t;var o,f=new Map,c=n(t),v=rt(0);if(c&&f.set("length",rt(t.length)),e)if(o={parent:r,owners:null},a){const t=a.v?.[O]?.owners;o.owners=t?new Set(t):null}else o.owners=null===r?null!==z?new Set([z.function]):null:new Set;return new Proxy(t,{defineProperty(t,n,r){"value"in r&&!1!==r.configurable&&!1!==r.enumerable&&!1!==r.writable||function(){if(e){const t=new Error("state_descriptors_fixed\nProperty descriptors defined on `$state` objects must contain `value` and always be `enumerable`, `configurable` and `writable`.\nhttps://svelte.dev/e/state_descriptors_fixed");throw t.name="Svelte error",t}throw new Error("https://svelte.dev/e/state_descriptors_fixed")}();var a=f.get(n);return void 0===a?(a=rt(r.value),f.set(n,a)):lt(a,ut(r.value,o)),!0},deleteProperty(t,e){var n=f.get(e);if(void 0===n)e in t&&f.set(e,rt(j));else{if(c&&"string"==typeof e){var r=f.get("length"),a=Number(e);Number.isInteger(a)&&a<r.v&&lt(r,a)}lt(n,j),dt(v)}return!0},get(n,r,a){if(e&&r===O)return o;if(r===k)return t;var s=f.get(r),i=r in n;if(void 0!==s||i&&!l(n,r)?.writable||(s=rt(ut(i?n[r]:j,o)),f.set(r,s)),void 0!==s){var u=Me(s);if(e){var d=u?.[O];d&&d?.parent!==o&&Y(o,d)}return u===j?void 0:u}return Reflect.get(n,r,a)},getOwnPropertyDescriptor(t,e){var n=Reflect.getOwnPropertyDescriptor(t,e);if(n&&"value"in n){var r=f.get(e);r&&(n.value=Me(r))}else if(void 0===n){var a=f.get(e),s=a?.v;if(void 0!==a&&s!==j)return{enumerable:!0,configurable:!0,value:s,writable:!0}}return n},has(t,n){if(e&&n===O)return!0;if(n===k)return!0;var r=f.get(n),a=void 0!==r&&r.v!==j||Reflect.has(t,n);if((void 0!==r||null!==de&&(!a||l(t,n)?.writable))&&(void 0===r&&(r=rt(a?ut(t[n],o):j),f.set(n,r)),Me(r)===j))return!1;return a},set(t,n,r,a){var s=f.get(n),i=n in t;if(c&&"length"===n)for(var u=r;u<s.v;u+=1){var d=f.get(u+"");void 0!==d?lt(d,j):u in t&&(d=rt(j),f.set(u+"",d))}if(void 0===s?i&&!l(t,n)?.writable||(lt(s=rt(void 0),ut(r,o)),f.set(n,s)):(i=s.v!==j,lt(s,ut(r,o))),e){var p=r?.[O];p&&p?.parent!==o&&Y(o,p),G(o)}var h=Reflect.getOwnPropertyDescriptor(t,n);if(h?.set&&h.set.call(a,r),!i){if(c&&"string"==typeof n){var y=f.get("length"),g=Number(n);Number.isInteger(g)&&g>=y.v&&lt(y,g+1)}dt(v)}return!0},ownKeys(t){Me(v);var e=Reflect.ownKeys(t).filter((t=>{var e=f.get(t);return void 0===e||e.v!==j}));for(var[n,r]of f)r.v===j||n in t||e.push(n);return e},setPrototypeOf(){!function(){if(e){const t=new Error("state_prototype_fixed\nCannot set prototype of `$state` object\nhttps://svelte.dev/e/state_prototype_fixed");throw t.name="Svelte error",t}throw new Error("https://svelte.dev/e/state_prototype_fixed")}()}})}function dt(t,e=1){lt(t,t.v+e)}function ft(t){return null!==t&&"object"==typeof t&&k in t?t[k]:t}var ct,vt,pt;function ht(){if(void 0===ct){ct=window;var t=Element.prototype,n=Node.prototype;vt=l(n,"firstChild").get,pt=l(n,"nextSibling").get,t.__click=void 0,t.__className="",t.__attributes=null,t.__styles=null,t.__e=void 0,Text.prototype.__t=void 0,e&&(t.__svelte_meta=null,function(){const t=Array.prototype,e=Array.__svelte_cleanup;e&&e();const{indexOf:n,lastIndexOf:r,includes:a}=t;t.indexOf=function(t,e){const r=n.call(this,t,e);if(-1===r)for(let n=e??0;n<this.length;n+=1)if(ft(this[n])===t){D("array.indexOf(...)");break}return r},t.lastIndexOf=function(t,e){const n=r.call(this,t,e??this.length-1);if(-1===n)for(let n=0;n<=(e??this.length-1);n+=1)if(ft(this[n])===t){D("array.lastIndexOf(...)");break}return n},t.includes=function(t,e){const n=a.call(this,t,e);if(!n)for(let e=0;e<this.length;e+=1)if(ft(this[e])===t){D("array.includes(...)");break}return n},Array.__svelte_cleanup=()=>{t.indexOf=n,t.lastIndexOf=r,t.includes=a}}())}}function yt(t=""){return document.createTextNode(t)}function gt(t){return vt.call(t)}function wt(t){return pt.call(t)}function mt(t,e){return gt(t)}function _t(t,e=1,n=!1){let r=t;for(;e--;)r=wt(r);return r}function bt(t){var e=2050,n=null!==oe&&2&oe.f?oe:null;null===de||null!==n&&n.f&y?e|=y:de.f|=$;const r={ctx:z,deps:null,effects:null,equals:N,f:e,fn:t,reactions:null,rv:0,v:null,wv:0,parent:n??de};return r}function xt(t){const e=bt(t);return e.equals=A,e}function Et(t){var e=t.effects;if(null!==e){t.effects=null;for(var n=0;n<e.length;n+=1)Lt(e[n])}}let St=[];function $t(t){var n,r=de;if(fe(function(t){for(var e=t.parent;null!==e;){if(!(2&e.f))return e;e=e.parent}return null}(t)),e){let a=et;nt(new Set);try{St.includes(t)&&function(){if(e){const t=new Error("derived_references_self\nA derived value cannot reference itself recursively\nhttps://svelte.dev/e/derived_references_self");throw t.name="Svelte error",t}throw new Error("https://svelte.dev/e/derived_references_self")}(),St.push(t),Et(t),n=$e(t)}finally{fe(r),nt(a),St.pop()}}else try{Et(t),n=$e(t)}finally{fe(r)}return n}function kt(t){var e=$t(t);De(t,(we||t.f&y)&&null!==t.deps?_:w),t.equals(e)||(t.v=e,t.wv=me())}function Ot(t){null===de&&null===oe&&function(t){if(e){const e=new Error(`effect_orphan\n\`${t}\` can only be used inside an effect (e.g. during component initialisation)\nhttps://svelte.dev/e/effect_orphan`);throw e.name="Svelte error",e}throw new Error("https://svelte.dev/e/effect_orphan")}(t),null!==oe&&oe.f&y&&null===de&&function(){if(e){const t=new Error("effect_in_unowned_derived\nEffect cannot be created inside a `$derived` value that was not itself created inside an effect\nhttps://svelte.dev/e/effect_in_unowned_derived");throw t.name="Svelte error",t}throw new Error("https://svelte.dev/e/effect_in_unowned_derived")}(),ee&&function(t){if(e){const e=new Error(`effect_in_teardown\n\`${t}\` cannot be used inside an effect cleanup function\nhttps://svelte.dev/e/effect_in_teardown`);throw e.name="Svelte error",e}throw new Error("https://svelte.dev/e/effect_in_teardown")}(t)}function qt(t,n,r,a=!0){var s=!!(t&p),l=de;if(e)for(;null!==l&&l.f&S;)l=l.parent;var o={ctx:z,deps:null,nodes_start:null,nodes_end:null,f:t|m,first:null,fn:n,last:null,next:null,parent:s?null:l,prev:null,teardown:null,transitions:null,wv:0};if(e&&(o.component_function=Q),r){var i=te;try{ne(!0),qe(o),o.f|=32768}catch(t){throw Lt(o),t}finally{ne(i)}}else null!==n&&je(o);if(!(r&&null===o.deps&&null===o.first&&null===o.nodes_start&&null===o.teardown&&!(1048704&o.f))&&!s&&a&&(null!==l&&function(t,e){var n=e.last;null===n?e.last=e.first=t:(n.next=t,t.prev=n,e.last=t)}(o,l),null!==oe&&2&oe.f)){var u=oe;(u.effects??=[]).push(o)}return o}function Tt(t){Ot("$effect");var n=null!==de&&!!(de.f&v)&&null!==z&&!z.m;if(e&&s(t,"name",{value:"$effect"}),!n)return Nt(t);var r=z;(r.e??=[]).push({fn:t,effect:de,reaction:oe})}function Nt(t){return qt(4,t,!1)}function At(t,e){var n=z,r={effect:null,ran:!1};n.l.r1.push(r),r.effect=jt((()=>{t(),r.ran||(r.ran=!0,lt(n.l.r2,!0),Ie(e))}))}function Pt(){var t=z;jt((()=>{if(Me(t.l.r2)){for(var e of t.l.r1){var n=e.effect;n.f&w&&De(n,_),_e(n)&&qe(n),e.ran=!1}t.l.r2.v=!1}}))}function jt(t){return qt(8,t,!0)}function Ct(t,n=[],r=bt){const a=n.map(r),l=()=>t(...a.map(Me));return e&&s(l,"name",{value:"{expression}"}),Mt(l)}function Mt(t,e=0){return qt(24|e,t,!0)}function It(t,e=!0){return qt(40,t,!0,e)}function Vt(t){var e=t.teardown;if(null!==e){const t=ee,n=oe;re(!0),ue(null);try{e.call(null)}finally{re(t),ue(n)}}}function Dt(t,e=!1){var n=t.first;for(t.first=t.last=null;null!==n;){var r=n.next;Lt(n,e),n=r}}function Lt(t,n=!0){var r=!1;if((n||524288&t.f)&&null!==t.nodes_start){for(var a=t.nodes_start,s=t.nodes_end;null!==a;){var l=a===s?null:wt(a);a.remove(),a=l}r=!0}Dt(t,n&&!r),Oe(t,0),De(t,x);var o=t.transitions;if(null!==o)for(const t of o)t.stop();Vt(t);var i=t.parent;null!==i&&null!==i.first&&Wt(t),e&&(t.component_function=null),t.next=t.prev=t.teardown=t.ctx=t.deps=t.fn=t.nodes_start=t.nodes_end=null}function Wt(t){var e=t.parent,n=t.prev,r=t.next;null!==n&&(n.next=r),null!==r&&(r.prev=n),null!==e&&(e.first===t&&(e.first=r),e.last===t&&(e.last=n))}function Rt(t,e){var n=[];Yt(t,n,!0),Bt(n,(()=>{Lt(t),e&&e()}))}function Bt(t,e){var n=t.length;if(n>0){var r=()=>--n||e();for(var a of t)a.out(r)}else e()}function Yt(t,e,n){if(!(t.f&b)){if(t.f^=b,null!==t.transitions)for(const r of t.transitions)(r.is_global||n)&&e.push(r);for(var r=t.first;null!==r;){var a=r.next;Yt(r,e,!!(!!(r.f&E)||!!(r.f&v))&&n),r=a}}}function Jt(t){Ft(t,!0)}function Ft(t,e){if(t.f&b){t.f^=b,t.f&w||(t.f^=w),_e(t)&&(De(t,m),je(t));for(var n=t.first;null!==n;){var r=n.next;Ft(n,!!(!!(n.f&E)||!!(n.f&v))&&e),n=r}if(null!==t.transitions)for(const n of t.transitions)(n.is_global||e)&&n.in()}}let Gt=!1,Kt=[];function zt(){Gt=!1;const t=Kt.slice();Kt=[],c(t)}function Ht(t){Gt||(Gt=!0,queueMicrotask(zt)),Kt.push(t)}const Qt=new WeakSet;let Ut=!1,Xt=!1,Zt=null,te=!1,ee=!1;function ne(t){te=t}function re(t){ee=t}let ae=[],se=0,le=[],oe=null,ie=!1;function ue(t){oe=t}let de=null;function fe(t){de=t}let ce=null;let ve=null,pe=0,he=null;let ye=1,ge=0,we=!1;function me(){return++ye}function _e(t){var e=t.f;if(e&m)return!0;if(e&_){var n=t.deps,r=!!(e&y);if(null!==n){var a,s,l=!!(e&g),o=r&&null!==de&&!we,i=n.length;if(l||o){for(a=0;a<i;a++)s=n[a],!l&&s?.reactions?.includes(t)||(s.reactions??=[]).push(t);l&&(t.f^=g)}for(a=0;a<i;a++)if(_e(s=n[a])&&kt(s),s.wv>t.wv)return!0}r&&(null===de||we)||De(t,w)}return!1}function be(t,e){for(var n=e;null!==n;){if(n.f&h)try{return void n.fn(t)}catch{n.f^=h}n=n.parent}throw Ut=!1,t}function xe(t){return!(t.f&x||null!==t.parent&&t.parent.f&h)}function Ee(t,n,r,a){if(Ut){if(null===r&&(Ut=!1),xe(n))throw t;return}if(null!==r&&(Ut=!0),!e||null===a||!(t instanceof Error)||Qt.has(t))return void be(t,n);Qt.add(t);const l=[],o=n.fn?.name;o&&l.push(o);let i=a;for(;null!==i;){if(e){var u=i.function?.[C];if(u){const t=u.split("/").pop();l.push(t)}}i=i.p}const d=/Firefox/.test(navigator.userAgent)?"  ":"\t";s(t,"message",{value:t.message+`\n${l.map((t=>`\n${d}in ${t}`)).join("")}\n`}),s(t,"component_stack",{value:l});const f=t.stack;if(f){const e=f.split("\n"),n=[];for(let t=0;t<e.length;t++){const r=e[t];r.includes("svelte/src/internal")||n.push(r)}s(t,"stack",{value:n.join("\n")})}if(be(t,n),xe(n))throw t}function Se(t,e,n=0){var r=t.reactions;if(null!==r)for(var a=0;a<r.length;a++){var s=r[a];2&s.f?Se(s,e,n+1):e===s&&(0===n?De(s,m):s.f&w&&De(s,_),je(s))}}function $e(t){var e=ve,n=pe,r=he,a=oe,s=we,l=ce,o=z,i=ie,u=t.f;ve=null,pe=0,he=null,oe=96&u?null:t,we=!!(u&y)&&(!te||(null===a||i)&&null!==t.parent),ce=null,H(t.ctx),ie=!1,ge++;try{var d=(0,t.fn)(),f=t.deps;if(null!==ve){var c;if(Oe(t,pe),null!==f&&pe>0)for(f.length=pe+ve.length,c=0;c<ve.length;c++)f[pe+c]=ve[c];else t.deps=f=ve;if(!we)for(c=pe;c<f.length;c++)(f[c].reactions??=[]).push(t)}else null!==f&&pe<f.length&&(Oe(t,pe),f.length=pe);if(tt()&&null!==he&&!(6146&t.f))for(c=0;c<he.length;c++)Se(he[c],t);return null!==a&&ge++,d}finally{ve=e,pe=n,he=r,oe=a,we=s,ce=l,H(o),ie=i}}function ke(t,e){let n=e.reactions;if(null!==n){var a=r.call(n,t);if(-1!==a){var s=n.length-1;0===s?n=e.reactions=null:(n[a]=n[s],n.pop())}}null===n&&2&e.f&&(null===ve||!ve.includes(e))&&(De(e,_),768&e.f||(e.f^=g),Et(e),Oe(e,0))}function Oe(t,e){var n=t.deps;if(null!==n)for(var r=e;r<n.length;r++)ke(t,n[r])}function qe(t){var n=t.f;if(!(n&x)){De(t,w);var r=de,a=z;if(de=t,e){var s=Q;U(t.component_function)}try{16&n?function(t){for(var e=t.first;null!==e;){var n=e.next;e.f&v||Lt(e),e=n}}(t):Dt(t),Vt(t);var l=$e(t);t.teardown="function"==typeof l?l:null,t.wv=ye;t.deps;e&&le.push(t)}catch(e){Ee(e,t,r,a||t.ctx)}finally{de=r,e&&U(s)}}}function Te(){console.error("Last ten effects were: ",le.slice(-10).map((t=>t.fn))),le=[]}function Ne(){if(se>1e3){se=0;try{!function(){if(e){const t=new Error("effect_update_depth_exceeded\nMaximum update depth exceeded. This can happen when a reactive block or effect repeatedly sets a new value. Svelte limits the number of nested updates to prevent infinite loops\nhttps://svelte.dev/e/effect_update_depth_exceeded");throw t.name="Svelte error",t}throw new Error("https://svelte.dev/e/effect_update_depth_exceeded")}()}catch(t){if(e&&s(t,"stack",{value:""}),null===Zt)throw e&&Te(),t;if(e)try{Ee(t,Zt,null,null)}catch(t){throw Te(),t}else Ee(t,Zt,null,null)}}se++}function Ae(t){var e=t.length;if(0!==e)for(var n=0;n<e;n++){var r=t[n];if(!(24576&r.f))try{_e(r)&&(qe(r),null===r.deps&&null===r.first&&null===r.nodes_start&&(null===r.teardown?Wt(r):r.fn=null))}catch(t){Ee(t,r,null,r.ctx)}}}function Pe(){if(Xt=!1,se>1001)return;const t=ae;ae=[],function(t){var e=t.length;if(0!==e){Ne();var n=te;te=!0;try{for(var r=0;r<e;r++){var a=t[r];a.f&w||(a.f^=w);var s=[];Ce(a,s),Ae(s)}}finally{te=n}}}(t),Xt||(se=0,Zt=null,e&&(le=[]))}function je(t){Xt||(Xt=!0,queueMicrotask(Pe)),Zt=t;for(var e=t;null!==e.parent;){var n=(e=e.parent).f;if(96&n){if(!(n&w))return;e.f^=w}}ae.push(e)}function Ce(t,e){var n=t.first,r=[];t:for(;null!==n;){var a=n.f,s=!!(a&v),l=s&&!!(a&w),o=n.next;if(!(l||a&b))if(8&a){if(s)n.f^=w;else{var i=oe;try{oe=n,_e(n)&&qe(n)}catch(t){Ee(t,n,null,n.ctx)}finally{oe=i}}var u=n.first;if(null!==u){n=u;continue}}else 4&a&&r.push(n);if(null===o){let e=n.parent;for(;null!==e;){if(t===e)break t;var d=e.next;if(null!==d){n=d;continue t}e=e.parent}}n=o}for(var f=0;f<r.length;f++)u=r[f],e.push(u),Ce(u,e)}function Me(t){var n=t.f,r=!!(2&n);if(r&&n&x){var a=$t(t);return function(t){Et(t),Oe(t,0),De(t,x),t.v=t.deps=t.ctx=t.reactions=null}(t),a}if(null===oe||ie){if(r&&null===t.deps&&null===t.effects){var s=t,l=s.parent;null===l||l.f&y||(s.f^=y)}}else{null!==ce&&ce.includes(t)&&function(){if(e){const t=new Error("state_unsafe_local_read\nReading state that was created inside the same derived is forbidden. Consider using `untrack` to read locally created state\nhttps://svelte.dev/e/state_unsafe_local_read");throw t.name="Svelte error",t}throw new Error("https://svelte.dev/e/state_unsafe_local_read")}();var o=oe.deps;t.rv<ge&&(t.rv=ge,null===ve&&null!==o&&o[pe]===t?pe++:null===ve?ve=[t]:ve.push(t))}return r&&_e(s=t)&&kt(s),t.v}function Ie(t){var e=ie;try{return ie=!0,t()}finally{ie=e}}const Ve=-7169;function De(t,e){t.f=t.f&Ve|e}function Le(t){if("object"==typeof t&&t&&!(t instanceof EventTarget))if(k in t)We(t);else if(!Array.isArray(t))for(let e in t){const n=t[e];"object"==typeof n&&n&&k in n&&We(n)}}function We(t,e=new Set){if(!("object"!=typeof t||null===t||t instanceof EventTarget||e.has(t))){e.add(t),t instanceof Date&&t.getTime();for(let n in t)try{We(t[n],e)}catch(t){}const n=d(t);if(n!==Object.prototype&&n!==Array.prototype&&n!==Map.prototype&&n!==Set.prototype&&n!==Date.prototype){const e=o(n);for(let n in e){const r=e[n].get;if(r)try{r.call(t)}catch(t){}}}}}const Re=["touchstart","touchmove"];function Be(t){return Re.includes(t)}const Ye=new Set,Je=new Set;function Fe(t,e,n,r={}){function a(t){if(r.capture||Ke.call(e,t),!t.cancelBubble)return function(t){var e=oe,n=de;ue(null),fe(null);try{return t()}finally{ue(e),fe(n)}}((()=>n?.call(this,t)))}return t.startsWith("pointer")||t.startsWith("touch")||"wheel"===t?Ht((()=>{e.addEventListener(t,a,r)})):e.addEventListener(t,a,r),a}function Ge(t,e,n,r,a){var s={capture:r,passive:a},l=Fe(t,e,n,s);e!==document.body&&e!==window&&e!==document||function(t){const e=qt(8,null,!1);De(e,w),e.teardown=t}((()=>{e.removeEventListener(t,l,s)}))}function Ke(t){var e=this,r=e.ownerDocument,a=t.type,l=t.composedPath?.()||[],o=l[0]||t.target,i=0,u=t.__root;if(u){var d=l.indexOf(u);if(-1!==d&&(e===document||e===window))return void(t.__root=e);var f=l.indexOf(e);if(-1===f)return;d<=f&&(i=d)}if((o=l[i]||t.target)!==e){s(t,"currentTarget",{configurable:!0,get:()=>o||r});var c=oe,v=de;ue(null),fe(null);try{for(var p,h=[];null!==o;){var y=o.assignedSlot||o.parentNode||o.host||null;try{var g=o["__"+a];if(void 0!==g&&!o.disabled)if(n(g)){var[w,...m]=g;w.apply(o,[t,...m])}else g.call(o,t)}catch(t){p?h.push(t):p=t}if(t.cancelBubble||y===e||null===y)break;o=y}if(p){for(let t of h)queueMicrotask((()=>{throw t}));throw p}}finally{t.__root=e,delete t.currentTarget,ue(c),fe(v)}}}function ze(t,e){var n=de;null===n.nodes_start&&(n.nodes_start=t,n.nodes_end=e)}function He(t,e){var n,r=!!(1&e),a=!!(2&e),s=!t.startsWith("<!>");return()=>{var e,l;void 0===n&&(e=s?t:"<!>"+t,(l=document.createElement("template")).innerHTML=e,n=l.content,r||(n=gt(n)));var o=a?document.importNode(n,!0):n.cloneNode(!0);r?ze(gt(o),o.lastChild):ze(o,o);return o}}function Qe(t,e){null!==t&&t.before(e)}function Ue(t,e){var n=null==e?"":"object"==typeof e?e+"":e;n!==(t.__t??=t.nodeValue)&&(t.__t=n,t.nodeValue=null==n?"":n+"")}const Xe=new Map;let Ze=new WeakMap;function tn(t,e,n=!1){var r=t,a=null,s=null,l=j,o=!1;const i=(t,e=!0)=>{o=!0,u(e,t)},u=(t,e)=>{l!==(l=t)&&(l?(a?Jt(a):e&&(a=It((()=>e(r)))),s&&Rt(s,(()=>{s=null}))):(s?Jt(s):e&&(s=It((()=>e(r)))),a&&Rt(a,(()=>{a=null}))))};Mt((()=>{o=!1,e(i),o||u(null,null)}),n?E:0)}function en(t,e){return e}function nn(t,e,r,s,l,o=null){var i=t,u={flags:e,items:new Map,first:null};!(4&e)||(i=t.appendChild(yt()));var d=null,f=!1,c=xt((()=>{var t=r();return n(t)?t:null==t?[]:a(t)}));Mt((()=>{var t=Me(c),n=t.length;f&&0===n||(f=0===n,function(t,e,n,r,s,l,o){var i,u,d,f,c,v,p=!!(8&s),h=!!(3&s),y=t.length,g=e.items,w=e.first,m=w,_=null,x=[],E=[];if(p)for(v=0;v<y;v+=1)f=l(d=t[v],v),void 0!==(c=g.get(f))&&(c.a?.measure(),(u??=new Set).add(c));for(v=0;v<y;v+=1)if(f=l(d=t[v],v),void 0!==(c=g.get(f))){if(h&&rn(c,d,v,s),c.e.f&b&&(Jt(c.e),p&&(c.a?.unfix(),(u??=new Set).delete(c))),c!==m){if(void 0!==i&&i.has(c)){if(x.length<E.length){var S,$=E[0];_=$.prev;var k=x[0],O=x[x.length-1];for(S=0;S<x.length;S+=1)sn(x[S],$,n);for(S=0;S<E.length;S+=1)i.delete(E[S]);ln(e,k.prev,O.next),ln(e,_,k),ln(e,O,$),m=$,_=O,v-=1,x=[],E=[]}else i.delete(c),sn(c,m,n),ln(e,c.prev,c.next),ln(e,c,null===_?e.first:_.next),ln(e,_,c),_=c;continue}for(x=[],E=[];null!==m&&m.k!==f;)m.e.f&b||(i??=new Set).add(m),E.push(m),m=m.next;if(null===m)continue;c=m}x.push(c),_=c,m=c.next}else{_=an(m?m.e.nodes_start:n,e,_,null===_?e.first:_.next,d,f,v,r,s,o),g.set(f,_),x=[],E=[],m=_.next}if(null!==m||void 0!==i){for(var q=void 0===i?[]:a(i);null!==m;)m.e.f&b||q.push(m),m=m.next;var T=q.length;if(T>0){var N=4&s&&0===y?n:null;if(p){for(v=0;v<T;v+=1)q[v].a?.measure();for(v=0;v<T;v+=1)q[v].a?.fix()}!function(t,e,n,r){for(var a=[],s=e.length,l=0;l<s;l++)Yt(e[l].e,a,!0);var o=s>0&&0===a.length&&null!==n;if(o){var i=n.parentNode;i.textContent="",i.append(n),r.clear(),ln(t,e[0].prev,e[s-1].next)}Bt(a,(()=>{for(var n=0;n<s;n++){var a=e[n];o||(r.delete(a.k),ln(t,a.prev,a.next)),Lt(a.e,!o)}}))}(e,q,N,g)}}p&&Ht((()=>{if(void 0!==u)for(c of u)c.a?.apply()}));de.first=e.first&&e.first.e,de.last=_&&_.e}(t,u,i,l,e,s,r),null!==o&&(0===n?d?Jt(d):d=It((()=>o(i))):null!==d&&Rt(d,(()=>{d=null}))),Me(c))}))}function rn(t,e,n,r){1&r&&ot(t.v,e),2&r?ot(t.i,n):t.i=n}function an(t,n,r,a,s,l,o,i,u,d){var f=!!(1&u),c=f?!(16&u)?at(s):rt(s):s,v=2&u?rt(o):o;e&&f&&(c.debug=()=>{var t="number"==typeof v?o:v.v;d()[t]});var p={i:v,v:c,k:l,a:null,e:null,prev:r,next:a};try{return p.e=It((()=>i(t,c,v,d)),false),p.e.prev=r&&r.e,p.e.next=a&&a.e,null===r?n.first=p:(r.next=p,r.e.next=p.e),null!==a&&(a.prev=p,a.e.prev=p.e),p}finally{}}function sn(t,e,n){for(var r=t.next?t.next.e.nodes_start:n,a=e?e.e.nodes_start:n,s=t.e.nodes_start;s!==r;){var l=wt(s);a.before(s),s=l}}function ln(t,e,n){null===e?t.first=n:(e.next=n,e.e.next=n&&n.e),null!==n&&(n.prev=e,n.e.prev=e&&e.e)}function on(t,e,n,r){var a=t.__attributes??={};a[e]!==(a[e]=n)&&("style"===e&&"__styles"in t&&(t.__styles={}),"loading"===e&&(t[T]=n),null==n?t.removeAttribute(e):"string"!=typeof n&&function(t){var e,n=un.get(t.nodeName);if(n)return n;un.set(t.nodeName,n=[]);var r=t,a=Element.prototype;for(;a!==r;){for(var s in e=o(r))e[s].set&&n.push(s);r=d(r)}return n}(t).includes(e)?t[e]=n:t.setAttribute(e,n))}var un=new Map;function dn(t=!1){const n=z,r=n.l.u;if(!r)return;let a=()=>Le(n.s);if(t){let t=0,e={};const r=bt((()=>{let r=!1;const a=n.s;for(const t in a)a[t]!==e[t]&&(e[t]=a[t],r=!0);return r&&t++,t}));a=()=>Me(r)}var l;r.b.length&&(l=()=>{fn(n,a),c(r.b)},Ot("$effect.pre"),e&&s(l,"name",{value:"$effect.pre"}),jt(l)),Tt((()=>{const t=Ie((()=>r.m.map(f)));return()=>{for(const e of t)"function"==typeof e&&e()}})),r.a.length&&Tt((()=>{fn(n,a),c(r.a)}))}function fn(t,e){if(t.l.s)for(const e of t.l.s)Me(e);e()}let cn=!1;function vn(t){for(var e=de,n=de;null!==e&&!(96&e.f);)e=e.parent;try{return fe(e),t()}finally{fe(n)}}function pn(t,n,r,a){var s,o=!!(1&r),i=!P||!!(2&r),u=!!(8&r),d=!!(16&r),f=!1;u?[s,f]=function(t){var e=cn;try{return cn=!1,[t(),cn]}finally{cn=e}}((()=>t[n])):s=t[n];var c,v=k in t||q in t,p=u&&(l(t,n)?.set??(v&&n in t&&(e=>t[n]=e)))||void 0,h=a,y=!0,g=!1,w=()=>(g=!0,y&&(y=!1,h=d?Ie(a):a),h);if(void 0===s&&void 0!==a&&(p&&i&&function(t){if(e){const e=new Error(`props_invalid_value\nCannot do \`bind:${t}={undefined}\` when \`${t}\` has a fallback value\nhttps://svelte.dev/e/props_invalid_value`);throw e.name="Svelte error",e}throw new Error("https://svelte.dev/e/props_invalid_value")}(n),s=w(),p&&p(s)),i)c=()=>{var e=t[n];return void 0===e?w():(y=!0,g=!1,e)};else{var m=vn((()=>(o?bt:xt)((()=>t[n]))));m.f|=131072,c=()=>{var t=Me(m);return void 0!==t&&(h=void 0),void 0===t?h:t}}if(!(4&r))return c;if(p){var _=t.$$legacy;return function(t,e){return arguments.length>0?(i&&e&&!_&&!f||p(e?c():t),t):c()}}var b=!1,x=at(s),E=vn((()=>bt((()=>{var t=c(),e=Me(x);return b?(b=!1,e):x.v=t}))));return o||(E.equals=A),function(t,e){if(arguments.length>0){const n=e?Me(E):i&&u?ut(t):t;return E.equals(n)||(b=!0,lt(x,n),g&&void 0!==h&&(h=n),Ie((()=>Me(E)))),t}return Me(E)}}if(e){function Nn(t){if(!(t in globalThis)){let n;Object.defineProperty(globalThis,t,{configurable:!0,get:()=>{if(void 0!==n)return n;!function(t){if(e){const e=new Error(`rune_outside_svelte\nThe \`${t}\` rune is only available inside \`.svelte\` and \`.svelte.js/ts\` files\nhttps://svelte.dev/e/rune_outside_svelte`);throw e.name="Svelte error",e}throw new Error("https://svelte.dev/e/rune_outside_svelte")}(t)},set:t=>{n=t}})}}Nn("$state"),Nn("$effect"),Nn("$derived"),Nn("$inspect"),Nn("$props"),Nn("$bindable")}function hn(){const t=z;return null===t&&K("createEventDispatcher"),(e,r,a)=>{const s=t.s.$$events?.[e];if(s){const l=n(s)?s.slice():[s],o=function(t,e,{bubbles:n=!1,cancelable:r=!1}={}){return new CustomEvent(t,{detail:e,bubbles:n,cancelable:r})}(e,r,a);for(const e of l)e.call(t.x,o);return!o.defaultPrevented}return!0}}"undefined"!=typeof window&&(window.__svelte||={v:new Set}).v.add("5"),P=!0;var yn=He("<option></option>"),gn=He('<div class="mb-4"><div class="flex justify-stretch items-center space-x-4 items-center"><button class="w-full px-4 py-2 bg-gray-300 rounded transition-colors duration-200 hover:bg-gray-400 text-gray-700"><span style="color: black;"> </span></button> <button class="px-4 py-2 bg-gray-300 rounded transition-colors duration-200 hover:bg-gray-400 text-gray-700"><span style="color: yellow;">⬅️</span></button> <select class="px-4 py-2 bg-gray-300 rounded transition-colors duration-200"></select> <button class="px-4 py-2 bg-gray-300 rounded transition-colors duration-200 hover:bg-gray-400 text-gray-700"><span style="color: yellow;">➡️</span></button> <button class="px-4 py-2 bg-gray-300 rounded transition-colors duration-200 hover:bg-gray-400 text-gray-700"><span style="color: yellow;"> </span></button></div></div>'),wn=He('<div style="width: 100%; height: 88vh;"><!> <div class="video" style="width: 100%; height: 100%;"><div id="player" style="width: 100%; height: 100%;"></div></div></div>');function mn(t,e){X(e,!1);let n=pn(e,"videoId",8),r=pn(e,"persons",24,(()=>[])),a=pn(e,"pauseVideoTime",12,1),s=st(),l=st(!1);const o=()=>{const t=document.querySelector("iframe");if(t&&t.contentWindow)if(Me(l))t.contentWindow.postMessage(JSON.stringify({event:"command",func:"pauseVideo"}),"*"),lt(l,!1);else{const t=r()[0].sequences[Me(s)-1];t&&i(t.start,t.end),lt(l,!0)}},i=(t,e)=>{const n=document.querySelector("iframe");n&&n.contentWindow?(n.contentWindow.postMessage(JSON.stringify({event:"command",func:"seekTo",args:[t,!0]}),"*"),n.contentWindow.postMessage(JSON.stringify({event:"command",func:"playVideo"}),"*"),a(e),lt(l,!0)):console.log("Iframe not yet loaded")},u=(t,e)=>{lt(s,t);const n=e[t-1];n&&i(n.start,n.end)};let d,f=st();var c,v,p;function h(){Me(f)&&Me(f).destroy(),lt(f,new YT.Player("player",{width:"100%",videoId:n(),events:{onReady:y,onStateChange:g}}))}function y(t){t.target.playVideo()}function g(t){let e,n,r;clearTimeout(d),t.data==YT.PlayerState.PLAYING&&(e=Me(f).getCurrentTime(),e+.4<a()&&(n=Me(f).getPlaybackRate(),r=(a()-e)/n,d=setTimeout(w,1e3*r)))}function w(){Me(f).pauseVideo()}c=()=>{if(window.YT)h();else{const t=document.createElement("script");t.src="https://www.youtube.com/iframe_api";const e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(t,e)}window.onYouTubeIframeAPIReady=h},null===z&&K("onMount"),P&&null!==z.l?(v=z,p=v.l,p.u??={a:[],b:[],m:[]}).m.push(c):Tt((()=>{const t=Ie(c);if("function"==typeof t)return t})),At((()=>Me(s)),(()=>{Me(s)||(lt(s,1),r().length>0&&u(1,r()[0].sequences))})),At((()=>(Me(f),Le(n()))),(()=>{Me(f)&&n()&&Me(f).cueVideoById(n())})),Pt(),dn();var m=wn();nn(mt(m),1,r,en,((t,e)=>{var n=gn(),r=mt(n),a=mt(r),i=mt(a),d=mt(i),f=_t(a,2),c=_t(f,2);nn(c,5,(()=>Me(e).sequences),en,((t,e,n)=>{var r=yn();r.value=null==(r.__value=n+1)?"":n+1,r.textContent=`Sequence ${n+1??""}`,Ct((()=>{return t=r,void(Me(s)===n+1?t.hasAttribute("selected")||t.setAttribute("selected",""):t.removeAttribute("selected"));var t})),Qe(t,r)}));var v=_t(c,2),p=_t(v,2),h=mt(p),y=mt(h);Ct((()=>{Ue(d,Me(e).name),f.disabled=1===Me(s),v.disabled=Me(s)===Me(e).sequences.length,Ue(y,Me(l)?"⏸️":"▶️")})),Ge("click",f,(()=>u(Math.max(Me(s)-1,1),Me(e).sequences))),Ge("change",c,(t=>{const n=parseInt(t.target.value);u(n,Me(e).sequences)})),Ge("click",v,(()=>u(Math.min(Me(s)+1,Me(e).sequences.length),Me(e).sequences))),Ge("click",p,o),Qe(t,n)})),Qe(t,m),Z()}var _n=He('<div class="video-card svelte-dh3ava"><h3> </h3> <p> </p></div>'),bn=He('<div class="video-list svelte-dh3ava"></div>');function xn(t,e){X(e,!1);const n=[{id:"Q_FNGS4liw0",title:"Video 1",description:"Description for Video 1"},{id:"A_BCD3efgh1",title:"Video 2",description:"Description for Video 2"}],r=hn();dn();var a=bn();nn(a,5,(()=>n),en,((t,e)=>{var n=_n(),a=mt(n),s=mt(a),l=mt(_t(a,2));Ct((()=>{Ue(s,Me(e).title),Ue(l,Me(e).description)})),Ge("click",n,(()=>function(t){r("select",t)}(Me(e)))),Qe(t,n)})),Qe(t,a),Z()}var En=[{name:"01-goalie",shifts:[{start:266,end:294},{start:323,end:333},{start:376,end:392},{start:466,end:476},{start:799,end:822},{start:865,end:954},{start:985,end:994},{start:1063,end:1092},{start:1212,end:1223},{start:1532,end:1595},{start:2109,end:2185},{start:2208,end:2255},{start:2392,end:2409},{start:2640,end:2672},{start:3191,end:3206},{start:3302,end:3309},{start:3383,end:3451},{start:3477,end:3613},{start:3718,end:3797},{start:3900,end:3958},{start:3994,end:4009},{start:4052,end:4070}]},{name:"02-lavallee",shifts:[{start:45,end:118},{start:287,end:336},{start:514,end:586},{start:794,end:839},{start:1042,end:1096},{start:1207,end:1249},{start:1430,end:1495},{start:1708,end:1790},{start:1930,end:2014},{start:2150,end:2229},{start:2276,end:2330},{start:2432,end:2482},{start:2787,end:2844},{start:3031,end:3123},{start:3316,end:3422},{start:3737,end:3805},{start:4019,end:4067}]},{name:"03-deraspe",shifts:[{start:0,end:40},{start:175,end:282},{start:416,end:529},{start:699,end:790},{start:890,end:1019},{start:1254,end:1370},{start:1501,end:1615},{start:1797,end:1888},{start:2035,end:2097},{start:2223,end:2285},{start:2339,end:2428},{start:2593,end:2665},{start:2718,end:2792},{start:2984,end:3033},{start:3103,end:3221},{start:3527,end:3614},{start:3687,end:3742},{start:3922,end:4027},{start:4062,end:4069}]},{name:"04-beland",shifts:[{start:278,end:417},{start:752,end:846},{start:1014,end:1124},{start:1250,end:1419},{start:1517,end:1531},{start:1605,end:1768},{start:1928,end:2017},{start:2217,end:2284},{start:2321,end:2334},{start:2493,end:2686},{start:2726,end:2739},{start:2893,end:3009},{start:3201,end:3330},{start:3529,end:3746},{start:3856,end:4070}]},{name:"05-duchesne",shifts:[{start:82,end:180},{start:341,end:426},{start:591,end:634},{start:834,end:930},{start:1124,end:1274},{start:1513,end:1600},{start:1872,end:1911},{start:2082,end:2154},{start:2380,end:2506},{start:2792,end:2837},{start:2864,end:2908},{start:3110,end:3228},{start:3492,end:3573},{start:3806,end:3898}]},{name:"06-gauthier",shifts:[{start:341,end:438},{start:596,end:736},{start:826,end:955},{start:1102,end:1203},{start:1605,end:1650},{start:1675,end:1687},{start:1874,end:1930},{start:2107,end:2159},{start:2491,end:2601},{start:2844,end:2964},{start:3031,end:3123},{start:3226,end:3309},{start:3623,end:3691},{start:3774,end:3911}]},{name:"07-dion",shifts:[{start:0,end:36},{start:185,end:288},{start:417,end:523},{start:642,end:749},{start:928,end:1031},{start:1421,end:1506},{start:1750,end:1926},{start:2015,end:2115},{start:2289,end:2397},{start:2703,end:2779},{start:2975,end:3123},{start:3325,end:3426},{start:3696,end:3809}]},{name:"08-drolet",shifts:[{start:166,end:200},{start:340,end:415},{start:599,end:715},{start:848,end:899},{start:1110,end:1217},{start:1341,end:1417},{start:1607,end:1686},{start:1879,end:1929},{start:2103,end:2155},{start:2282,end:2321},{start:2488,end:2601},{start:2862,end:2972},{start:3113,end:3220},{start:3493,end:3515},{start:3682,end:3697},{start:3717,end:3736},{start:3812,end:3854},{start:3908,end:3922}]},{name:"10-parent",shifts:[{start:1,end:38},{start:166,end:284},{start:440,end:524},{start:628,end:763},{start:916,end:1044},{start:1422,end:1506},{start:1775,end:1864},{start:2016,end:2128},{start:2289,end:2386},{start:2975,end:3130},{start:3327,end:3422},{start:3681,end:3806},{start:4020,end:4065}]},{name:"11-chaput",shifts:[{start:29,end:138},{start:303,end:333},{start:527,end:589},{start:795,end:857},{start:1028,end:1094},{start:1207,end:1224},{start:1244,end:1267},{start:1710,end:1775},{start:1930,end:2004},{start:2340,end:2421},{start:2782,end:2843},{start:3316,end:3422},{start:3524,end:3614},{start:3735,end:3805},{start:4010,end:4062}]},{name:"12-pelletier",shifts:[{start:188,end:306},{start:440,end:531},{start:653,end:764},{start:911,end:1048},{start:1743,end:1873},{start:2020,end:2099},{start:2224,end:2276},{start:2717,end:2784},{start:2973,end:3123},{start:3326,end:3417},{start:3679,end:3807},{start:4011,end:4066}]},{name:"13-trudelle",shifts:[{start:0,end:37},{start:208,end:298},{start:420,end:502},{start:720,end:787},{start:1267,end:1337},{start:1510,end:1596},{start:1812,end:1875},{start:2018,end:2098},{start:2222,end:2277},{start:2430,end:2483},{start:2613,end:2673},{start:2722,end:2778},{start:2984,end:3027},{start:3225,end:3309},{start:3624,end:3684},{start:3919,end:4010},{start:4064,end:4070}]},{name:"14-bergeron",shifts:[{start:41,end:91},{start:291,end:346},{start:529,end:589},{start:746,end:854},{start:1023,end:1126},{start:1268,end:1430},{start:1607,end:1764},{start:1924,end:2021},{start:2155,end:2250},{start:2507,end:2660},{start:2894,end:2980},{start:3219,end:3329},{start:3517,end:3717},{start:3905,end:4011},{start:4061,end:4067}]},{name:"15-rochette",shifts:[{start:38,end:87},{start:283,end:345},{start:526,end:590},{start:755,end:845},{start:998,end:1126},{start:1266,end:1416},{start:1605,end:1774},{start:1926,end:2018},{start:2135,end:2241},{start:2484,end:2664},{start:2893,end:2979},{start:3222,end:3342},{start:3487,end:3551},{start:3615,end:3686},{start:3907,end:4009}]},{name:"16-dorval",shifts:[{start:81,end:190},{start:343,end:432},{start:555,end:646},{start:837,end:926},{start:1121,end:1283},{start:1504,end:1608},{start:1869,end:1934},{start:2101,end:2159},{start:2385,end:2507},{start:2792,end:2904},{start:3127,end:3227},{start:3427,end:3487},{start:3806,end:3899},{start:4062,end:4069}]},{name:"17-gauthier",shifts:[{start:82,end:185},{start:342,end:427},{start:594,end:648},{start:825,end:928},{start:1128,end:1265},{start:1485,end:1616},{start:1863,end:1929},{start:2097,end:2158},{start:2384,end:2493},{start:2790,end:2917},{start:3109,end:3229},{start:3418,end:3486},{start:3804,end:3900},{start:4062,end:4068}]}],Sn=He('<button><img width="auto" height="40" style="margin-right: 10px;"> <span> </span></button>'),$n=He('<div style="display: flex; align-items: flex-start; width: 100%;"><button style="margin-right: 10px;">☰</button> <div><button style="margin: 10px;">Back to Video List</button> <!></div> <!></div>'),kn=He('<!> <main style="margin-top: 20px;"></main>',1);const On=(qn=function(t,e){X(e,!1);let n=st(null),r=st(null),a=st(!1),s=[];["01-goalie","02-lavallee","03-deraspe","04-beland","05-duchesne","06-gauthier","07-dion","08-drolet","10-parent","11-chaput","12-pelletier","13-trudelle","14-bergeron","15-rochette","16-dorval","17-gauthier"].forEach(((t,e)=>{s.push({name:En[e].name,sequences:En[e].shifts,image:`/images/players/${t}.png`})})),console.log(s),At((()=>Me(r)),(()=>{s.length>0&&!Me(r)&&lt(r,s[0])})),Pt(),dn();var l=kn(),o=function(t){var e=gt(t);return e instanceof Comment&&""===e.data?wt(e):e}(l),i=t=>{var e=$n(),l=mt(e),o=_t(l,2),i=mt(o);nn(_t(i,2),1,(()=>s),en,((t,e)=>{var n=Sn(),a=mt(n),s=mt(_t(a,2));Ct((()=>{on(n,"style",`display: flex; align-items: center; padding: 10px; cursor: pointer; background-color: ${(Me(r)===Me(e)?"#f0f0f0":"transparent")??""};`),on(a,"src",Me(e).image),on(a,"alt",Me(e).name),Ue(s,Me(e).name)})),Ge("click",n,(()=>lt(r,Me(e)))),Qe(t,n)}));var u=_t(o,2),d=t=>{const e=xt((()=>[Me(r)]));mn(t,{get videoId(){return Me(n).id},get persons(){return Me(e)}})};tn(u,(t=>{Me(r)&&t(d)})),Ct((()=>on(o,"style",`width: 250px; overflow-y: auto; max-height: 600px; border-right: 1px solid #ccc; display: ${(Me(a)?"none":"block")??""};`))),Ge("click",l,(()=>lt(a,!Me(a)))),Ge("click",i,(()=>lt(n,null))),Qe(t,e)},u=t=>{xn(t,{$$events:{select:t=>lt(n,t.detail)}})};tn(o,(t=>{Me(n)?t(i):t(u,!1)})),Qe(t,l),Z()},Tn={target:document.body},function(t,{target:e,anchor:n,props:r={},events:s,context:l,intro:o=!0}){ht();var i=new Set,u=t=>{for(var n=0;n<t.length;n++){var r=t[n];if(!i.has(r)){i.add(r);var a=Be(r);e.addEventListener(r,Ke,{passive:a});var s=Xe.get(r);void 0===s?(document.addEventListener(r,Ke,{passive:a}),Xe.set(r,1)):Xe.set(r,s+1)}}};u(a(Ye)),Je.add(u);var d=void 0,f=function(t){const e=qt(p,t,!0);return(t={})=>new Promise((n=>{t.outro?Rt(e,(()=>{Lt(e),n(void 0)})):(Lt(e),n(void 0))}))}((()=>{var a=n??e.appendChild(yt());return It((()=>{l&&(X({}),z.c=l),s&&(r.$$events=s),d=t(a,r)||{},l&&Z()})),()=>{for(var t of i){e.removeEventListener(t,Ke);var r=Xe.get(t);0==--r?(document.removeEventListener(t,Ke),Xe.delete(t)):Xe.set(t,r)}Je.delete(u),a!==n&&a.parentNode?.removeChild(a)}}));return Ze.set(d,f),d}(qn,Tn));var qn,Tn;return On}();
+
+(function(l, r) { if (!l || l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (self.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(self.document);
+var app = (function () {
+	'use strict';
+
+	const node_env = globalThis.process?.env?.NODE_ENV;
+	var DEV = node_env && !node_env.toLowerCase().startsWith('prod');
+
+	// Store the references to globals in case someone tries to monkey patch these, causing the below
+	// to de-opt (this occurs often when using popular extensions).
+	var is_array = Array.isArray;
+	var index_of = Array.prototype.indexOf;
+	var array_from = Array.from;
+	var define_property = Object.defineProperty;
+	var get_descriptor = Object.getOwnPropertyDescriptor;
+	var get_descriptors = Object.getOwnPropertyDescriptors;
+	var object_prototype = Object.prototype;
+	var array_prototype = Array.prototype;
+	var get_prototype_of = Object.getPrototypeOf;
+
+	/** @param {Function} fn */
+	function run(fn) {
+		return fn();
+	}
+
+	/** @param {Array<() => void>} arr */
+	function run_all(arr) {
+		for (var i = 0; i < arr.length; i++) {
+			arr[i]();
+		}
+	}
+
+	const DERIVED = 1 << 1;
+	const EFFECT = 1 << 2;
+	const RENDER_EFFECT = 1 << 3;
+	const BLOCK_EFFECT = 1 << 4;
+	const BRANCH_EFFECT = 1 << 5;
+	const ROOT_EFFECT = 1 << 6;
+	const BOUNDARY_EFFECT = 1 << 7;
+	const UNOWNED = 1 << 8;
+	const DISCONNECTED = 1 << 9;
+	const CLEAN = 1 << 10;
+	const DIRTY = 1 << 11;
+	const MAYBE_DIRTY = 1 << 12;
+	const INERT = 1 << 13;
+	const DESTROYED = 1 << 14;
+	const EFFECT_RAN = 1 << 15;
+	/** 'Transparent' effects do not create a transition boundary */
+	const EFFECT_TRANSPARENT = 1 << 16;
+	/** Svelte 4 legacy mode props need to be handled with deriveds and be recognized elsewhere, hence the dedicated flag */
+	const LEGACY_DERIVED_PROP = 1 << 17;
+	const INSPECT_EFFECT = 1 << 18;
+	const HEAD_EFFECT = 1 << 19;
+	const EFFECT_HAS_DERIVED = 1 << 20;
+
+	const STATE_SYMBOL = Symbol('$state');
+	const STATE_SYMBOL_METADATA = Symbol('$state metadata');
+	const LEGACY_PROPS = Symbol('legacy props');
+	const LOADING_ATTR_SYMBOL = Symbol('');
+
+	/** @import { Equals } from '#client' */
+	/** @type {Equals} */
+	function equals$1(value) {
+		return value === this.v;
+	}
+
+	/**
+	 * @param {unknown} a
+	 * @param {unknown} b
+	 * @returns {boolean}
+	 */
+	function safe_not_equal(a, b) {
+		return a != a
+			? b == b
+			: a !== b || (a !== null && typeof a === 'object') || typeof a === 'function';
+	}
+
+	/** @type {Equals} */
+	function safe_equals(value) {
+		return !safe_not_equal(value, this.v);
+	}
+
+	/* This file is generated by scripts/process-messages/index.js. Do not edit! */
+
+
+	/**
+	 * %parent% called `%method%` on an instance of %component%, which is no longer valid in Svelte 5
+	 * @param {string} parent
+	 * @param {string} method
+	 * @param {string} component
+	 * @returns {never}
+	 */
+	function component_api_changed(parent, method, component) {
+		if (DEV) {
+			const error = new Error(`component_api_changed\n${parent} called \`${method}\` on an instance of ${component}, which is no longer valid in Svelte 5\nhttps://svelte.dev/e/component_api_changed`);
+
+			error.name = 'Svelte error';
+			throw error;
+		} else {
+			throw new Error(`https://svelte.dev/e/component_api_changed`);
+		}
+	}
+
+	/**
+	 * Attempted to instantiate %component% with `new %name%`, which is no longer valid in Svelte 5. If this component is not under your control, set the `compatibility.componentApi` compiler option to `4` to keep it working.
+	 * @param {string} component
+	 * @param {string} name
+	 * @returns {never}
+	 */
+	function component_api_invalid_new(component, name) {
+		if (DEV) {
+			const error = new Error(`component_api_invalid_new\nAttempted to instantiate ${component} with \`new ${name}\`, which is no longer valid in Svelte 5. If this component is not under your control, set the \`compatibility.componentApi\` compiler option to \`4\` to keep it working.\nhttps://svelte.dev/e/component_api_invalid_new`);
+
+			error.name = 'Svelte error';
+			throw error;
+		} else {
+			throw new Error(`https://svelte.dev/e/component_api_invalid_new`);
+		}
+	}
+
+	/**
+	 * A derived value cannot reference itself recursively
+	 * @returns {never}
+	 */
+	function derived_references_self() {
+		if (DEV) {
+			const error = new Error(`derived_references_self\nA derived value cannot reference itself recursively\nhttps://svelte.dev/e/derived_references_self`);
+
+			error.name = 'Svelte error';
+			throw error;
+		} else {
+			throw new Error(`https://svelte.dev/e/derived_references_self`);
+		}
+	}
+
+	/**
+	 * `%rune%` cannot be used inside an effect cleanup function
+	 * @param {string} rune
+	 * @returns {never}
+	 */
+	function effect_in_teardown(rune) {
+		if (DEV) {
+			const error = new Error(`effect_in_teardown\n\`${rune}\` cannot be used inside an effect cleanup function\nhttps://svelte.dev/e/effect_in_teardown`);
+
+			error.name = 'Svelte error';
+			throw error;
+		} else {
+			throw new Error(`https://svelte.dev/e/effect_in_teardown`);
+		}
+	}
+
+	/**
+	 * Effect cannot be created inside a `$derived` value that was not itself created inside an effect
+	 * @returns {never}
+	 */
+	function effect_in_unowned_derived() {
+		if (DEV) {
+			const error = new Error(`effect_in_unowned_derived\nEffect cannot be created inside a \`$derived\` value that was not itself created inside an effect\nhttps://svelte.dev/e/effect_in_unowned_derived`);
+
+			error.name = 'Svelte error';
+			throw error;
+		} else {
+			throw new Error(`https://svelte.dev/e/effect_in_unowned_derived`);
+		}
+	}
+
+	/**
+	 * `%rune%` can only be used inside an effect (e.g. during component initialisation)
+	 * @param {string} rune
+	 * @returns {never}
+	 */
+	function effect_orphan(rune) {
+		if (DEV) {
+			const error = new Error(`effect_orphan\n\`${rune}\` can only be used inside an effect (e.g. during component initialisation)\nhttps://svelte.dev/e/effect_orphan`);
+
+			error.name = 'Svelte error';
+			throw error;
+		} else {
+			throw new Error(`https://svelte.dev/e/effect_orphan`);
+		}
+	}
+
+	/**
+	 * Maximum update depth exceeded. This can happen when a reactive block or effect repeatedly sets a new value. Svelte limits the number of nested updates to prevent infinite loops
+	 * @returns {never}
+	 */
+	function effect_update_depth_exceeded() {
+		if (DEV) {
+			const error = new Error(`effect_update_depth_exceeded\nMaximum update depth exceeded. This can happen when a reactive block or effect repeatedly sets a new value. Svelte limits the number of nested updates to prevent infinite loops\nhttps://svelte.dev/e/effect_update_depth_exceeded`);
+
+			error.name = 'Svelte error';
+			throw error;
+		} else {
+			throw new Error(`https://svelte.dev/e/effect_update_depth_exceeded`);
+		}
+	}
+
+	/**
+	 * Cannot do `bind:%key%={undefined}` when `%key%` has a fallback value
+	 * @param {string} key
+	 * @returns {never}
+	 */
+	function props_invalid_value(key) {
+		if (DEV) {
+			const error = new Error(`props_invalid_value\nCannot do \`bind:${key}={undefined}\` when \`${key}\` has a fallback value\nhttps://svelte.dev/e/props_invalid_value`);
+
+			error.name = 'Svelte error';
+			throw error;
+		} else {
+			throw new Error(`https://svelte.dev/e/props_invalid_value`);
+		}
+	}
+
+	/**
+	 * The `%rune%` rune is only available inside `.svelte` and `.svelte.js/ts` files
+	 * @param {string} rune
+	 * @returns {never}
+	 */
+	function rune_outside_svelte(rune) {
+		if (DEV) {
+			const error = new Error(`rune_outside_svelte\nThe \`${rune}\` rune is only available inside \`.svelte\` and \`.svelte.js/ts\` files\nhttps://svelte.dev/e/rune_outside_svelte`);
+
+			error.name = 'Svelte error';
+			throw error;
+		} else {
+			throw new Error(`https://svelte.dev/e/rune_outside_svelte`);
+		}
+	}
+
+	/**
+	 * Property descriptors defined on `$state` objects must contain `value` and always be `enumerable`, `configurable` and `writable`.
+	 * @returns {never}
+	 */
+	function state_descriptors_fixed() {
+		if (DEV) {
+			const error = new Error(`state_descriptors_fixed\nProperty descriptors defined on \`$state\` objects must contain \`value\` and always be \`enumerable\`, \`configurable\` and \`writable\`.\nhttps://svelte.dev/e/state_descriptors_fixed`);
+
+			error.name = 'Svelte error';
+			throw error;
+		} else {
+			throw new Error(`https://svelte.dev/e/state_descriptors_fixed`);
+		}
+	}
+
+	/**
+	 * Cannot set prototype of `$state` object
+	 * @returns {never}
+	 */
+	function state_prototype_fixed() {
+		if (DEV) {
+			const error = new Error(`state_prototype_fixed\nCannot set prototype of \`$state\` object\nhttps://svelte.dev/e/state_prototype_fixed`);
+
+			error.name = 'Svelte error';
+			throw error;
+		} else {
+			throw new Error(`https://svelte.dev/e/state_prototype_fixed`);
+		}
+	}
+
+	/**
+	 * Reading state that was created inside the same derived is forbidden. Consider using `untrack` to read locally created state
+	 * @returns {never}
+	 */
+	function state_unsafe_local_read() {
+		if (DEV) {
+			const error = new Error(`state_unsafe_local_read\nReading state that was created inside the same derived is forbidden. Consider using \`untrack\` to read locally created state\nhttps://svelte.dev/e/state_unsafe_local_read`);
+
+			error.name = 'Svelte error';
+			throw error;
+		} else {
+			throw new Error(`https://svelte.dev/e/state_unsafe_local_read`);
+		}
+	}
+
+	/**
+	 * Updating state inside a derived or a template expression is forbidden. If the value should not be reactive, declare it without `$state`
+	 * @returns {never}
+	 */
+	function state_unsafe_mutation() {
+		if (DEV) {
+			const error = new Error(`state_unsafe_mutation\nUpdating state inside a derived or a template expression is forbidden. If the value should not be reactive, declare it without \`$state\`\nhttps://svelte.dev/e/state_unsafe_mutation`);
+
+			error.name = 'Svelte error';
+			throw error;
+		} else {
+			throw new Error(`https://svelte.dev/e/state_unsafe_mutation`);
+		}
+	}
+
+	let legacy_mode_flag = false;
+	let tracing_mode_flag = false;
+
+	function enable_legacy_mode_flag() {
+		legacy_mode_flag = true;
+	}
+
+	const EACH_ITEM_REACTIVE = 1;
+	const EACH_INDEX_REACTIVE = 1 << 1;
+	/** See EachBlock interface metadata.is_controlled for an explanation what this is */
+	const EACH_IS_CONTROLLED = 1 << 2;
+	const EACH_IS_ANIMATED = 1 << 3;
+	const EACH_ITEM_IMMUTABLE = 1 << 4;
+
+	const PROPS_IS_IMMUTABLE = 1;
+	const PROPS_IS_RUNES = 1 << 1;
+	const PROPS_IS_UPDATED = 1 << 2;
+	const PROPS_IS_BINDABLE = 1 << 3;
+	const PROPS_IS_LAZY_INITIAL = 1 << 4;
+
+	const TEMPLATE_FRAGMENT = 1;
+	const TEMPLATE_USE_IMPORT_NODE = 1 << 1;
+
+	const UNINITIALIZED = Symbol();
+
+	// Dev-time component properties
+	const FILENAME = Symbol('filename');
+
+	/* This file is generated by scripts/process-messages/index.js. Do not edit! */
+
+
+	var bold$1 = 'font-weight: bold';
+	var normal$1 = 'font-weight: normal';
+
+	/**
+	 * The following properties cannot be cloned with `$state.snapshot` — the return value contains the originals:
+	 * 
+	 * %properties%
+	 * @param {string | undefined | null} [properties]
+	 */
+	function state_snapshot_uncloneable(properties) {
+		if (DEV) {
+			console.warn(`%c[svelte] state_snapshot_uncloneable\n%c${properties
+			? `The following properties cannot be cloned with \`$state.snapshot\` — the return value contains the originals:
+
+${properties}`
+			: 'Value cannot be cloned with `$state.snapshot` — the original value was returned'}\nhttps://svelte.dev/e/state_snapshot_uncloneable`, bold$1, normal$1);
+		} else {
+			console.warn(`https://svelte.dev/e/state_snapshot_uncloneable`);
+		}
+	}
+
+	/** @import { Snapshot } from './types' */
+
+	/**
+	 * In dev, we keep track of which properties could not be cloned. In prod
+	 * we don't bother, but we keep a dummy array around so that the
+	 * signature stays the same
+	 * @type {string[]}
+	 */
+	const empty = [];
+
+	/**
+	 * @template T
+	 * @param {T} value
+	 * @param {boolean} [skip_warning]
+	 * @returns {Snapshot<T>}
+	 */
+	function snapshot(value, skip_warning = false) {
+		if (DEV && !skip_warning) {
+			/** @type {string[]} */
+			const paths = [];
+
+			const copy = clone(value, new Map(), '', paths);
+			if (paths.length === 1 && paths[0] === '') {
+				// value could not be cloned
+				state_snapshot_uncloneable();
+			} else if (paths.length > 0) {
+				// some properties could not be cloned
+				const slice = paths.length > 10 ? paths.slice(0, 7) : paths.slice(0, 10);
+				const excess = paths.length - slice.length;
+
+				let uncloned = slice.map((path) => `- <value>${path}`).join('\n');
+				if (excess > 0) uncloned += `\n- ...and ${excess} more`;
+
+				state_snapshot_uncloneable(uncloned);
+			}
+
+			return copy;
+		}
+
+		return clone(value, new Map(), '', empty);
+	}
+
+	/**
+	 * @template T
+	 * @param {T} value
+	 * @param {Map<T, Snapshot<T>>} cloned
+	 * @param {string} path
+	 * @param {string[]} paths
+	 * @param {null | T} original The original value, if `value` was produced from a `toJSON` call
+	 * @returns {Snapshot<T>}
+	 */
+	function clone(value, cloned, path, paths, original = null) {
+		if (typeof value === 'object' && value !== null) {
+			var unwrapped = cloned.get(value);
+			if (unwrapped !== undefined) return unwrapped;
+
+			if (value instanceof Map) return /** @type {Snapshot<T>} */ (new Map(value));
+			if (value instanceof Set) return /** @type {Snapshot<T>} */ (new Set(value));
+
+			if (is_array(value)) {
+				var copy = /** @type {Snapshot<any>} */ (Array(value.length));
+				cloned.set(value, copy);
+
+				if (original !== null) {
+					cloned.set(original, copy);
+				}
+
+				for (var i = 0; i < value.length; i += 1) {
+					var element = value[i];
+					if (i in value) {
+						copy[i] = clone(element, cloned, DEV ? `${path}[${i}]` : path, paths);
+					}
+				}
+
+				return copy;
+			}
+
+			if (get_prototype_of(value) === object_prototype) {
+				/** @type {Snapshot<any>} */
+				copy = {};
+				cloned.set(value, copy);
+
+				if (original !== null) {
+					cloned.set(original, copy);
+				}
+
+				for (var key in value) {
+					// @ts-expect-error
+					copy[key] = clone(value[key], cloned, DEV ? `${path}.${key}` : path, paths);
+				}
+
+				return copy;
+			}
+
+			if (value instanceof Date) {
+				return /** @type {Snapshot<T>} */ (structuredClone(value));
+			}
+
+			if (typeof (/** @type {T & { toJSON?: any } } */ (value).toJSON) === 'function') {
+				return clone(
+					/** @type {T & { toJSON(): any } } */ (value).toJSON(),
+					cloned,
+					DEV ? `${path}.toJSON()` : path,
+					paths,
+					// Associate the instance with the toJSON clone
+					value
+				);
+			}
+		}
+
+		if (value instanceof EventTarget) {
+			// can't be cloned
+			return /** @type {Snapshot<T>} */ (value);
+		}
+
+		try {
+			return /** @type {Snapshot<T>} */ (structuredClone(value));
+		} catch (e) {
+			if (DEV) {
+				paths.push(path);
+			}
+
+			return /** @type {Snapshot<T>} */ (value);
+		}
+	}
+
+	/** @import { Derived, Reaction, Signal, Value } from '#client' */
+
+	/** @type { any } */
+	let tracing_expressions = null;
+
+	/**
+	 * @param {string} label
+	 */
+	function get_stack$1(label) {
+		let error = Error();
+		const stack = error.stack;
+
+		if (stack) {
+			const lines = stack.split('\n');
+			const new_lines = ['\n'];
+
+			for (let i = 0; i < lines.length; i++) {
+				const line = lines[i];
+
+				if (line === 'Error') {
+					continue;
+				}
+				if (line.includes('validate_each_keys')) {
+					return null;
+				}
+				if (line.includes('svelte/src/internal')) {
+					continue;
+				}
+				new_lines.push(line);
+			}
+
+			if (new_lines.length === 1) {
+				return null;
+			}
+
+			define_property(error, 'stack', {
+				value: new_lines.join('\n')
+			});
+
+			define_property(error, 'name', {
+				// 'Error' suffix is required for stack traces to be rendered properly
+				value: `${label}Error`
+			});
+		}
+		return error;
+	}
+
+	/* This file is generated by scripts/process-messages/index.js. Do not edit! */
+
+
+	var bold = 'font-weight: bold';
+	var normal = 'font-weight: normal';
+
+	/**
+	 * Your `console.%method%` contained `$state` proxies. Consider using `$inspect(...)` or `$state.snapshot(...)` instead
+	 * @param {string} method
+	 */
+	function console_log_state(method) {
+		if (DEV) {
+			console.warn(`%c[svelte] console_log_state\n%cYour \`console.${method}\` contained \`$state\` proxies. Consider using \`$inspect(...)\` or \`$state.snapshot(...)\` instead\nhttps://svelte.dev/e/console_log_state`, bold, normal);
+		} else {
+			console.warn(`https://svelte.dev/e/console_log_state`);
+		}
+	}
+
+	/**
+	 * %component% mutated a value owned by %owner%. This is strongly discouraged. Consider passing values to child components with `bind:`, or use a callback instead
+	 * @param {string | undefined | null} [component]
+	 * @param {string | undefined | null} [owner]
+	 */
+	function ownership_invalid_mutation(component, owner) {
+		if (DEV) {
+			console.warn(`%c[svelte] ownership_invalid_mutation\n%c${component ? `${component} mutated a value owned by ${owner}. This is strongly discouraged. Consider passing values to child components with \`bind:\`, or use a callback instead` : 'Mutating a value outside the component that created it is strongly discouraged. Consider passing values to child components with `bind:`, or use a callback instead'}\nhttps://svelte.dev/e/ownership_invalid_mutation`, bold, normal);
+		} else {
+			console.warn(`https://svelte.dev/e/ownership_invalid_mutation`);
+		}
+	}
+
+	/**
+	 * Reactive `$state(...)` proxies and the values they proxy have different identities. Because of this, comparisons with `%operator%` will produce unexpected results
+	 * @param {string} operator
+	 */
+	function state_proxy_equality_mismatch(operator) {
+		if (DEV) {
+			console.warn(`%c[svelte] state_proxy_equality_mismatch\n%cReactive \`$state(...)\` proxies and the values they proxy have different identities. Because of this, comparisons with \`${operator}\` will produce unexpected results\nhttps://svelte.dev/e/state_proxy_equality_mismatch`, bold, normal);
+		} else {
+			console.warn(`https://svelte.dev/e/state_proxy_equality_mismatch`);
+		}
+	}
+
+	/** @import { ProxyMetadata } from '#client' */
+	/** @typedef {{ file: string, line: number, column: number }} Location */
+
+
+	/** @type {Record<string, Array<{ start: Location, end: Location, component: Function }>>} */
+	const boundaries = {};
+
+	const chrome_pattern = /at (?:.+ \()?(.+):(\d+):(\d+)\)?$/;
+	const firefox_pattern = /@(.+):(\d+):(\d+)$/;
+
+	function get_stack() {
+		const stack = new Error().stack;
+		if (!stack) return null;
+
+		const entries = [];
+
+		for (const line of stack.split('\n')) {
+			let match = chrome_pattern.exec(line) ?? firefox_pattern.exec(line);
+
+			if (match) {
+				entries.push({
+					file: match[1],
+					line: +match[2],
+					column: +match[3]
+				});
+			}
+		}
+
+		return entries;
+	}
+
+	/**
+	 * Determines which `.svelte` component is responsible for a given state change
+	 * @returns {Function | null}
+	 */
+	function get_component() {
+		// first 4 lines are svelte internals; adjust this number if we change the internal call stack
+		const stack = get_stack()?.slice(4);
+		if (!stack) return null;
+
+		for (let i = 0; i < stack.length; i++) {
+			const entry = stack[i];
+			const modules = boundaries[entry.file];
+			if (!modules) {
+				// If the first entry is not a component, that means the modification very likely happened
+				// within a .svelte.js file, possibly triggered by a component. Since these files are not part
+				// of the bondaries/component context heuristic, we need to bail in this case, else we would
+				// have false positives when the .svelte.ts file provides a state creator function, encapsulating
+				// the state and its mutations, and is being called from a component other than the one who
+				// called the state creator function.
+				if (i === 0) return null;
+				continue;
+			}
+
+			for (const module of modules) {
+				if (module.end == null) {
+					return null;
+				}
+				if (module.start.line < entry.line && module.end.line > entry.line) {
+					return module.component;
+				}
+			}
+		}
+
+		return null;
+	}
+
+	/**
+	 * Together with `mark_module_end`, this function establishes the boundaries of a `.svelte` file,
+	 * such that subsequent calls to `get_component` can tell us which component is responsible
+	 * for a given state change
+	 */
+	function mark_module_start() {
+		const start = get_stack()?.[2];
+
+		if (start) {
+			(boundaries[start.file] ??= []).push({
+				start,
+				// @ts-expect-error
+				end: null,
+				// @ts-expect-error we add the component at the end, since HMR will overwrite the function
+				component: null
+			});
+		}
+	}
+
+	/**
+	 * @param {Function} component
+	 */
+	function mark_module_end(component) {
+		const end = get_stack()?.[2];
+
+		if (end) {
+			const boundaries_file = boundaries[end.file];
+			const boundary = boundaries_file[boundaries_file.length - 1];
+
+			boundary.end = end;
+			boundary.component = component;
+		}
+	}
+
+	/**
+	 * @param {ProxyMetadata | null} from
+	 * @param {ProxyMetadata} to
+	 */
+	function widen_ownership(from, to) {
+		if (to.owners === null) {
+			return;
+		}
+
+		while (from) {
+			if (from.owners === null) {
+				to.owners = null;
+				break;
+			}
+
+			for (const owner of from.owners) {
+				to.owners.add(owner);
+			}
+
+			from = from.parent;
+		}
+	}
+
+	/**
+	 * @param {ProxyMetadata} metadata
+	 * @param {Function} component
+	 * @returns {boolean}
+	 */
+	function has_owner(metadata, component) {
+		if (metadata.owners === null) {
+			return true;
+		}
+
+		return (
+			metadata.owners.has(component) ||
+			// This helps avoid false positives when using HMR, where the component function is replaced
+			[...metadata.owners].some(
+				(owner) => /** @type {any} */ (owner)[FILENAME] === /** @type {any} */ (component)?.[FILENAME]
+			) ||
+			(metadata.parent !== null && has_owner(metadata.parent, component))
+		);
+	}
+
+	/**
+	 * @param {ProxyMetadata} metadata
+	 * @returns {any}
+	 */
+	function get_owner(metadata) {
+		return (
+			metadata?.owners?.values().next().value ??
+			get_owner(/** @type {ProxyMetadata} */ (metadata.parent))
+		);
+	}
+
+	/**
+	 * @param {ProxyMetadata} metadata
+	 */
+	function check_ownership(metadata) {
+
+		const component = get_component();
+
+		if (component && !has_owner(metadata, component)) {
+			let original = get_owner(metadata);
+
+			// @ts-expect-error
+			if (original[FILENAME] !== component[FILENAME]) {
+				// @ts-expect-error
+				ownership_invalid_mutation(component[FILENAME], original[FILENAME]);
+			} else {
+				ownership_invalid_mutation();
+			}
+		}
+	}
+
+	/* This file is generated by scripts/process-messages/index.js. Do not edit! */
+
+
+	/**
+	 * `%name%(...)` can only be used during component initialisation
+	 * @param {string} name
+	 * @returns {never}
+	 */
+	function lifecycle_outside_component(name) {
+		if (DEV) {
+			const error = new Error(`lifecycle_outside_component\n\`${name}(...)\` can only be used during component initialisation\nhttps://svelte.dev/e/lifecycle_outside_component`);
+
+			error.name = 'Svelte error';
+			throw error;
+		} else {
+			throw new Error(`https://svelte.dev/e/lifecycle_outside_component`);
+		}
+	}
+
+	/** @import { ComponentContext } from '#client' */
+
+
+	/** @type {ComponentContext | null} */
+	let component_context = null;
+
+	/** @param {ComponentContext | null} context */
+	function set_component_context(context) {
+		component_context = context;
+	}
+
+	/**
+	 * The current component function. Different from current component context:
+	 * ```html
+	 * <!-- App.svelte -->
+	 * <Foo>
+	 *   <Bar /> <!-- context == Foo.svelte, function == App.svelte -->
+	 * </Foo>
+	 * ```
+	 * @type {ComponentContext['function']}
+	 */
+	let dev_current_component_function = null;
+
+	/** @param {ComponentContext['function']} fn */
+	function set_dev_current_component_function(fn) {
+		dev_current_component_function = fn;
+	}
+
+	/**
+	 * @param {Record<string, unknown>} props
+	 * @param {any} runes
+	 * @param {Function} [fn]
+	 * @returns {void}
+	 */
+	function push(props, runes = false, fn) {
+		component_context = {
+			p: component_context,
+			c: null,
+			e: null,
+			m: false,
+			s: props,
+			x: null,
+			l: null
+		};
+
+		if (legacy_mode_flag && !runes) {
+			component_context.l = {
+				s: null,
+				u: null,
+				r1: [],
+				r2: source(false)
+			};
+		}
+
+		if (DEV) {
+			// component function
+			component_context.function = fn;
+			dev_current_component_function = fn;
+		}
+	}
+
+	/**
+	 * @template {Record<string, any>} T
+	 * @param {T} [component]
+	 * @returns {T}
+	 */
+	function pop(component) {
+		const context_stack_item = component_context;
+		if (context_stack_item !== null) {
+			if (component !== undefined) {
+				context_stack_item.x = component;
+			}
+			const component_effects = context_stack_item.e;
+			if (component_effects !== null) {
+				var previous_effect = active_effect;
+				var previous_reaction = active_reaction;
+				context_stack_item.e = null;
+				try {
+					for (var i = 0; i < component_effects.length; i++) {
+						var component_effect = component_effects[i];
+						set_active_effect(component_effect.effect);
+						set_active_reaction(component_effect.reaction);
+						effect(component_effect.fn);
+					}
+				} finally {
+					set_active_effect(previous_effect);
+					set_active_reaction(previous_reaction);
+				}
+			}
+			component_context = context_stack_item.p;
+			if (DEV) {
+				dev_current_component_function = context_stack_item.p?.function ?? null;
+			}
+			context_stack_item.m = true;
+		}
+		// Micro-optimization: Don't set .a above to the empty object
+		// so it can be garbage-collected when the return here is unused
+		return component || /** @type {T} */ ({});
+	}
+
+	/** @returns {boolean} */
+	function is_runes() {
+		return !legacy_mode_flag || (component_context !== null && component_context.l === null);
+	}
+
+	/** @import { Derived, Effect, Reaction, Source, Value } from '#client' */
+
+	let inspect_effects = new Set();
+
+	/**
+	 * @param {Set<any>} v
+	 */
+	function set_inspect_effects(v) {
+		inspect_effects = v;
+	}
+
+	/**
+	 * @template V
+	 * @param {V} v
+	 * @param {Error | null} [stack]
+	 * @returns {Source<V>}
+	 */
+	function source(v, stack) {
+		/** @type {Value} */
+		var signal = {
+			f: 0, // TODO ideally we could skip this altogether, but it causes type errors
+			v,
+			reactions: null,
+			equals: equals$1,
+			rv: 0,
+			wv: 0
+		};
+
+		if (DEV && tracing_mode_flag) {
+			signal.created = stack ?? get_stack$1('CreatedAt');
+			signal.debug = null;
+		}
+
+		return signal;
+	}
+
+	/**
+	 * @template V
+	 * @param {V} initial_value
+	 * @param {boolean} [immutable]
+	 * @returns {Source<V>}
+	 */
+	/*#__NO_SIDE_EFFECTS__*/
+	function mutable_source(initial_value, immutable = false) {
+		const s = source(initial_value);
+		if (!immutable) {
+			s.equals = safe_equals;
+		}
+
+		// bind the signal to the component context, in case we need to
+		// track updates to trigger beforeUpdate/afterUpdate callbacks
+		if (legacy_mode_flag && component_context !== null && component_context.l !== null) {
+			(component_context.l.s ??= []).push(s);
+		}
+
+		return s;
+	}
+
+	/**
+	 * @template V
+	 * @param {V} v
+	 * @param {boolean} [immutable]
+	 * @returns {Source<V>}
+	 */
+	function mutable_state(v, immutable = false) {
+		return push_derived_source(mutable_source(v, immutable));
+	}
+
+	/**
+	 * @template V
+	 * @param {Source<V>} source
+	 */
+	/*#__NO_SIDE_EFFECTS__*/
+	function push_derived_source(source) {
+		if (active_reaction !== null && !untracking && (active_reaction.f & DERIVED) !== 0) {
+			if (derived_sources === null) {
+				set_derived_sources([source]);
+			} else {
+				derived_sources.push(source);
+			}
+		}
+
+		return source;
+	}
+
+	/**
+	 * @template V
+	 * @param {Source<V>} source
+	 * @param {V} value
+	 * @returns {V}
+	 */
+	function set(source, value) {
+		if (
+			active_reaction !== null &&
+			!untracking &&
+			is_runes() &&
+			(active_reaction.f & (DERIVED | BLOCK_EFFECT)) !== 0 &&
+			// If the source was created locally within the current derived, then
+			// we allow the mutation.
+			(derived_sources === null || !derived_sources.includes(source))
+		) {
+			state_unsafe_mutation();
+		}
+
+		return internal_set(source, value);
+	}
+
+	/**
+	 * @template V
+	 * @param {Source<V>} source
+	 * @param {V} value
+	 * @returns {V}
+	 */
+	function internal_set(source, value) {
+		if (!source.equals(value)) {
+			var old_value = source.v;
+			source.v = value;
+			source.wv = increment_write_version();
+
+			if (DEV && tracing_mode_flag) {
+				source.updated = get_stack$1('UpdatedAt');
+				if (active_effect != null) {
+					source.trace_need_increase = true;
+					source.trace_v ??= old_value;
+				}
+			}
+
+			mark_reactions(source, DIRTY);
+
+			// It's possible that the current reaction might not have up-to-date dependencies
+			// whilst it's actively running. So in the case of ensuring it registers the reaction
+			// properly for itself, we need to ensure the current effect actually gets
+			// scheduled. i.e: `$effect(() => x++)`
+			if (
+				is_runes() &&
+				active_effect !== null &&
+				(active_effect.f & CLEAN) !== 0 &&
+				(active_effect.f & (BRANCH_EFFECT | ROOT_EFFECT)) === 0
+			) {
+				if (untracked_writes === null) {
+					set_untracked_writes([source]);
+				} else {
+					untracked_writes.push(source);
+				}
+			}
+
+			if (DEV && inspect_effects.size > 0) {
+				const inspects = Array.from(inspect_effects);
+				var previously_flushing_effect = is_flushing_effect;
+				set_is_flushing_effect(true);
+				try {
+					for (const effect of inspects) {
+						// Mark clean inspect-effects as maybe dirty and then check their dirtiness
+						// instead of just updating the effects - this way we avoid overfiring.
+						if ((effect.f & CLEAN) !== 0) {
+							set_signal_status(effect, MAYBE_DIRTY);
+						}
+						if (check_dirtiness(effect)) {
+							update_effect(effect);
+						}
+					}
+				} finally {
+					set_is_flushing_effect(previously_flushing_effect);
+				}
+				inspect_effects.clear();
+			}
+		}
+
+		return value;
+	}
+
+	/**
+	 * @param {Value} signal
+	 * @param {number} status should be DIRTY or MAYBE_DIRTY
+	 * @returns {void}
+	 */
+	function mark_reactions(signal, status) {
+		var reactions = signal.reactions;
+		if (reactions === null) return;
+
+		var runes = is_runes();
+		var length = reactions.length;
+
+		for (var i = 0; i < length; i++) {
+			var reaction = reactions[i];
+			var flags = reaction.f;
+
+			// Skip any effects that are already dirty
+			if ((flags & DIRTY) !== 0) continue;
+
+			// In legacy mode, skip the current effect to prevent infinite loops
+			if (!runes && reaction === active_effect) continue;
+
+			// Inspect effects need to run immediately, so that the stack trace makes sense
+			if (DEV && (flags & INSPECT_EFFECT) !== 0) {
+				inspect_effects.add(reaction);
+				continue;
+			}
+
+			set_signal_status(reaction, status);
+
+			// If the signal a) was previously clean or b) is an unowned derived, then mark it
+			if ((flags & (CLEAN | UNOWNED)) !== 0) {
+				if ((flags & DERIVED) !== 0) {
+					mark_reactions(/** @type {Derived} */ (reaction), MAYBE_DIRTY);
+				} else {
+					schedule_effect(/** @type {Effect} */ (reaction));
+				}
+			}
+		}
+	}
+
+	/** @import { TemplateNode } from '#client' */
+
+
+	/**
+	 * Use this variable to guard everything related to hydration code so it can be treeshaken out
+	 * if the user doesn't use the `hydrate` method and these code paths are therefore not needed.
+	 */
+	let hydrating = false;
+
+	/** @import { ProxyMetadata, Source } from '#client' */
+
+	/**
+	 * @template T
+	 * @param {T} value
+	 * @param {ProxyMetadata | null} [parent]
+	 * @param {Source<T>} [prev] dev mode only
+	 * @returns {T}
+	 */
+	function proxy(value, parent = null, prev) {
+		/** @type {Error | null} */
+		var stack = null;
+		if (DEV && tracing_mode_flag) {
+			stack = get_stack$1('CreatedAt');
+		}
+		// if non-proxyable, or is already a proxy, return `value`
+		if (typeof value !== 'object' || value === null || STATE_SYMBOL in value) {
+			return value;
+		}
+
+		const prototype = get_prototype_of(value);
+
+		if (prototype !== object_prototype && prototype !== array_prototype) {
+			return value;
+		}
+
+		/** @type {Map<any, Source<any>>} */
+		var sources = new Map();
+		var is_proxied_array = is_array(value);
+		var version = source(0);
+
+		if (is_proxied_array) {
+			// We need to create the length source eagerly to ensure that
+			// mutations to the array are properly synced with our proxy
+			sources.set('length', source(/** @type {any[]} */ (value).length, stack));
+		}
+
+		/** @type {ProxyMetadata} */
+		var metadata;
+
+		if (DEV) {
+			metadata = {
+				parent,
+				owners: null
+			};
+
+			if (prev) {
+				// Reuse owners from previous state; necessary because reassignment is not guaranteed to have correct component context.
+				// If no previous proxy exists we play it safe and assume ownerless state
+				// @ts-expect-error
+				const prev_owners = prev.v?.[STATE_SYMBOL_METADATA]?.owners;
+				metadata.owners = prev_owners ? new Set(prev_owners) : null;
+			} else {
+				metadata.owners =
+					parent === null
+						? component_context !== null
+							? new Set([component_context.function])
+							: null
+						: new Set();
+			}
+		}
+
+		return new Proxy(/** @type {any} */ (value), {
+			defineProperty(_, prop, descriptor) {
+				if (
+					!('value' in descriptor) ||
+					descriptor.configurable === false ||
+					descriptor.enumerable === false ||
+					descriptor.writable === false
+				) {
+					// we disallow non-basic descriptors, because unless they are applied to the
+					// target object — which we avoid, so that state can be forked — we will run
+					// afoul of the various invariants
+					// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/Proxy/getOwnPropertyDescriptor#invariants
+					state_descriptors_fixed();
+				}
+
+				var s = sources.get(prop);
+
+				if (s === undefined) {
+					s = source(descriptor.value, stack);
+					sources.set(prop, s);
+				} else {
+					set(s, proxy(descriptor.value, metadata));
+				}
+
+				return true;
+			},
+
+			deleteProperty(target, prop) {
+				var s = sources.get(prop);
+
+				if (s === undefined) {
+					if (prop in target) {
+						sources.set(prop, source(UNINITIALIZED, stack));
+					}
+				} else {
+					// When working with arrays, we need to also ensure we update the length when removing
+					// an indexed property
+					if (is_proxied_array && typeof prop === 'string') {
+						var ls = /** @type {Source<number>} */ (sources.get('length'));
+						var n = Number(prop);
+
+						if (Number.isInteger(n) && n < ls.v) {
+							set(ls, n);
+						}
+					}
+					set(s, UNINITIALIZED);
+					update_version(version);
+				}
+
+				return true;
+			},
+
+			get(target, prop, receiver) {
+				if (DEV && prop === STATE_SYMBOL_METADATA) {
+					return metadata;
+				}
+
+				if (prop === STATE_SYMBOL) {
+					return value;
+				}
+
+				var s = sources.get(prop);
+				var exists = prop in target;
+
+				// create a source, but only if it's an own property and not a prototype property
+				if (s === undefined && (!exists || get_descriptor(target, prop)?.writable)) {
+					s = source(proxy(exists ? target[prop] : UNINITIALIZED, metadata), stack);
+					sources.set(prop, s);
+				}
+
+				if (s !== undefined) {
+					var v = get(s);
+
+					// In case of something like `foo = bar.map(...)`, foo would have ownership
+					// of the array itself, while the individual items would have ownership
+					// of the component that created bar. That means if we later do `foo[0].baz = 42`,
+					// we could get a false-positive ownership violation, since the two proxies
+					// are not connected to each other via the parent metadata relationship.
+					// For this reason, we need to widen the ownership of the children
+					// upon access when we detect they are not connected.
+					if (DEV) {
+						/** @type {ProxyMetadata | undefined} */
+						var prop_metadata = v?.[STATE_SYMBOL_METADATA];
+						if (prop_metadata && prop_metadata?.parent !== metadata) {
+							widen_ownership(metadata, prop_metadata);
+						}
+					}
+
+					return v === UNINITIALIZED ? undefined : v;
+				}
+
+				return Reflect.get(target, prop, receiver);
+			},
+
+			getOwnPropertyDescriptor(target, prop) {
+				var descriptor = Reflect.getOwnPropertyDescriptor(target, prop);
+
+				if (descriptor && 'value' in descriptor) {
+					var s = sources.get(prop);
+					if (s) descriptor.value = get(s);
+				} else if (descriptor === undefined) {
+					var source = sources.get(prop);
+					var value = source?.v;
+
+					if (source !== undefined && value !== UNINITIALIZED) {
+						return {
+							enumerable: true,
+							configurable: true,
+							value,
+							writable: true
+						};
+					}
+				}
+
+				return descriptor;
+			},
+
+			has(target, prop) {
+				if (DEV && prop === STATE_SYMBOL_METADATA) {
+					return true;
+				}
+
+				if (prop === STATE_SYMBOL) {
+					return true;
+				}
+
+				var s = sources.get(prop);
+				var has = (s !== undefined && s.v !== UNINITIALIZED) || Reflect.has(target, prop);
+
+				if (
+					s !== undefined ||
+					(active_effect !== null && (!has || get_descriptor(target, prop)?.writable))
+				) {
+					if (s === undefined) {
+						s = source(has ? proxy(target[prop], metadata) : UNINITIALIZED, stack);
+						sources.set(prop, s);
+					}
+
+					var value = get(s);
+					if (value === UNINITIALIZED) {
+						return false;
+					}
+				}
+
+				return has;
+			},
+
+			set(target, prop, value, receiver) {
+				var s = sources.get(prop);
+				var has = prop in target;
+
+				// variable.length = value -> clear all signals with index >= value
+				if (is_proxied_array && prop === 'length') {
+					for (var i = value; i < /** @type {Source<number>} */ (s).v; i += 1) {
+						var other_s = sources.get(i + '');
+						if (other_s !== undefined) {
+							set(other_s, UNINITIALIZED);
+						} else if (i in target) {
+							// If the item exists in the original, we need to create a uninitialized source,
+							// else a later read of the property would result in a source being created with
+							// the value of the original item at that index.
+							other_s = source(UNINITIALIZED, stack);
+							sources.set(i + '', other_s);
+						}
+					}
+				}
+
+				// If we haven't yet created a source for this property, we need to ensure
+				// we do so otherwise if we read it later, then the write won't be tracked and
+				// the heuristics of effects will be different vs if we had read the proxied
+				// object property before writing to that property.
+				if (s === undefined) {
+					if (!has || get_descriptor(target, prop)?.writable) {
+						s = source(undefined, stack);
+						set(s, proxy(value, metadata));
+						sources.set(prop, s);
+					}
+				} else {
+					has = s.v !== UNINITIALIZED;
+					set(s, proxy(value, metadata));
+				}
+
+				if (DEV) {
+					/** @type {ProxyMetadata | undefined} */
+					var prop_metadata = value?.[STATE_SYMBOL_METADATA];
+					if (prop_metadata && prop_metadata?.parent !== metadata) {
+						widen_ownership(metadata, prop_metadata);
+					}
+					check_ownership(metadata);
+				}
+
+				var descriptor = Reflect.getOwnPropertyDescriptor(target, prop);
+
+				// Set the new value before updating any signals so that any listeners get the new value
+				if (descriptor?.set) {
+					descriptor.set.call(receiver, value);
+				}
+
+				if (!has) {
+					// If we have mutated an array directly, we might need to
+					// signal that length has also changed. Do it before updating metadata
+					// to ensure that iterating over the array as a result of a metadata update
+					// will not cause the length to be out of sync.
+					if (is_proxied_array && typeof prop === 'string') {
+						var ls = /** @type {Source<number>} */ (sources.get('length'));
+						var n = Number(prop);
+
+						if (Number.isInteger(n) && n >= ls.v) {
+							set(ls, n + 1);
+						}
+					}
+
+					update_version(version);
+				}
+
+				return true;
+			},
+
+			ownKeys(target) {
+				get(version);
+
+				var own_keys = Reflect.ownKeys(target).filter((key) => {
+					var source = sources.get(key);
+					return source === undefined || source.v !== UNINITIALIZED;
+				});
+
+				for (var [key, source] of sources) {
+					if (source.v !== UNINITIALIZED && !(key in target)) {
+						own_keys.push(key);
+					}
+				}
+
+				return own_keys;
+			},
+
+			setPrototypeOf() {
+				state_prototype_fixed();
+			}
+		});
+	}
+
+	/**
+	 * @param {Source<number>} signal
+	 * @param {1 | -1} [d]
+	 */
+	function update_version(signal, d = 1) {
+		set(signal, signal.v + d);
+	}
+
+	/**
+	 * @param {any} value
+	 */
+	function get_proxied_value(value) {
+		if (value !== null && typeof value === 'object' && STATE_SYMBOL in value) {
+			return value[STATE_SYMBOL];
+		}
+
+		return value;
+	}
+
+	function init_array_prototype_warnings() {
+		const array_prototype = Array.prototype;
+		// The REPL ends up here over and over, and this prevents it from adding more and more patches
+		// of the same kind to the prototype, which would slow down everything over time.
+		// @ts-expect-error
+		const cleanup = Array.__svelte_cleanup;
+		if (cleanup) {
+			cleanup();
+		}
+
+		const { indexOf, lastIndexOf, includes } = array_prototype;
+
+		array_prototype.indexOf = function (item, from_index) {
+			const index = indexOf.call(this, item, from_index);
+
+			if (index === -1) {
+				for (let i = from_index ?? 0; i < this.length; i += 1) {
+					if (get_proxied_value(this[i]) === item) {
+						state_proxy_equality_mismatch('array.indexOf(...)');
+						break;
+					}
+				}
+			}
+
+			return index;
+		};
+
+		array_prototype.lastIndexOf = function (item, from_index) {
+			// we need to specify this.length - 1 because it's probably using something like
+			// `arguments` inside so passing undefined is different from not passing anything
+			const index = lastIndexOf.call(this, item, from_index ?? this.length - 1);
+
+			if (index === -1) {
+				for (let i = 0; i <= (from_index ?? this.length - 1); i += 1) {
+					if (get_proxied_value(this[i]) === item) {
+						state_proxy_equality_mismatch('array.lastIndexOf(...)');
+						break;
+					}
+				}
+			}
+
+			return index;
+		};
+
+		array_prototype.includes = function (item, from_index) {
+			const has = includes.call(this, item, from_index);
+
+			if (!has) {
+				for (let i = 0; i < this.length; i += 1) {
+					if (get_proxied_value(this[i]) === item) {
+						state_proxy_equality_mismatch('array.includes(...)');
+						break;
+					}
+				}
+			}
+
+			return has;
+		};
+
+		// @ts-expect-error
+		Array.__svelte_cleanup = () => {
+			array_prototype.indexOf = indexOf;
+			array_prototype.lastIndexOf = lastIndexOf;
+			array_prototype.includes = includes;
+		};
+	}
+
+	/**
+	 * @param {any} a
+	 * @param {any} b
+	 * @param {boolean} equal
+	 * @returns {boolean}
+	 */
+	function strict_equals(a, b, equal = true) {
+		// try-catch needed because this tries to read properties of `a` and `b`,
+		// which could be disallowed for example in a secure context
+		try {
+			if ((a === b) !== (get_proxied_value(a) === get_proxied_value(b))) {
+				state_proxy_equality_mismatch(equal ? '===' : '!==');
+			}
+		} catch {}
+
+		return (a === b) === equal;
+	}
+
+	/**
+	 * @param {any} a
+	 * @param {any} b
+	 * @param {boolean} equal
+	 * @returns {boolean}
+	 */
+	function equals(a, b, equal = true) {
+		if ((a == b) !== (get_proxied_value(a) == get_proxied_value(b))) {
+			state_proxy_equality_mismatch(equal ? '==' : '!=');
+		}
+
+		return (a == b) === equal;
+	}
+
+	/** @import { TemplateNode } from '#client' */
+
+	// export these for reference in the compiled code, making global name deduplication unnecessary
+	/** @type {Window} */
+	var $window;
+
+	/** @type {() => Node | null} */
+	var first_child_getter;
+	/** @type {() => Node | null} */
+	var next_sibling_getter;
+
+	/**
+	 * Initialize these lazily to avoid issues when using the runtime in a server context
+	 * where these globals are not available while avoiding a separate server entry point
+	 */
+	function init_operations() {
+		if ($window !== undefined) {
+			return;
+		}
+
+		$window = window;
+
+		var element_prototype = Element.prototype;
+		var node_prototype = Node.prototype;
+
+		// @ts-ignore
+		first_child_getter = get_descriptor(node_prototype, 'firstChild').get;
+		// @ts-ignore
+		next_sibling_getter = get_descriptor(node_prototype, 'nextSibling').get;
+
+		// the following assignments improve perf of lookups on DOM nodes
+		// @ts-expect-error
+		element_prototype.__click = undefined;
+		// @ts-expect-error
+		element_prototype.__className = '';
+		// @ts-expect-error
+		element_prototype.__attributes = null;
+		// @ts-expect-error
+		element_prototype.__styles = null;
+		// @ts-expect-error
+		element_prototype.__e = undefined;
+
+		// @ts-expect-error
+		Text.prototype.__t = undefined;
+
+		if (DEV) {
+			// @ts-expect-error
+			element_prototype.__svelte_meta = null;
+
+			init_array_prototype_warnings();
+		}
+	}
+
+	/**
+	 * @param {string} value
+	 * @returns {Text}
+	 */
+	function create_text(value = '') {
+		return document.createTextNode(value);
+	}
+
+	/**
+	 * @template {Node} N
+	 * @param {N} node
+	 * @returns {Node | null}
+	 */
+	/*@__NO_SIDE_EFFECTS__*/
+	function get_first_child(node) {
+		return first_child_getter.call(node);
+	}
+
+	/**
+	 * @template {Node} N
+	 * @param {N} node
+	 * @returns {Node | null}
+	 */
+	/*@__NO_SIDE_EFFECTS__*/
+	function get_next_sibling(node) {
+		return next_sibling_getter.call(node);
+	}
+
+	/**
+	 * Don't mark this as side-effect-free, hydration needs to walk all nodes
+	 * @template {Node} N
+	 * @param {N} node
+	 * @param {boolean} is_text
+	 * @returns {Node | null}
+	 */
+	function child(node, is_text) {
+		{
+			return get_first_child(node);
+		}
+	}
+
+	/**
+	 * Don't mark this as side-effect-free, hydration needs to walk all nodes
+	 * @param {DocumentFragment | TemplateNode[]} fragment
+	 * @param {boolean} is_text
+	 * @returns {Node | null}
+	 */
+	function first_child(fragment, is_text) {
+		{
+			// when not hydrating, `fragment` is a `DocumentFragment` (the result of calling `open_frag`)
+			var first = /** @type {DocumentFragment} */ (get_first_child(/** @type {Node} */ (fragment)));
+
+			// TODO prevent user comments with the empty string when preserveComments is true
+			if (first instanceof Comment && first.data === '') return get_next_sibling(first);
+
+			return first;
+		}
+	}
+
+	/**
+	 * Don't mark this as side-effect-free, hydration needs to walk all nodes
+	 * @param {TemplateNode} node
+	 * @param {number} count
+	 * @param {boolean} is_text
+	 * @returns {Node | null}
+	 */
+	function sibling(node, count = 1, is_text = false) {
+		let next_sibling = node;
+
+		while (count--) {
+			next_sibling = /** @type {TemplateNode} */ (get_next_sibling(next_sibling));
+		}
+
+		{
+			return next_sibling;
+		}
+	}
+
+	/**
+	 * @template {Node} N
+	 * @param {N} node
+	 * @returns {void}
+	 */
+	function clear_text_content(node) {
+		node.textContent = '';
+	}
+
+	/** @import { Derived, Effect } from '#client' */
+
+	/**
+	 * @template V
+	 * @param {() => V} fn
+	 * @returns {Derived<V>}
+	 */
+	/*#__NO_SIDE_EFFECTS__*/
+	function derived(fn) {
+		var flags = DERIVED | DIRTY;
+		var parent_derived =
+			active_reaction !== null && (active_reaction.f & DERIVED) !== 0
+				? /** @type {Derived} */ (active_reaction)
+				: null;
+
+		if (active_effect === null || (parent_derived !== null && (parent_derived.f & UNOWNED) !== 0)) {
+			flags |= UNOWNED;
+		} else {
+			// Since deriveds are evaluated lazily, any effects created inside them are
+			// created too late to ensure that the parent effect is added to the tree
+			active_effect.f |= EFFECT_HAS_DERIVED;
+		}
+
+		/** @type {Derived<V>} */
+		const signal = {
+			ctx: component_context,
+			deps: null,
+			effects: null,
+			equals: equals$1,
+			f: flags,
+			fn,
+			reactions: null,
+			rv: 0,
+			v: /** @type {V} */ (null),
+			wv: 0,
+			parent: parent_derived ?? active_effect
+		};
+
+		if (DEV && tracing_mode_flag) {
+			signal.created = get_stack$1('CreatedAt');
+		}
+
+		return signal;
+	}
+
+	/**
+	 * @template V
+	 * @param {() => V} fn
+	 * @returns {Derived<V>}
+	 */
+	/*#__NO_SIDE_EFFECTS__*/
+	function derived_safe_equal(fn) {
+		const signal = derived(fn);
+		signal.equals = safe_equals;
+		return signal;
+	}
+
+	/**
+	 * @param {Derived} derived
+	 * @returns {void}
+	 */
+	function destroy_derived_effects(derived) {
+		var effects = derived.effects;
+
+		if (effects !== null) {
+			derived.effects = null;
+
+			for (var i = 0; i < effects.length; i += 1) {
+				destroy_effect(/** @type {Effect} */ (effects[i]));
+			}
+		}
+	}
+
+	/**
+	 * The currently updating deriveds, used to detect infinite recursion
+	 * in dev mode and provide a nicer error than 'too much recursion'
+	 * @type {Derived[]}
+	 */
+	let stack = [];
+
+	/**
+	 * @param {Derived} derived
+	 * @returns {Effect | null}
+	 */
+	function get_derived_parent_effect(derived) {
+		var parent = derived.parent;
+		while (parent !== null) {
+			if ((parent.f & DERIVED) === 0) {
+				return /** @type {Effect} */ (parent);
+			}
+			parent = parent.parent;
+		}
+		return null;
+	}
+
+	/**
+	 * @template T
+	 * @param {Derived} derived
+	 * @returns {T}
+	 */
+	function execute_derived(derived) {
+		var value;
+		var prev_active_effect = active_effect;
+
+		set_active_effect(get_derived_parent_effect(derived));
+
+		if (DEV) {
+			let prev_inspect_effects = inspect_effects;
+			set_inspect_effects(new Set());
+			try {
+				if (stack.includes(derived)) {
+					derived_references_self();
+				}
+
+				stack.push(derived);
+
+				destroy_derived_effects(derived);
+				value = update_reaction(derived);
+			} finally {
+				set_active_effect(prev_active_effect);
+				set_inspect_effects(prev_inspect_effects);
+				stack.pop();
+			}
+		} else {
+			try {
+				destroy_derived_effects(derived);
+				value = update_reaction(derived);
+			} finally {
+				set_active_effect(prev_active_effect);
+			}
+		}
+
+		return value;
+	}
+
+	/**
+	 * @param {Derived} derived
+	 * @returns {void}
+	 */
+	function update_derived(derived) {
+		var value = execute_derived(derived);
+		var status =
+			(skip_reaction || (derived.f & UNOWNED) !== 0) && derived.deps !== null ? MAYBE_DIRTY : CLEAN;
+
+		set_signal_status(derived, status);
+
+		if (!derived.equals(value)) {
+			derived.v = value;
+			derived.wv = increment_write_version();
+		}
+	}
+
+	/**
+	 * @param {Derived} derived
+	 * @returns {void}
+	 */
+	function destroy_derived(derived) {
+		destroy_derived_effects(derived);
+		remove_reactions(derived, 0);
+		set_signal_status(derived, DESTROYED);
+
+		derived.v = derived.deps = derived.ctx = derived.reactions = null;
+	}
+
+	/** @import { ComponentContext, ComponentContextLegacy, Derived, Effect, TemplateNode, TransitionManager } from '#client' */
+
+	/**
+	 * @param {'$effect' | '$effect.pre' | '$inspect'} rune
+	 */
+	function validate_effect(rune) {
+		if (active_effect === null && active_reaction === null) {
+			effect_orphan(rune);
+		}
+
+		if (active_reaction !== null && (active_reaction.f & UNOWNED) !== 0 && active_effect === null) {
+			effect_in_unowned_derived();
+		}
+
+		if (is_destroying_effect) {
+			effect_in_teardown(rune);
+		}
+	}
+
+	/**
+	 * @param {Effect} effect
+	 * @param {Effect} parent_effect
+	 */
+	function push_effect(effect, parent_effect) {
+		var parent_last = parent_effect.last;
+		if (parent_last === null) {
+			parent_effect.last = parent_effect.first = effect;
+		} else {
+			parent_last.next = effect;
+			effect.prev = parent_last;
+			parent_effect.last = effect;
+		}
+	}
+
+	/**
+	 * @param {number} type
+	 * @param {null | (() => void | (() => void))} fn
+	 * @param {boolean} sync
+	 * @param {boolean} push
+	 * @returns {Effect}
+	 */
+	function create_effect(type, fn, sync, push = true) {
+		var is_root = (type & ROOT_EFFECT) !== 0;
+		var parent_effect = active_effect;
+
+		if (DEV) {
+			// Ensure the parent is never an inspect effect
+			while (parent_effect !== null && (parent_effect.f & INSPECT_EFFECT) !== 0) {
+				parent_effect = parent_effect.parent;
+			}
+		}
+
+		/** @type {Effect} */
+		var effect = {
+			ctx: component_context,
+			deps: null,
+			nodes_start: null,
+			nodes_end: null,
+			f: type | DIRTY,
+			first: null,
+			fn,
+			last: null,
+			next: null,
+			parent: is_root ? null : parent_effect,
+			prev: null,
+			teardown: null,
+			transitions: null,
+			wv: 0
+		};
+
+		if (DEV) {
+			effect.component_function = dev_current_component_function;
+		}
+
+		if (sync) {
+			var previously_flushing_effect = is_flushing_effect;
+
+			try {
+				set_is_flushing_effect(true);
+				update_effect(effect);
+				effect.f |= EFFECT_RAN;
+			} catch (e) {
+				destroy_effect(effect);
+				throw e;
+			} finally {
+				set_is_flushing_effect(previously_flushing_effect);
+			}
+		} else if (fn !== null) {
+			schedule_effect(effect);
+		}
+
+		// if an effect has no dependencies, no DOM and no teardown function,
+		// don't bother adding it to the effect tree
+		var inert =
+			sync &&
+			effect.deps === null &&
+			effect.first === null &&
+			effect.nodes_start === null &&
+			effect.teardown === null &&
+			(effect.f & (EFFECT_HAS_DERIVED | BOUNDARY_EFFECT)) === 0;
+
+		if (!inert && !is_root && push) {
+			if (parent_effect !== null) {
+				push_effect(effect, parent_effect);
+			}
+
+			// if we're in a derived, add the effect there too
+			if (active_reaction !== null && (active_reaction.f & DERIVED) !== 0) {
+				var derived = /** @type {Derived} */ (active_reaction);
+				(derived.effects ??= []).push(effect);
+			}
+		}
+
+		return effect;
+	}
+
+	/**
+	 * @param {() => void} fn
+	 */
+	function teardown(fn) {
+		const effect = create_effect(RENDER_EFFECT, null, false);
+		set_signal_status(effect, CLEAN);
+		effect.teardown = fn;
+		return effect;
+	}
+
+	/**
+	 * Internal representation of `$effect(...)`
+	 * @param {() => void | (() => void)} fn
+	 */
+	function user_effect(fn) {
+		validate_effect('$effect');
+
+		// Non-nested `$effect(...)` in a component should be deferred
+		// until the component is mounted
+		var defer =
+			active_effect !== null &&
+			(active_effect.f & BRANCH_EFFECT) !== 0 &&
+			component_context !== null &&
+			!component_context.m;
+
+		if (DEV) {
+			define_property(fn, 'name', {
+				value: '$effect'
+			});
+		}
+
+		if (defer) {
+			var context = /** @type {ComponentContext} */ (component_context);
+			(context.e ??= []).push({
+				fn,
+				effect: active_effect,
+				reaction: active_reaction
+			});
+		} else {
+			var signal = effect(fn);
+			return signal;
+		}
+	}
+
+	/**
+	 * Internal representation of `$effect.pre(...)`
+	 * @param {() => void | (() => void)} fn
+	 * @returns {Effect}
+	 */
+	function user_pre_effect(fn) {
+		validate_effect('$effect.pre');
+		if (DEV) {
+			define_property(fn, 'name', {
+				value: '$effect.pre'
+			});
+		}
+		return render_effect(fn);
+	}
+
+	/**
+	 * An effect root whose children can transition out
+	 * @param {() => void} fn
+	 * @returns {(options?: { outro?: boolean }) => Promise<void>}
+	 */
+	function component_root(fn) {
+		const effect = create_effect(ROOT_EFFECT, fn, true);
+
+		return (options = {}) => {
+			return new Promise((fulfil) => {
+				if (options.outro) {
+					pause_effect(effect, () => {
+						destroy_effect(effect);
+						fulfil(undefined);
+					});
+				} else {
+					destroy_effect(effect);
+					fulfil(undefined);
+				}
+			});
+		};
+	}
+
+	/**
+	 * @param {() => void | (() => void)} fn
+	 * @returns {Effect}
+	 */
+	function effect(fn) {
+		return create_effect(EFFECT, fn, false);
+	}
+
+	/**
+	 * Internal representation of `$: ..`
+	 * @param {() => any} deps
+	 * @param {() => void | (() => void)} fn
+	 */
+	function legacy_pre_effect(deps, fn) {
+		var context = /** @type {ComponentContextLegacy} */ (component_context);
+
+		/** @type {{ effect: null | Effect, ran: boolean }} */
+		var token = { effect: null, ran: false };
+		context.l.r1.push(token);
+
+		token.effect = render_effect(() => {
+			deps();
+
+			// If this legacy pre effect has already run before the end of the reset, then
+			// bail out to emulate the same behavior.
+			if (token.ran) return;
+
+			token.ran = true;
+			set(context.l.r2, true);
+			untrack(fn);
+		});
+	}
+
+	function legacy_pre_effect_reset() {
+		var context = /** @type {ComponentContextLegacy} */ (component_context);
+
+		render_effect(() => {
+			if (!get(context.l.r2)) return;
+
+			// Run dirty `$:` statements
+			for (var token of context.l.r1) {
+				var effect = token.effect;
+
+				// If the effect is CLEAN, then make it MAYBE_DIRTY. This ensures we traverse through
+				// the effects dependencies and correctly ensure each dependency is up-to-date.
+				if ((effect.f & CLEAN) !== 0) {
+					set_signal_status(effect, MAYBE_DIRTY);
+				}
+
+				if (check_dirtiness(effect)) {
+					update_effect(effect);
+				}
+
+				token.ran = false;
+			}
+
+			context.l.r2.v = false; // set directly to avoid rerunning this effect
+		});
+	}
+
+	/**
+	 * @param {() => void | (() => void)} fn
+	 * @returns {Effect}
+	 */
+	function render_effect(fn) {
+		return create_effect(RENDER_EFFECT, fn, true);
+	}
+
+	/**
+	 * @param {(...expressions: any) => void | (() => void)} fn
+	 * @param {Array<() => any>} thunks
+	 * @returns {Effect}
+	 */
+	function template_effect(fn, thunks = [], d = derived) {
+		const deriveds = thunks.map(d);
+		const effect = () => fn(...deriveds.map(get));
+
+		if (DEV) {
+			define_property(effect, 'name', {
+				value: '{expression}'
+			});
+		}
+
+		return block(effect);
+	}
+
+	/**
+	 * @param {(() => void)} fn
+	 * @param {number} flags
+	 */
+	function block(fn, flags = 0) {
+		return create_effect(RENDER_EFFECT | BLOCK_EFFECT | flags, fn, true);
+	}
+
+	/**
+	 * @param {(() => void)} fn
+	 * @param {boolean} [push]
+	 */
+	function branch(fn, push = true) {
+		return create_effect(RENDER_EFFECT | BRANCH_EFFECT, fn, true, push);
+	}
+
+	/**
+	 * @param {Effect} effect
+	 */
+	function execute_effect_teardown(effect) {
+		var teardown = effect.teardown;
+		if (teardown !== null) {
+			const previously_destroying_effect = is_destroying_effect;
+			const previous_reaction = active_reaction;
+			set_is_destroying_effect(true);
+			set_active_reaction(null);
+			try {
+				teardown.call(null);
+			} finally {
+				set_is_destroying_effect(previously_destroying_effect);
+				set_active_reaction(previous_reaction);
+			}
+		}
+	}
+
+	/**
+	 * @param {Effect} signal
+	 * @param {boolean} remove_dom
+	 * @returns {void}
+	 */
+	function destroy_effect_children(signal, remove_dom = false) {
+		var effect = signal.first;
+		signal.first = signal.last = null;
+
+		while (effect !== null) {
+			var next = effect.next;
+			destroy_effect(effect, remove_dom);
+			effect = next;
+		}
+	}
+
+	/**
+	 * @param {Effect} signal
+	 * @returns {void}
+	 */
+	function destroy_block_effect_children(signal) {
+		var effect = signal.first;
+
+		while (effect !== null) {
+			var next = effect.next;
+			if ((effect.f & BRANCH_EFFECT) === 0) {
+				destroy_effect(effect);
+			}
+			effect = next;
+		}
+	}
+
+	/**
+	 * @param {Effect} effect
+	 * @param {boolean} [remove_dom]
+	 * @returns {void}
+	 */
+	function destroy_effect(effect, remove_dom = true) {
+		var removed = false;
+
+		if ((remove_dom || (effect.f & HEAD_EFFECT) !== 0) && effect.nodes_start !== null) {
+			/** @type {TemplateNode | null} */
+			var node = effect.nodes_start;
+			var end = effect.nodes_end;
+
+			while (node !== null) {
+				/** @type {TemplateNode | null} */
+				var next = node === end ? null : /** @type {TemplateNode} */ (get_next_sibling(node));
+
+				node.remove();
+				node = next;
+			}
+
+			removed = true;
+		}
+
+		destroy_effect_children(effect, remove_dom && !removed);
+		remove_reactions(effect, 0);
+		set_signal_status(effect, DESTROYED);
+
+		var transitions = effect.transitions;
+
+		if (transitions !== null) {
+			for (const transition of transitions) {
+				transition.stop();
+			}
+		}
+
+		execute_effect_teardown(effect);
+
+		var parent = effect.parent;
+
+		// If the parent doesn't have any children, then skip this work altogether
+		if (parent !== null && parent.first !== null) {
+			unlink_effect(effect);
+		}
+
+		if (DEV) {
+			effect.component_function = null;
+		}
+
+		// `first` and `child` are nulled out in destroy_effect_children
+		// we don't null out `parent` so that error propagation can work correctly
+		effect.next =
+			effect.prev =
+			effect.teardown =
+			effect.ctx =
+			effect.deps =
+			effect.fn =
+			effect.nodes_start =
+			effect.nodes_end =
+				null;
+	}
+
+	/**
+	 * Detach an effect from the effect tree, freeing up memory and
+	 * reducing the amount of work that happens on subsequent traversals
+	 * @param {Effect} effect
+	 */
+	function unlink_effect(effect) {
+		var parent = effect.parent;
+		var prev = effect.prev;
+		var next = effect.next;
+
+		if (prev !== null) prev.next = next;
+		if (next !== null) next.prev = prev;
+
+		if (parent !== null) {
+			if (parent.first === effect) parent.first = next;
+			if (parent.last === effect) parent.last = prev;
+		}
+	}
+
+	/**
+	 * When a block effect is removed, we don't immediately destroy it or yank it
+	 * out of the DOM, because it might have transitions. Instead, we 'pause' it.
+	 * It stays around (in memory, and in the DOM) until outro transitions have
+	 * completed, and if the state change is reversed then we _resume_ it.
+	 * A paused effect does not update, and the DOM subtree becomes inert.
+	 * @param {Effect} effect
+	 * @param {() => void} [callback]
+	 */
+	function pause_effect(effect, callback) {
+		/** @type {TransitionManager[]} */
+		var transitions = [];
+
+		pause_children(effect, transitions, true);
+
+		run_out_transitions(transitions, () => {
+			destroy_effect(effect);
+			if (callback) callback();
+		});
+	}
+
+	/**
+	 * @param {TransitionManager[]} transitions
+	 * @param {() => void} fn
+	 */
+	function run_out_transitions(transitions, fn) {
+		var remaining = transitions.length;
+		if (remaining > 0) {
+			var check = () => --remaining || fn();
+			for (var transition of transitions) {
+				transition.out(check);
+			}
+		} else {
+			fn();
+		}
+	}
+
+	/**
+	 * @param {Effect} effect
+	 * @param {TransitionManager[]} transitions
+	 * @param {boolean} local
+	 */
+	function pause_children(effect, transitions, local) {
+		if ((effect.f & INERT) !== 0) return;
+		effect.f ^= INERT;
+
+		if (effect.transitions !== null) {
+			for (const transition of effect.transitions) {
+				if (transition.is_global || local) {
+					transitions.push(transition);
+				}
+			}
+		}
+
+		var child = effect.first;
+
+		while (child !== null) {
+			var sibling = child.next;
+			var transparent = (child.f & EFFECT_TRANSPARENT) !== 0 || (child.f & BRANCH_EFFECT) !== 0;
+			// TODO we don't need to call pause_children recursively with a linked list in place
+			// it's slightly more involved though as we have to account for `transparent` changing
+			// through the tree.
+			pause_children(child, transitions, transparent ? local : false);
+			child = sibling;
+		}
+	}
+
+	/**
+	 * The opposite of `pause_effect`. We call this if (for example)
+	 * `x` becomes falsy then truthy: `{#if x}...{/if}`
+	 * @param {Effect} effect
+	 */
+	function resume_effect(effect) {
+		resume_children(effect, true);
+	}
+
+	/**
+	 * @param {Effect} effect
+	 * @param {boolean} local
+	 */
+	function resume_children(effect, local) {
+		if ((effect.f & INERT) === 0) return;
+		effect.f ^= INERT;
+
+		// Ensure the effect is marked as clean again so that any dirty child
+		// effects can schedule themselves for execution
+		if ((effect.f & CLEAN) === 0) {
+			effect.f ^= CLEAN;
+		}
+
+		// If a dependency of this effect changed while it was paused,
+		// schedule the effect to update
+		if (check_dirtiness(effect)) {
+			set_signal_status(effect, DIRTY);
+			schedule_effect(effect);
+		}
+
+		var child = effect.first;
+
+		while (child !== null) {
+			var sibling = child.next;
+			var transparent = (child.f & EFFECT_TRANSPARENT) !== 0 || (child.f & BRANCH_EFFECT) !== 0;
+			// TODO we don't need to call resume_children recursively with a linked list in place
+			// it's slightly more involved though as we have to account for `transparent` changing
+			// through the tree.
+			resume_children(child, transparent ? local : false);
+			child = sibling;
+		}
+
+		if (effect.transitions !== null) {
+			for (const transition of effect.transitions) {
+				if (transition.is_global || local) {
+					transition.in();
+				}
+			}
+		}
+	}
+
+	let is_micro_task_queued$1 = false;
+
+	/** @type {Array<() => void>} */
+	let current_queued_micro_tasks = [];
+
+	function process_micro_tasks() {
+		is_micro_task_queued$1 = false;
+		const tasks = current_queued_micro_tasks.slice();
+		current_queued_micro_tasks = [];
+		run_all(tasks);
+	}
+
+	/**
+	 * @param {() => void} fn
+	 */
+	function queue_micro_task(fn) {
+		if (!is_micro_task_queued$1) {
+			is_micro_task_queued$1 = true;
+			queueMicrotask(process_micro_tasks);
+		}
+		current_queued_micro_tasks.push(fn);
+	}
+
+	/** @import { ComponentContext, Derived, Effect, Reaction, Signal, Source, Value } from '#client' */
+	// Used for DEV time error handling
+	/** @param {WeakSet<Error>} value */
+	const handled_errors = new WeakSet();
+	let is_throwing_error = false;
+	// Used for handling scheduling
+	let is_micro_task_queued = false;
+
+	/** @type {Effect | null} */
+	let last_scheduled_effect = null;
+
+	let is_flushing_effect = false;
+	let is_destroying_effect = false;
+
+	/** @param {boolean} value */
+	function set_is_flushing_effect(value) {
+		is_flushing_effect = value;
+	}
+
+	/** @param {boolean} value */
+	function set_is_destroying_effect(value) {
+		is_destroying_effect = value;
+	}
+
+	// Handle effect queues
+
+	/** @type {Effect[]} */
+	let queued_root_effects = [];
+
+	let flush_count = 0;
+	/** @type {Effect[]} Stack of effects, dev only */
+	let dev_effect_stack = [];
+	// Handle signal reactivity tree dependencies and reactions
+
+	/** @type {null | Reaction} */
+	let active_reaction = null;
+
+	let untracking = false;
+
+	/** @param {null | Reaction} reaction */
+	function set_active_reaction(reaction) {
+		active_reaction = reaction;
+	}
+
+	/** @type {null | Effect} */
+	let active_effect = null;
+
+	/** @param {null | Effect} effect */
+	function set_active_effect(effect) {
+		active_effect = effect;
+	}
+
+	/**
+	 * When sources are created within a derived, we record them so that we can safely allow
+	 * local mutations to these sources without the side-effect error being invoked unnecessarily.
+	 * @type {null | Source[]}
+	 */
+	let derived_sources = null;
+
+	/**
+	 * @param {Source[] | null} sources
+	 */
+	function set_derived_sources(sources) {
+		derived_sources = sources;
+	}
+
+	/**
+	 * The dependencies of the reaction that is currently being executed. In many cases,
+	 * the dependencies are unchanged between runs, and so this will be `null` unless
+	 * and until a new dependency is accessed — we track this via `skipped_deps`
+	 * @type {null | Value[]}
+	 */
+	let new_deps = null;
+
+	let skipped_deps = 0;
+
+	/**
+	 * Tracks writes that the effect it's executed in doesn't listen to yet,
+	 * so that the dependency can be added to the effect later on if it then reads it
+	 * @type {null | Source[]}
+	 */
+	let untracked_writes = null;
+
+	/** @param {null | Source[]} value */
+	function set_untracked_writes(value) {
+		untracked_writes = value;
+	}
+
+	/**
+	 * @type {number} Used by sources and deriveds for handling updates.
+	 * Version starts from 1 so that unowned deriveds differentiate between a created effect and a run one for tracing
+	 **/
+	let write_version = 1;
+
+	/** @type {number} Used to version each read of a source of derived to avoid duplicating depedencies inside a reaction */
+	let read_version = 0;
+
+	// If we are working with a get() chain that has no active container,
+	// to prevent memory leaks, we skip adding the reaction.
+	let skip_reaction = false;
+
+	function increment_write_version() {
+		return ++write_version;
+	}
+
+	/**
+	 * Determines whether a derived or effect is dirty.
+	 * If it is MAYBE_DIRTY, will set the status to CLEAN
+	 * @param {Reaction} reaction
+	 * @returns {boolean}
+	 */
+	function check_dirtiness(reaction) {
+		var flags = reaction.f;
+
+		if ((flags & DIRTY) !== 0) {
+			return true;
+		}
+
+		if ((flags & MAYBE_DIRTY) !== 0) {
+			var dependencies = reaction.deps;
+			var is_unowned = (flags & UNOWNED) !== 0;
+
+			if (dependencies !== null) {
+				var i;
+				var dependency;
+				var is_disconnected = (flags & DISCONNECTED) !== 0;
+				var is_unowned_connected = is_unowned && active_effect !== null && !skip_reaction;
+				var length = dependencies.length;
+
+				// If we are working with a disconnected or an unowned signal that is now connected (due to an active effect)
+				// then we need to re-connect the reaction to the dependency
+				if (is_disconnected || is_unowned_connected) {
+					for (i = 0; i < length; i++) {
+						dependency = dependencies[i];
+
+						// We always re-add all reactions (even duplicates) if the derived was
+						// previously disconnected
+						if (is_disconnected || !dependency?.reactions?.includes(reaction)) {
+							(dependency.reactions ??= []).push(reaction);
+						}
+					}
+
+					if (is_disconnected) {
+						reaction.f ^= DISCONNECTED;
+					}
+				}
+
+				for (i = 0; i < length; i++) {
+					dependency = dependencies[i];
+
+					if (check_dirtiness(/** @type {Derived} */ (dependency))) {
+						update_derived(/** @type {Derived} */ (dependency));
+					}
+
+					if (dependency.wv > reaction.wv) {
+						return true;
+					}
+				}
+			}
+
+			// Unowned signals should never be marked as clean unless they
+			// are used within an active_effect without skip_reaction
+			if (!is_unowned || (active_effect !== null && !skip_reaction)) {
+				set_signal_status(reaction, CLEAN);
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * @param {unknown} error
+	 * @param {Effect} effect
+	 */
+	function propagate_error(error, effect) {
+		/** @type {Effect | null} */
+		var current = effect;
+
+		while (current !== null) {
+			if ((current.f & BOUNDARY_EFFECT) !== 0) {
+				try {
+					// @ts-expect-error
+					current.fn(error);
+					return;
+				} catch {
+					// Remove boundary flag from effect
+					current.f ^= BOUNDARY_EFFECT;
+				}
+			}
+
+			current = current.parent;
+		}
+
+		is_throwing_error = false;
+		throw error;
+	}
+
+	/**
+	 * @param {Effect} effect
+	 */
+	function should_rethrow_error(effect) {
+		return (
+			(effect.f & DESTROYED) === 0 &&
+			(effect.parent === null || (effect.parent.f & BOUNDARY_EFFECT) === 0)
+		);
+	}
+
+	/**
+	 * @param {unknown} error
+	 * @param {Effect} effect
+	 * @param {Effect | null} previous_effect
+	 * @param {ComponentContext | null} component_context
+	 */
+	function handle_error(error, effect, previous_effect, component_context) {
+		if (is_throwing_error) {
+			if (previous_effect === null) {
+				is_throwing_error = false;
+			}
+
+			if (should_rethrow_error(effect)) {
+				throw error;
+			}
+
+			return;
+		}
+
+		if (previous_effect !== null) {
+			is_throwing_error = true;
+		}
+
+		if (
+			!DEV ||
+			component_context === null ||
+			!(error instanceof Error) ||
+			handled_errors.has(error)
+		) {
+			propagate_error(error, effect);
+			return;
+		}
+
+		handled_errors.add(error);
+
+		const component_stack = [];
+
+		const effect_name = effect.fn?.name;
+
+		if (effect_name) {
+			component_stack.push(effect_name);
+		}
+
+		/** @type {ComponentContext | null} */
+		let current_context = component_context;
+
+		while (current_context !== null) {
+			if (DEV) {
+				/** @type {string} */
+				var filename = current_context.function?.[FILENAME];
+
+				if (filename) {
+					const file = filename.split('/').pop();
+					component_stack.push(file);
+				}
+			}
+
+			current_context = current_context.p;
+		}
+
+		const indent = /Firefox/.test(navigator.userAgent) ? '  ' : '\t';
+		define_property(error, 'message', {
+			value: error.message + `\n${component_stack.map((name) => `\n${indent}in ${name}`).join('')}\n`
+		});
+		define_property(error, 'component_stack', {
+			value: component_stack
+		});
+
+		const stack = error.stack;
+
+		// Filter out internal files from callstack
+		if (stack) {
+			const lines = stack.split('\n');
+			const new_lines = [];
+			for (let i = 0; i < lines.length; i++) {
+				const line = lines[i];
+				if (line.includes('svelte/src/internal')) {
+					continue;
+				}
+				new_lines.push(line);
+			}
+			define_property(error, 'stack', {
+				value: new_lines.join('\n')
+			});
+		}
+
+		propagate_error(error, effect);
+
+		if (should_rethrow_error(effect)) {
+			throw error;
+		}
+	}
+
+	/**
+	 * @param {Value} signal
+	 * @param {Effect} effect
+	 * @param {number} [depth]
+	 */
+	function schedule_possible_effect_self_invalidation(signal, effect, depth = 0) {
+		var reactions = signal.reactions;
+		if (reactions === null) return;
+
+		for (var i = 0; i < reactions.length; i++) {
+			var reaction = reactions[i];
+			if ((reaction.f & DERIVED) !== 0) {
+				schedule_possible_effect_self_invalidation(
+					/** @type {Derived} */ (reaction),
+					effect,
+					depth + 1
+				);
+			} else if (effect === reaction) {
+				if (depth === 0) {
+					set_signal_status(reaction, DIRTY);
+				} else if ((reaction.f & CLEAN) !== 0) {
+					set_signal_status(reaction, MAYBE_DIRTY);
+				}
+				schedule_effect(/** @type {Effect} */ (reaction));
+			}
+		}
+	}
+
+	/**
+	 * @template V
+	 * @param {Reaction} reaction
+	 * @returns {V}
+	 */
+	function update_reaction(reaction) {
+		var previous_deps = new_deps;
+		var previous_skipped_deps = skipped_deps;
+		var previous_untracked_writes = untracked_writes;
+		var previous_reaction = active_reaction;
+		var previous_skip_reaction = skip_reaction;
+		var prev_derived_sources = derived_sources;
+		var previous_component_context = component_context;
+		var previous_untracking = untracking;
+		var flags = reaction.f;
+
+		new_deps = /** @type {null | Value[]} */ (null);
+		skipped_deps = 0;
+		untracked_writes = null;
+		active_reaction = (flags & (BRANCH_EFFECT | ROOT_EFFECT)) === 0 ? reaction : null;
+		// prettier-ignore
+		skip_reaction =
+			(flags & UNOWNED) !== 0 &&
+			(!is_flushing_effect ||
+				// If we were previously not in a reactive context and we're reading an unowned derived
+				// that was created inside another reaction, then we don't fully know the real owner and thus
+				// we need to skip adding any reactions for this unowned
+					((previous_reaction === null || previous_untracking) &&
+					/** @type {Derived} */ (reaction).parent !== null));
+
+		derived_sources = null;
+		set_component_context(reaction.ctx);
+		untracking = false;
+		read_version++;
+
+		try {
+			var result = /** @type {Function} */ (0, reaction.fn)();
+			var deps = reaction.deps;
+
+			if (new_deps !== null) {
+				var i;
+
+				remove_reactions(reaction, skipped_deps);
+
+				if (deps !== null && skipped_deps > 0) {
+					deps.length = skipped_deps + new_deps.length;
+					for (i = 0; i < new_deps.length; i++) {
+						deps[skipped_deps + i] = new_deps[i];
+					}
+				} else {
+					reaction.deps = deps = new_deps;
+				}
+
+				if (!skip_reaction) {
+					for (i = skipped_deps; i < deps.length; i++) {
+						(deps[i].reactions ??= []).push(reaction);
+					}
+				}
+			} else if (deps !== null && skipped_deps < deps.length) {
+				remove_reactions(reaction, skipped_deps);
+				deps.length = skipped_deps;
+			}
+
+			// If we're inside an effect and we have untracked writes, then we need to
+			// ensure that if any of those untracked writes result in re-invalidation
+			// of the current effect, then that happens accordingly
+			if (
+				is_runes() &&
+				untracked_writes !== null &&
+				(reaction.f & (DERIVED | MAYBE_DIRTY | DIRTY)) === 0
+			) {
+				for (i = 0; i < /** @type {Source[]} */ (untracked_writes).length; i++) {
+					schedule_possible_effect_self_invalidation(
+						untracked_writes[i],
+						/** @type {Effect} */ (reaction)
+					);
+				}
+			}
+
+			// If we are returning to an previous reaction then
+			// we need to increment the read version to ensure that
+			// any dependencies in this reaction aren't marked with
+			// the same version
+			if (previous_reaction !== null) {
+				read_version++;
+			}
+
+			return result;
+		} finally {
+			new_deps = previous_deps;
+			skipped_deps = previous_skipped_deps;
+			untracked_writes = previous_untracked_writes;
+			active_reaction = previous_reaction;
+			skip_reaction = previous_skip_reaction;
+			derived_sources = prev_derived_sources;
+			set_component_context(previous_component_context);
+			untracking = previous_untracking;
+		}
+	}
+
+	/**
+	 * @template V
+	 * @param {Reaction} signal
+	 * @param {Value<V>} dependency
+	 * @returns {void}
+	 */
+	function remove_reaction(signal, dependency) {
+		let reactions = dependency.reactions;
+		if (reactions !== null) {
+			var index = index_of.call(reactions, signal);
+			if (index !== -1) {
+				var new_length = reactions.length - 1;
+				if (new_length === 0) {
+					reactions = dependency.reactions = null;
+				} else {
+					// Swap with last element and then remove.
+					reactions[index] = reactions[new_length];
+					reactions.pop();
+				}
+			}
+		}
+		// If the derived has no reactions, then we can disconnect it from the graph,
+		// allowing it to either reconnect in the future, or be GC'd by the VM.
+		if (
+			reactions === null &&
+			(dependency.f & DERIVED) !== 0 &&
+			// Destroying a child effect while updating a parent effect can cause a dependency to appear
+			// to be unused, when in fact it is used by the currently-updating parent. Checking `new_deps`
+			// allows us to skip the expensive work of disconnecting and immediately reconnecting it
+			(new_deps === null || !new_deps.includes(dependency))
+		) {
+			set_signal_status(dependency, MAYBE_DIRTY);
+			// If we are working with a derived that is owned by an effect, then mark it as being
+			// disconnected.
+			if ((dependency.f & (UNOWNED | DISCONNECTED)) === 0) {
+				dependency.f ^= DISCONNECTED;
+			}
+			// Disconnect any reactions owned by this reaction
+			destroy_derived_effects(/** @type {Derived} **/ (dependency));
+			remove_reactions(/** @type {Derived} **/ (dependency), 0);
+		}
+	}
+
+	/**
+	 * @param {Reaction} signal
+	 * @param {number} start_index
+	 * @returns {void}
+	 */
+	function remove_reactions(signal, start_index) {
+		var dependencies = signal.deps;
+		if (dependencies === null) return;
+
+		for (var i = start_index; i < dependencies.length; i++) {
+			remove_reaction(signal, dependencies[i]);
+		}
+	}
+
+	/**
+	 * @param {Effect} effect
+	 * @returns {void}
+	 */
+	function update_effect(effect) {
+		var flags = effect.f;
+
+		if ((flags & DESTROYED) !== 0) {
+			return;
+		}
+
+		set_signal_status(effect, CLEAN);
+
+		var previous_effect = active_effect;
+		var previous_component_context = component_context;
+
+		active_effect = effect;
+
+		if (DEV) {
+			var previous_component_fn = dev_current_component_function;
+			set_dev_current_component_function(effect.component_function);
+		}
+
+		try {
+			if ((flags & BLOCK_EFFECT) !== 0) {
+				destroy_block_effect_children(effect);
+			} else {
+				destroy_effect_children(effect);
+			}
+
+			execute_effect_teardown(effect);
+			var teardown = update_reaction(effect);
+			effect.teardown = typeof teardown === 'function' ? teardown : null;
+			effect.wv = write_version;
+
+			var deps = effect.deps;
+
+			// In DEV, we need to handle a case where $inspect.trace() might
+			// incorrectly state a source dependency has not changed when it has.
+			// That's beacuse that source was changed by the same effect, causing
+			// the versions to match. We can avoid this by incrementing the version
+			if (DEV && tracing_mode_flag && (effect.f & DIRTY) !== 0 && deps !== null) {
+				for (let i = 0; i < deps.length; i++) {
+					var dep = deps[i];
+					if (dep.trace_need_increase) {
+						dep.wv = increment_write_version();
+						dep.trace_need_increase = undefined;
+						dep.trace_v = undefined;
+					}
+				}
+			}
+
+			if (DEV) {
+				dev_effect_stack.push(effect);
+			}
+		} catch (error) {
+			handle_error(error, effect, previous_effect, previous_component_context || effect.ctx);
+		} finally {
+			active_effect = previous_effect;
+
+			if (DEV) {
+				set_dev_current_component_function(previous_component_fn);
+			}
+		}
+	}
+
+	function log_effect_stack() {
+		// eslint-disable-next-line no-console
+		console.error(
+			'Last ten effects were: ',
+			dev_effect_stack.slice(-10).map((d) => d.fn)
+		);
+		dev_effect_stack = [];
+	}
+
+	function infinite_loop_guard() {
+		if (flush_count > 1000) {
+			flush_count = 0;
+			try {
+				effect_update_depth_exceeded();
+			} catch (error) {
+				if (DEV) {
+					// stack is garbage, ignore. Instead add a console.error message.
+					define_property(error, 'stack', {
+						value: ''
+					});
+				}
+				// Try and handle the error so it can be caught at a boundary, that's
+				// if there's an effect available from when it was last scheduled
+				if (last_scheduled_effect !== null) {
+					if (DEV) {
+						try {
+							handle_error(error, last_scheduled_effect, null, null);
+						} catch (e) {
+							// Only log the effect stack if the error is re-thrown
+							log_effect_stack();
+							throw e;
+						}
+					} else {
+						handle_error(error, last_scheduled_effect, null, null);
+					}
+				} else {
+					if (DEV) {
+						log_effect_stack();
+					}
+					throw error;
+				}
+			}
+		}
+		flush_count++;
+	}
+
+	/**
+	 * @param {Array<Effect>} root_effects
+	 * @returns {void}
+	 */
+	function flush_queued_root_effects(root_effects) {
+		var length = root_effects.length;
+		if (length === 0) {
+			return;
+		}
+		infinite_loop_guard();
+
+		var previously_flushing_effect = is_flushing_effect;
+		is_flushing_effect = true;
+
+		try {
+			for (var i = 0; i < length; i++) {
+				var effect = root_effects[i];
+
+				if ((effect.f & CLEAN) === 0) {
+					effect.f ^= CLEAN;
+				}
+
+				/** @type {Effect[]} */
+				var collected_effects = [];
+
+				process_effects(effect, collected_effects);
+				flush_queued_effects(collected_effects);
+			}
+		} finally {
+			is_flushing_effect = previously_flushing_effect;
+		}
+	}
+
+	/**
+	 * @param {Array<Effect>} effects
+	 * @returns {void}
+	 */
+	function flush_queued_effects(effects) {
+		var length = effects.length;
+		if (length === 0) return;
+
+		for (var i = 0; i < length; i++) {
+			var effect = effects[i];
+
+			if ((effect.f & (DESTROYED | INERT)) === 0) {
+				try {
+					if (check_dirtiness(effect)) {
+						update_effect(effect);
+
+						// Effects with no dependencies or teardown do not get added to the effect tree.
+						// Deferred effects (e.g. `$effect(...)`) _are_ added to the tree because we
+						// don't know if we need to keep them until they are executed. Doing the check
+						// here (rather than in `update_effect`) allows us to skip the work for
+						// immediate effects.
+						if (effect.deps === null && effect.first === null && effect.nodes_start === null) {
+							if (effect.teardown === null) {
+								// remove this effect from the graph
+								unlink_effect(effect);
+							} else {
+								// keep the effect in the graph, but free up some memory
+								effect.fn = null;
+							}
+						}
+					}
+				} catch (error) {
+					handle_error(error, effect, null, effect.ctx);
+				}
+			}
+		}
+	}
+
+	function process_deferred() {
+		is_micro_task_queued = false;
+		if (flush_count > 1001) {
+			return;
+		}
+		const previous_queued_root_effects = queued_root_effects;
+		queued_root_effects = [];
+		flush_queued_root_effects(previous_queued_root_effects);
+
+		if (!is_micro_task_queued) {
+			flush_count = 0;
+			last_scheduled_effect = null;
+			if (DEV) {
+				dev_effect_stack = [];
+			}
+		}
+	}
+
+	/**
+	 * @param {Effect} signal
+	 * @returns {void}
+	 */
+	function schedule_effect(signal) {
+		{
+			if (!is_micro_task_queued) {
+				is_micro_task_queued = true;
+				queueMicrotask(process_deferred);
+			}
+		}
+
+		last_scheduled_effect = signal;
+
+		var effect = signal;
+
+		while (effect.parent !== null) {
+			effect = effect.parent;
+			var flags = effect.f;
+
+			if ((flags & (ROOT_EFFECT | BRANCH_EFFECT)) !== 0) {
+				if ((flags & CLEAN) === 0) return;
+				effect.f ^= CLEAN;
+			}
+		}
+
+		queued_root_effects.push(effect);
+	}
+
+	/**
+	 *
+	 * This function both runs render effects and collects user effects in topological order
+	 * from the starting effect passed in. Effects will be collected when they match the filtered
+	 * bitwise flag passed in only. The collected effects array will be populated with all the user
+	 * effects to be flushed.
+	 *
+	 * @param {Effect} effect
+	 * @param {Effect[]} collected_effects
+	 * @returns {void}
+	 */
+	function process_effects(effect, collected_effects) {
+		var current_effect = effect.first;
+		var effects = [];
+
+		main_loop: while (current_effect !== null) {
+			var flags = current_effect.f;
+			var is_branch = (flags & BRANCH_EFFECT) !== 0;
+			var is_skippable_branch = is_branch && (flags & CLEAN) !== 0;
+			var sibling = current_effect.next;
+
+			if (!is_skippable_branch && (flags & INERT) === 0) {
+				if ((flags & RENDER_EFFECT) !== 0) {
+					if (is_branch) {
+						current_effect.f ^= CLEAN;
+					} else {
+						// Ensure we set the effect to be the active reaction
+						// to ensure that unowned deriveds are correctly tracked
+						// because we're flushing the current effect
+						var previous_active_reaction = active_reaction;
+						try {
+							active_reaction = current_effect;
+							if (check_dirtiness(current_effect)) {
+								update_effect(current_effect);
+							}
+						} catch (error) {
+							handle_error(error, current_effect, null, current_effect.ctx);
+						} finally {
+							active_reaction = previous_active_reaction;
+						}
+					}
+
+					var child = current_effect.first;
+
+					if (child !== null) {
+						current_effect = child;
+						continue;
+					}
+				} else if ((flags & EFFECT) !== 0) {
+					effects.push(current_effect);
+				}
+			}
+
+			if (sibling === null) {
+				let parent = current_effect.parent;
+
+				while (parent !== null) {
+					if (effect === parent) {
+						break main_loop;
+					}
+					var parent_sibling = parent.next;
+					if (parent_sibling !== null) {
+						current_effect = parent_sibling;
+						continue main_loop;
+					}
+					parent = parent.parent;
+				}
+			}
+
+			current_effect = sibling;
+		}
+
+		// We might be dealing with many effects here, far more than can be spread into
+		// an array push call (callstack overflow). So let's deal with each effect in a loop.
+		for (var i = 0; i < effects.length; i++) {
+			child = effects[i];
+			collected_effects.push(child);
+			process_effects(child, collected_effects);
+		}
+	}
+
+	/**
+	 * @template V
+	 * @param {Value<V>} signal
+	 * @returns {V}
+	 */
+	function get(signal) {
+		var flags = signal.f;
+		var is_derived = (flags & DERIVED) !== 0;
+
+		// If the derived is destroyed, just execute it again without retaining
+		// its memoisation properties as the derived is stale
+		if (is_derived && (flags & DESTROYED) !== 0) {
+			var value = execute_derived(/** @type {Derived} */ (signal));
+			// Ensure the derived remains destroyed
+			destroy_derived(/** @type {Derived} */ (signal));
+			return value;
+		}
+
+		// Register the dependency on the current reaction signal.
+		if (active_reaction !== null && !untracking) {
+			if (derived_sources !== null && derived_sources.includes(signal)) {
+				state_unsafe_local_read();
+			}
+			var deps = active_reaction.deps;
+			if (signal.rv < read_version) {
+				signal.rv = read_version;
+				// If the signal is accessing the same dependencies in the same
+				// order as it did last time, increment `skipped_deps`
+				// rather than updating `new_deps`, which creates GC cost
+				if (new_deps === null && deps !== null && deps[skipped_deps] === signal) {
+					skipped_deps++;
+				} else if (new_deps === null) {
+					new_deps = [signal];
+				} else {
+					new_deps.push(signal);
+				}
+			}
+		} else if (
+			is_derived &&
+			/** @type {Derived} */ (signal).deps === null &&
+			/** @type {Derived} */ (signal).effects === null
+		) {
+			var derived = /** @type {Derived} */ (signal);
+			var parent = derived.parent;
+
+			if (parent !== null && (parent.f & UNOWNED) === 0) {
+				// If the derived is owned by another derived then mark it as unowned
+				// as the derived value might have been referenced in a different context
+				// since and thus its parent might not be its true owner anymore
+				derived.f ^= UNOWNED;
+			}
+		}
+
+		if (is_derived) {
+			derived = /** @type {Derived} */ (signal);
+
+			if (check_dirtiness(derived)) {
+				update_derived(derived);
+			}
+		}
+
+		if (
+			DEV &&
+			tracing_mode_flag &&
+			tracing_expressions !== null &&
+			active_reaction !== null &&
+			tracing_expressions.reaction === active_reaction
+		) {
+			// Used when mapping state between special blocks like `each`
+			if (signal.debug) {
+				signal.debug();
+			} else if (signal.created) {
+				var entry = tracing_expressions.entries.get(signal);
+
+				if (entry === undefined) {
+					entry = { read: [] };
+					tracing_expressions.entries.set(signal, entry);
+				}
+
+				entry.read.push(get_stack$1('TracedAt'));
+			}
+		}
+
+		return signal.v;
+	}
+
+	/**
+	 * When used inside a [`$derived`](https://svelte.dev/docs/svelte/$derived) or [`$effect`](https://svelte.dev/docs/svelte/$effect),
+	 * any state read inside `fn` will not be treated as a dependency.
+	 *
+	 * ```ts
+	 * $effect(() => {
+	 *   // this will run when `data` changes, but not when `time` changes
+	 *   save(data, {
+	 *     timestamp: untrack(() => time)
+	 *   });
+	 * });
+	 * ```
+	 * @template T
+	 * @param {() => T} fn
+	 * @returns {T}
+	 */
+	function untrack(fn) {
+		var previous_untracking = untracking;
+		try {
+			untracking = true;
+			return fn();
+		} finally {
+			untracking = previous_untracking;
+		}
+	}
+
+	const STATUS_MASK = ~(DIRTY | MAYBE_DIRTY | CLEAN);
+
+	/**
+	 * @param {Signal} signal
+	 * @param {number} status
+	 * @returns {void}
+	 */
+	function set_signal_status(signal, status) {
+		signal.f = (signal.f & STATUS_MASK) | status;
+	}
+
+	/**
+	 * Possibly traverse an object and read all its properties so that they're all reactive in case this is `$state`.
+	 * Does only check first level of an object for performance reasons (heuristic should be good for 99% of all cases).
+	 * @param {any} value
+	 * @returns {void}
+	 */
+	function deep_read_state(value) {
+		if (typeof value !== 'object' || !value || value instanceof EventTarget) {
+			return;
+		}
+
+		if (STATE_SYMBOL in value) {
+			deep_read(value);
+		} else if (!Array.isArray(value)) {
+			for (let key in value) {
+				const prop = value[key];
+				if (typeof prop === 'object' && prop && STATE_SYMBOL in prop) {
+					deep_read(prop);
+				}
+			}
+		}
+	}
+
+	/**
+	 * Deeply traverse an object and read all its properties
+	 * so that they're all reactive in case this is `$state`
+	 * @param {any} value
+	 * @param {Set<any>} visited
+	 * @returns {void}
+	 */
+	function deep_read(value, visited = new Set()) {
+		if (
+			typeof value === 'object' &&
+			value !== null &&
+			// We don't want to traverse DOM elements
+			!(value instanceof EventTarget) &&
+			!visited.has(value)
+		) {
+			visited.add(value);
+			// When working with a possible SvelteDate, this
+			// will ensure we capture changes to it.
+			if (value instanceof Date) {
+				value.getTime();
+			}
+			for (let key in value) {
+				try {
+					deep_read(value[key], visited);
+				} catch (e) {
+					// continue
+				}
+			}
+			const proto = get_prototype_of(value);
+			if (
+				proto !== Object.prototype &&
+				proto !== Array.prototype &&
+				proto !== Map.prototype &&
+				proto !== Set.prototype &&
+				proto !== Date.prototype
+			) {
+				const descriptors = get_descriptors(proto);
+				for (let key in descriptors) {
+					const get = descriptors[key].get;
+					if (get) {
+						try {
+							get.call(value);
+						} catch (e) {
+							// continue
+						}
+					}
+				}
+			}
+		}
+	}
+
+	/**
+	 * Subset of delegated events which should be passive by default.
+	 * These two are already passive via browser defaults on window, document and body.
+	 * But since
+	 * - we're delegating them
+	 * - they happen often
+	 * - they apply to mobile which is generally less performant
+	 * we're marking them as passive by default for other elements, too.
+	 */
+	const PASSIVE_EVENTS = ['touchstart', 'touchmove'];
+
+	/**
+	 * Returns `true` if `name` is a passive event
+	 * @param {string} name
+	 */
+	function is_passive_event(name) {
+		return PASSIVE_EVENTS.includes(name);
+	}
+
+	/** @import { SourceLocation } from '#shared' */
+
+	/**
+	 * @param {any} fn
+	 * @param {string} filename
+	 * @param {SourceLocation[]} locations
+	 * @returns {any}
+	 */
+	function add_locations(fn, filename, locations) {
+		return (/** @type {any[]} */ ...args) => {
+			const dom = fn(...args);
+
+			var node = dom.nodeType === 11 ? dom.firstChild : dom;
+			assign_locations(node, filename, locations);
+
+			return dom;
+		};
+	}
+
+	/**
+	 * @param {Element} element
+	 * @param {string} filename
+	 * @param {SourceLocation} location
+	 */
+	function assign_location(element, filename, location) {
+		// @ts-expect-error
+		element.__svelte_meta = {
+			loc: { file: filename, line: location[0], column: location[1] }
+		};
+
+		if (location[2]) {
+			assign_locations(element.firstChild, filename, location[2]);
+		}
+	}
+
+	/**
+	 * @param {Node | null} node
+	 * @param {string} filename
+	 * @param {SourceLocation[]} locations
+	 */
+	function assign_locations(node, filename, locations) {
+		var i = 0;
+
+		while (node && i < locations.length) {
+
+			if (node.nodeType === 1) {
+				assign_location(/** @type {Element} */ (node), filename, locations[i++]);
+			}
+
+			node = node.nextSibling;
+		}
+	}
+
+	/**
+	 * @template T
+	 * @param {() => T} fn
+	 */
+	function without_reactive_context(fn) {
+		var previous_reaction = active_reaction;
+		var previous_effect = active_effect;
+		set_active_reaction(null);
+		set_active_effect(null);
+		try {
+			return fn();
+		} finally {
+			set_active_reaction(previous_reaction);
+			set_active_effect(previous_effect);
+		}
+	}
+
+	/** @import { Location } from 'locate-character' */
+
+	/** @type {Set<string>} */
+	const all_registered_events = new Set();
+
+	/** @type {Set<(events: Array<string>) => void>} */
+	const root_event_handles = new Set();
+
+	/**
+	 * @param {string} event_name
+	 * @param {EventTarget} dom
+	 * @param {EventListener} [handler]
+	 * @param {AddEventListenerOptions} [options]
+	 */
+	function create_event(event_name, dom, handler, options = {}) {
+		/**
+		 * @this {EventTarget}
+		 */
+		function target_handler(/** @type {Event} */ event) {
+			if (!options.capture) {
+				// Only call in the bubble phase, else delegated events would be called before the capturing events
+				handle_event_propagation.call(dom, event);
+			}
+			if (!event.cancelBubble) {
+				return without_reactive_context(() => {
+					return handler?.call(this, event);
+				});
+			}
+		}
+
+		// Chrome has a bug where pointer events don't work when attached to a DOM element that has been cloned
+		// with cloneNode() and the DOM element is disconnected from the document. To ensure the event works, we
+		// defer the attachment till after it's been appended to the document. TODO: remove this once Chrome fixes
+		// this bug. The same applies to wheel events and touch events.
+		if (
+			event_name.startsWith('pointer') ||
+			event_name.startsWith('touch') ||
+			event_name === 'wheel'
+		) {
+			queue_micro_task(() => {
+				dom.addEventListener(event_name, target_handler, options);
+			});
+		} else {
+			dom.addEventListener(event_name, target_handler, options);
+		}
+
+		return target_handler;
+	}
+
+	/**
+	 * @param {string} event_name
+	 * @param {Element} dom
+	 * @param {EventListener} [handler]
+	 * @param {boolean} [capture]
+	 * @param {boolean} [passive]
+	 * @returns {void}
+	 */
+	function event(event_name, dom, handler, capture, passive) {
+		var options = { capture, passive };
+		var target_handler = create_event(event_name, dom, handler, options);
+
+		// @ts-ignore
+		if (dom === document.body || dom === window || dom === document) {
+			teardown(() => {
+				dom.removeEventListener(event_name, target_handler, options);
+			});
+		}
+	}
+
+	/**
+	 * @this {EventTarget}
+	 * @param {Event} event
+	 * @returns {void}
+	 */
+	function handle_event_propagation(event) {
+		var handler_element = this;
+		var owner_document = /** @type {Node} */ (handler_element).ownerDocument;
+		var event_name = event.type;
+		var path = event.composedPath?.() || [];
+		var current_target = /** @type {null | Element} */ (path[0] || event.target);
+
+		// composedPath contains list of nodes the event has propagated through.
+		// We check __root to skip all nodes below it in case this is a
+		// parent of the __root node, which indicates that there's nested
+		// mounted apps. In this case we don't want to trigger events multiple times.
+		var path_idx = 0;
+
+		// @ts-expect-error is added below
+		var handled_at = event.__root;
+
+		if (handled_at) {
+			var at_idx = path.indexOf(handled_at);
+			if (
+				at_idx !== -1 &&
+				(handler_element === document || handler_element === /** @type {any} */ (window))
+			) {
+				// This is the fallback document listener or a window listener, but the event was already handled
+				// -> ignore, but set handle_at to document/window so that we're resetting the event
+				// chain in case someone manually dispatches the same event object again.
+				// @ts-expect-error
+				event.__root = handler_element;
+				return;
+			}
+
+			// We're deliberately not skipping if the index is higher, because
+			// someone could create an event programmatically and emit it multiple times,
+			// in which case we want to handle the whole propagation chain properly each time.
+			// (this will only be a false negative if the event is dispatched multiple times and
+			// the fallback document listener isn't reached in between, but that's super rare)
+			var handler_idx = path.indexOf(handler_element);
+			if (handler_idx === -1) {
+				// handle_idx can theoretically be -1 (happened in some JSDOM testing scenarios with an event listener on the window object)
+				// so guard against that, too, and assume that everything was handled at this point.
+				return;
+			}
+
+			if (at_idx <= handler_idx) {
+				path_idx = at_idx;
+			}
+		}
+
+		current_target = /** @type {Element} */ (path[path_idx] || event.target);
+		// there can only be one delegated event per element, and we either already handled the current target,
+		// or this is the very first target in the chain which has a non-delegated listener, in which case it's safe
+		// to handle a possible delegated event on it later (through the root delegation listener for example).
+		if (current_target === handler_element) return;
+
+		// Proxy currentTarget to correct target
+		define_property(event, 'currentTarget', {
+			configurable: true,
+			get() {
+				return current_target || owner_document;
+			}
+		});
+
+		// This started because of Chromium issue https://chromestatus.com/feature/5128696823545856,
+		// where removal or moving of of the DOM can cause sync `blur` events to fire, which can cause logic
+		// to run inside the current `active_reaction`, which isn't what we want at all. However, on reflection,
+		// it's probably best that all event handled by Svelte have this behaviour, as we don't really want
+		// an event handler to run in the context of another reaction or effect.
+		var previous_reaction = active_reaction;
+		var previous_effect = active_effect;
+		set_active_reaction(null);
+		set_active_effect(null);
+
+		try {
+			/**
+			 * @type {unknown}
+			 */
+			var throw_error;
+			/**
+			 * @type {unknown[]}
+			 */
+			var other_errors = [];
+
+			while (current_target !== null) {
+				/** @type {null | Element} */
+				var parent_element =
+					current_target.assignedSlot ||
+					current_target.parentNode ||
+					/** @type {any} */ (current_target).host ||
+					null;
+
+				try {
+					// @ts-expect-error
+					var delegated = current_target['__' + event_name];
+
+					if (delegated !== undefined && !(/** @type {any} */ (current_target).disabled)) {
+						if (is_array(delegated)) {
+							var [fn, ...data] = delegated;
+							fn.apply(current_target, [event, ...data]);
+						} else {
+							delegated.call(current_target, event);
+						}
+					}
+				} catch (error) {
+					if (throw_error) {
+						other_errors.push(error);
+					} else {
+						throw_error = error;
+					}
+				}
+				if (event.cancelBubble || parent_element === handler_element || parent_element === null) {
+					break;
+				}
+				current_target = parent_element;
+			}
+
+			if (throw_error) {
+				for (let error of other_errors) {
+					// Throw the rest of the errors, one-by-one on a microtask
+					queueMicrotask(() => {
+						throw error;
+					});
+				}
+				throw throw_error;
+			}
+		} finally {
+			// @ts-expect-error is used above
+			event.__root = handler_element;
+			// @ts-ignore remove proxy on currentTarget
+			delete event.currentTarget;
+			set_active_reaction(previous_reaction);
+			set_active_effect(previous_effect);
+		}
+	}
+
+	/** @param {string} html */
+	function create_fragment_from_html(html) {
+		var elem = document.createElement('template');
+		elem.innerHTML = html;
+		return elem.content;
+	}
+
+	/** @import { Effect, TemplateNode } from '#client' */
+
+	/**
+	 * @param {TemplateNode} start
+	 * @param {TemplateNode | null} end
+	 */
+	function assign_nodes(start, end) {
+		var effect = /** @type {Effect} */ (active_effect);
+		if (effect.nodes_start === null) {
+			effect.nodes_start = start;
+			effect.nodes_end = end;
+		}
+	}
+
+	/**
+	 * @param {string} content
+	 * @param {number} flags
+	 * @returns {() => Node | Node[]}
+	 */
+	/*#__NO_SIDE_EFFECTS__*/
+	function template(content, flags) {
+		var is_fragment = (flags & TEMPLATE_FRAGMENT) !== 0;
+		var use_import_node = (flags & TEMPLATE_USE_IMPORT_NODE) !== 0;
+
+		/** @type {Node} */
+		var node;
+
+		/**
+		 * Whether or not the first item is a text/element node. If not, we need to
+		 * create an additional comment node to act as `effect.nodes.start`
+		 */
+		var has_start = !content.startsWith('<!>');
+
+		return () => {
+
+			if (node === undefined) {
+				node = create_fragment_from_html(has_start ? content : '<!>' + content);
+				if (!is_fragment) node = /** @type {Node} */ (get_first_child(node));
+			}
+
+			var clone = /** @type {TemplateNode} */ (
+				use_import_node ? document.importNode(node, true) : node.cloneNode(true)
+			);
+
+			if (is_fragment) {
+				var start = /** @type {TemplateNode} */ (get_first_child(clone));
+				var end = /** @type {TemplateNode} */ (clone.lastChild);
+
+				assign_nodes(start, end);
+			} else {
+				assign_nodes(clone, clone);
+			}
+
+			return clone;
+		};
+	}
+
+	/**
+	 * Assign the created (or in hydration mode, traversed) dom elements to the current block
+	 * and insert the elements into the dom (in client mode).
+	 * @param {Text | Comment | Element} anchor
+	 * @param {DocumentFragment | Element} dom
+	 */
+	function append(anchor, dom) {
+
+		if (anchor === null) {
+			// edge case — void `<svelte:element>` with content
+			return;
+		}
+
+		anchor.before(/** @type {Node} */ (dom));
+	}
+
+	/** @import { ComponentContext, Effect, TemplateNode } from '#client' */
+	/** @import { Component, ComponentType, SvelteComponent, MountOptions } from '../../index.js' */
+
+	/**
+	 * @param {Element} text
+	 * @param {string} value
+	 * @returns {void}
+	 */
+	function set_text(text, value) {
+		// For objects, we apply string coercion (which might make things like $state array references in the template reactive) before diffing
+		var str = value == null ? '' : typeof value === 'object' ? value + '' : value;
+		// @ts-expect-error
+		if (str !== (text.__t ??= text.nodeValue)) {
+			// @ts-expect-error
+			text.__t = str;
+			text.nodeValue = str == null ? '' : str + '';
+		}
+	}
+
+	/**
+	 * Mounts a component to the given target and returns the exports and potentially the props (if compiled with `accessors: true`) of the component.
+	 * Transitions will play during the initial render unless the `intro` option is set to `false`.
+	 *
+	 * @template {Record<string, any>} Props
+	 * @template {Record<string, any>} Exports
+	 * @param {ComponentType<SvelteComponent<Props>> | Component<Props, Exports, any>} component
+	 * @param {MountOptions<Props>} options
+	 * @returns {Exports}
+	 */
+	function mount(component, options) {
+		return _mount(component, options);
+	}
+
+	/** @type {Map<string, number>} */
+	const document_listeners = new Map();
+
+	/**
+	 * @template {Record<string, any>} Exports
+	 * @param {ComponentType<SvelteComponent<any>> | Component<any>} Component
+	 * @param {MountOptions} options
+	 * @returns {Exports}
+	 */
+	function _mount(Component, { target, anchor, props = {}, events, context, intro = true }) {
+		init_operations();
+
+		var registered_events = new Set();
+
+		/** @param {Array<string>} events */
+		var event_handle = (events) => {
+			for (var i = 0; i < events.length; i++) {
+				var event_name = events[i];
+
+				if (registered_events.has(event_name)) continue;
+				registered_events.add(event_name);
+
+				var passive = is_passive_event(event_name);
+
+				// Add the event listener to both the container and the document.
+				// The container listener ensures we catch events from within in case
+				// the outer content stops propagation of the event.
+				target.addEventListener(event_name, handle_event_propagation, { passive });
+
+				var n = document_listeners.get(event_name);
+
+				if (n === undefined) {
+					// The document listener ensures we catch events that originate from elements that were
+					// manually moved outside of the container (e.g. via manual portals).
+					document.addEventListener(event_name, handle_event_propagation, { passive });
+					document_listeners.set(event_name, 1);
+				} else {
+					document_listeners.set(event_name, n + 1);
+				}
+			}
+		};
+
+		event_handle(array_from(all_registered_events));
+		root_event_handles.add(event_handle);
+
+		/** @type {Exports} */
+		// @ts-expect-error will be defined because the render effect runs synchronously
+		var component = undefined;
+
+		var unmount = component_root(() => {
+			var anchor_node = anchor ?? target.appendChild(create_text());
+
+			branch(() => {
+				if (context) {
+					push({});
+					var ctx = /** @type {ComponentContext} */ (component_context);
+					ctx.c = context;
+				}
+
+				if (events) {
+					// We can't spread the object or else we'd lose the state proxy stuff, if it is one
+					/** @type {any} */ (props).$$events = events;
+				}
+				// @ts-expect-error the public typings are not what the actual function looks like
+				component = Component(anchor_node, props) || {};
+
+				if (context) {
+					pop();
+				}
+			});
+
+			return () => {
+				for (var event_name of registered_events) {
+					target.removeEventListener(event_name, handle_event_propagation);
+
+					var n = /** @type {number} */ (document_listeners.get(event_name));
+
+					if (--n === 0) {
+						document.removeEventListener(event_name, handle_event_propagation);
+						document_listeners.delete(event_name);
+					} else {
+						document_listeners.set(event_name, n);
+					}
+				}
+
+				root_event_handles.delete(event_handle);
+
+				if (anchor_node !== anchor) {
+					anchor_node.parentNode?.removeChild(anchor_node);
+				}
+			};
+		});
+
+		mounted_components.set(component, unmount);
+		return component;
+	}
+
+	/**
+	 * References of the components that were mounted or hydrated.
+	 * Uses a `WeakMap` to avoid memory leaks.
+	 */
+	let mounted_components = new WeakMap();
+
+	/** @param {Function & { [FILENAME]: string }} target */
+	function check_target(target) {
+		if (target) {
+			component_api_invalid_new(target[FILENAME] ?? 'a component', target.name);
+		}
+	}
+
+	function legacy_api() {
+		const component = component_context?.function;
+
+		/** @param {string} method */
+		function error(method) {
+			// @ts-expect-error
+			const parent = get_component()?.[FILENAME] ?? 'Something';
+			component_api_changed(parent, method, component[FILENAME]);
+		}
+
+		return {
+			$destroy: () => error('$destroy()'),
+			$on: () => error('$on(...)'),
+			$set: () => error('$set(...)')
+		};
+	}
+
+	/** @import { Effect, TemplateNode } from '#client' */
+
+	/**
+	 * @param {TemplateNode} node
+	 * @param {(branch: (fn: (anchor: Node) => void, flag?: boolean) => void) => void} fn
+	 * @param {boolean} [elseif] True if this is an `{:else if ...}` block rather than an `{#if ...}`, as that affects which transitions are considered 'local'
+	 * @returns {void}
+	 */
+	function if_block(node, fn, elseif = false) {
+
+		var anchor = node;
+
+		/** @type {Effect | null} */
+		var consequent_effect = null;
+
+		/** @type {Effect | null} */
+		var alternate_effect = null;
+
+		/** @type {UNINITIALIZED | boolean | null} */
+		var condition = UNINITIALIZED;
+
+		var flags = elseif ? EFFECT_TRANSPARENT : 0;
+
+		var has_branch = false;
+
+		const set_branch = (/** @type {(anchor: Node) => void} */ fn, flag = true) => {
+			has_branch = true;
+			update_branch(flag, fn);
+		};
+
+		const update_branch = (
+			/** @type {boolean | null} */ new_condition,
+			/** @type {null | ((anchor: Node) => void)} */ fn
+		) => {
+			if (condition === (condition = new_condition)) return;
+
+			if (condition) {
+				if (consequent_effect) {
+					resume_effect(consequent_effect);
+				} else if (fn) {
+					consequent_effect = branch(() => fn(anchor));
+				}
+
+				if (alternate_effect) {
+					pause_effect(alternate_effect, () => {
+						alternate_effect = null;
+					});
+				}
+			} else {
+				if (alternate_effect) {
+					resume_effect(alternate_effect);
+				} else if (fn) {
+					alternate_effect = branch(() => fn(anchor));
+				}
+
+				if (consequent_effect) {
+					pause_effect(consequent_effect, () => {
+						consequent_effect = null;
+					});
+				}
+			}
+		};
+
+		block(() => {
+			has_branch = false;
+			fn(set_branch);
+			if (!has_branch) {
+				update_branch(null, null);
+			}
+		}, flags);
+	}
+
+	/** @import { EachItem, EachState, Effect, MaybeSource, Source, TemplateNode, TransitionManager, Value } from '#client' */
+
+	/**
+	 * @param {any} _
+	 * @param {number} i
+	 */
+	function index(_, i) {
+		return i;
+	}
+
+	/**
+	 * Pause multiple effects simultaneously, and coordinate their
+	 * subsequent destruction. Used in each blocks
+	 * @param {EachState} state
+	 * @param {EachItem[]} items
+	 * @param {null | Node} controlled_anchor
+	 * @param {Map<any, EachItem>} items_map
+	 */
+	function pause_effects(state, items, controlled_anchor, items_map) {
+		/** @type {TransitionManager[]} */
+		var transitions = [];
+		var length = items.length;
+
+		for (var i = 0; i < length; i++) {
+			pause_children(items[i].e, transitions, true);
+		}
+
+		var is_controlled = length > 0 && transitions.length === 0 && controlled_anchor !== null;
+		// If we have a controlled anchor, it means that the each block is inside a single
+		// DOM element, so we can apply a fast-path for clearing the contents of the element.
+		if (is_controlled) {
+			var parent_node = /** @type {Element} */ (
+				/** @type {Element} */ (controlled_anchor).parentNode
+			);
+			clear_text_content(parent_node);
+			parent_node.append(/** @type {Element} */ (controlled_anchor));
+			items_map.clear();
+			link(state, items[0].prev, items[length - 1].next);
+		}
+
+		run_out_transitions(transitions, () => {
+			for (var i = 0; i < length; i++) {
+				var item = items[i];
+				if (!is_controlled) {
+					items_map.delete(item.k);
+					link(state, item.prev, item.next);
+				}
+				destroy_effect(item.e, !is_controlled);
+			}
+		});
+	}
+
+	/**
+	 * @template V
+	 * @param {Element | Comment} node The next sibling node, or the parent node if this is a 'controlled' block
+	 * @param {number} flags
+	 * @param {() => V[]} get_collection
+	 * @param {(value: V, index: number) => any} get_key
+	 * @param {(anchor: Node, item: MaybeSource<V>, index: MaybeSource<number>) => void} render_fn
+	 * @param {null | ((anchor: Node) => void)} fallback_fn
+	 * @returns {void}
+	 */
+	function each(node, flags, get_collection, get_key, render_fn, fallback_fn = null) {
+		var anchor = node;
+
+		/** @type {EachState} */
+		var state = { flags, items: new Map(), first: null };
+
+		var is_controlled = (flags & EACH_IS_CONTROLLED) !== 0;
+
+		if (is_controlled) {
+			var parent_node = /** @type {Element} */ (node);
+
+			anchor = parent_node.appendChild(create_text());
+		}
+
+		/** @type {Effect | null} */
+		var fallback = null;
+
+		var was_empty = false;
+
+		// TODO: ideally we could use derived for runes mode but because of the ability
+		// to use a store which can be mutated, we can't do that here as mutating a store
+		// will still result in the collection array being the same from the store
+		var each_array = derived_safe_equal(() => {
+			var collection = get_collection();
+
+			return is_array(collection) ? collection : collection == null ? [] : array_from(collection);
+		});
+
+		block(() => {
+			var array = get(each_array);
+			var length = array.length;
+
+			if (was_empty && length === 0) {
+				// ignore updates if the array is empty,
+				// and it already was empty on previous run
+				return;
+			}
+			was_empty = length === 0;
+
+			{
+				reconcile(array, state, anchor, render_fn, flags, get_key, get_collection);
+			}
+
+			if (fallback_fn !== null) {
+				if (length === 0) {
+					if (fallback) {
+						resume_effect(fallback);
+					} else {
+						fallback = branch(() => fallback_fn(anchor));
+					}
+				} else if (fallback !== null) {
+					pause_effect(fallback, () => {
+						fallback = null;
+					});
+				}
+			}
+
+			// When we mount the each block for the first time, the collection won't be
+			// connected to this effect as the effect hasn't finished running yet and its deps
+			// won't be assigned. However, it's possible that when reconciling the each block
+			// that a mutation occurred and it's made the collection MAYBE_DIRTY, so reading the
+			// collection again can provide consistency to the reactive graph again as the deriveds
+			// will now be `CLEAN`.
+			get(each_array);
+		});
+	}
+
+	/**
+	 * Add, remove, or reorder items output by an each block as its input changes
+	 * @template V
+	 * @param {Array<V>} array
+	 * @param {EachState} state
+	 * @param {Element | Comment | Text} anchor
+	 * @param {(anchor: Node, item: MaybeSource<V>, index: number | Source<number>, collection: () => V[]) => void} render_fn
+	 * @param {number} flags
+	 * @param {(value: V, index: number) => any} get_key
+	 * @param {() => V[]} get_collection
+	 * @returns {void}
+	 */
+	function reconcile(array, state, anchor, render_fn, flags, get_key, get_collection) {
+		var is_animated = (flags & EACH_IS_ANIMATED) !== 0;
+		var should_update = (flags & (EACH_ITEM_REACTIVE | EACH_INDEX_REACTIVE)) !== 0;
+
+		var length = array.length;
+		var items = state.items;
+		var first = state.first;
+		var current = first;
+
+		/** @type {undefined | Set<EachItem>} */
+		var seen;
+
+		/** @type {EachItem | null} */
+		var prev = null;
+
+		/** @type {undefined | Set<EachItem>} */
+		var to_animate;
+
+		/** @type {EachItem[]} */
+		var matched = [];
+
+		/** @type {EachItem[]} */
+		var stashed = [];
+
+		/** @type {V} */
+		var value;
+
+		/** @type {any} */
+		var key;
+
+		/** @type {EachItem | undefined} */
+		var item;
+
+		/** @type {number} */
+		var i;
+
+		if (is_animated) {
+			for (i = 0; i < length; i += 1) {
+				value = array[i];
+				key = get_key(value, i);
+				item = items.get(key);
+
+				if (item !== undefined) {
+					item.a?.measure();
+					(to_animate ??= new Set()).add(item);
+				}
+			}
+		}
+
+		for (i = 0; i < length; i += 1) {
+			value = array[i];
+			key = get_key(value, i);
+			item = items.get(key);
+
+			if (item === undefined) {
+				var child_anchor = current ? /** @type {TemplateNode} */ (current.e.nodes_start) : anchor;
+
+				prev = create_item(
+					child_anchor,
+					state,
+					prev,
+					prev === null ? state.first : prev.next,
+					value,
+					key,
+					i,
+					render_fn,
+					flags,
+					get_collection
+				);
+
+				items.set(key, prev);
+
+				matched = [];
+				stashed = [];
+
+				current = prev.next;
+				continue;
+			}
+
+			if (should_update) {
+				update_item(item, value, i, flags);
+			}
+
+			if ((item.e.f & INERT) !== 0) {
+				resume_effect(item.e);
+				if (is_animated) {
+					item.a?.unfix();
+					(to_animate ??= new Set()).delete(item);
+				}
+			}
+
+			if (item !== current) {
+				if (seen !== undefined && seen.has(item)) {
+					if (matched.length < stashed.length) {
+						// more efficient to move later items to the front
+						var start = stashed[0];
+						var j;
+
+						prev = start.prev;
+
+						var a = matched[0];
+						var b = matched[matched.length - 1];
+
+						for (j = 0; j < matched.length; j += 1) {
+							move(matched[j], start, anchor);
+						}
+
+						for (j = 0; j < stashed.length; j += 1) {
+							seen.delete(stashed[j]);
+						}
+
+						link(state, a.prev, b.next);
+						link(state, prev, a);
+						link(state, b, start);
+
+						current = start;
+						prev = b;
+						i -= 1;
+
+						matched = [];
+						stashed = [];
+					} else {
+						// more efficient to move earlier items to the back
+						seen.delete(item);
+						move(item, current, anchor);
+
+						link(state, item.prev, item.next);
+						link(state, item, prev === null ? state.first : prev.next);
+						link(state, prev, item);
+
+						prev = item;
+					}
+
+					continue;
+				}
+
+				matched = [];
+				stashed = [];
+
+				while (current !== null && current.k !== key) {
+					// If the each block isn't inert and an item has an effect that is already inert,
+					// skip over adding it to our seen Set as the item is already being handled
+					if ((current.e.f & INERT) === 0) {
+						(seen ??= new Set()).add(current);
+					}
+					stashed.push(current);
+					current = current.next;
+				}
+
+				if (current === null) {
+					continue;
+				}
+
+				item = current;
+			}
+
+			matched.push(item);
+			prev = item;
+			current = item.next;
+		}
+
+		if (current !== null || seen !== undefined) {
+			var to_destroy = seen === undefined ? [] : array_from(seen);
+
+			while (current !== null) {
+				// If the each block isn't inert, then inert effects are currently outroing and will be removed once the transition is finished
+				if ((current.e.f & INERT) === 0) {
+					to_destroy.push(current);
+				}
+				current = current.next;
+			}
+
+			var destroy_length = to_destroy.length;
+
+			if (destroy_length > 0) {
+				var controlled_anchor = (flags & EACH_IS_CONTROLLED) !== 0 && length === 0 ? anchor : null;
+
+				if (is_animated) {
+					for (i = 0; i < destroy_length; i += 1) {
+						to_destroy[i].a?.measure();
+					}
+
+					for (i = 0; i < destroy_length; i += 1) {
+						to_destroy[i].a?.fix();
+					}
+				}
+
+				pause_effects(state, to_destroy, controlled_anchor, items);
+			}
+		}
+
+		if (is_animated) {
+			queue_micro_task(() => {
+				if (to_animate === undefined) return;
+				for (item of to_animate) {
+					item.a?.apply();
+				}
+			});
+		}
+
+		/** @type {Effect} */ (active_effect).first = state.first && state.first.e;
+		/** @type {Effect} */ (active_effect).last = prev && prev.e;
+	}
+
+	/**
+	 * @param {EachItem} item
+	 * @param {any} value
+	 * @param {number} index
+	 * @param {number} type
+	 * @returns {void}
+	 */
+	function update_item(item, value, index, type) {
+		if ((type & EACH_ITEM_REACTIVE) !== 0) {
+			internal_set(item.v, value);
+		}
+
+		if ((type & EACH_INDEX_REACTIVE) !== 0) {
+			internal_set(/** @type {Value<number>} */ (item.i), index);
+		} else {
+			item.i = index;
+		}
+	}
+
+	/**
+	 * @template V
+	 * @param {Node} anchor
+	 * @param {EachState} state
+	 * @param {EachItem | null} prev
+	 * @param {EachItem | null} next
+	 * @param {V} value
+	 * @param {unknown} key
+	 * @param {number} index
+	 * @param {(anchor: Node, item: V | Source<V>, index: number | Value<number>, collection: () => V[]) => void} render_fn
+	 * @param {number} flags
+	 * @param {() => V[]} get_collection
+	 * @returns {EachItem}
+	 */
+	function create_item(
+		anchor,
+		state,
+		prev,
+		next,
+		value,
+		key,
+		index,
+		render_fn,
+		flags,
+		get_collection
+	) {
+		var reactive = (flags & EACH_ITEM_REACTIVE) !== 0;
+		var mutable = (flags & EACH_ITEM_IMMUTABLE) === 0;
+
+		var v = reactive ? (mutable ? mutable_source(value) : source(value)) : value;
+		var i = (flags & EACH_INDEX_REACTIVE) === 0 ? index : source(index);
+
+		if (DEV && reactive) {
+			// For tracing purposes, we need to link the source signal we create with the
+			// collection + index so that tracing works as intended
+			/** @type {Value} */ (v).debug = () => {
+				var collection_index = typeof i === 'number' ? index : i.v;
+				// eslint-disable-next-line @typescript-eslint/no-unused-expressions
+				get_collection()[collection_index];
+			};
+		}
+
+		/** @type {EachItem} */
+		var item = {
+			i,
+			v,
+			k: key,
+			a: null,
+			// @ts-expect-error
+			e: null,
+			prev,
+			next
+		};
+
+		try {
+			item.e = branch(() => render_fn(anchor, v, i, get_collection), hydrating);
+
+			item.e.prev = prev && prev.e;
+			item.e.next = next && next.e;
+
+			if (prev === null) {
+				state.first = item;
+			} else {
+				prev.next = item;
+				prev.e.next = item.e;
+			}
+
+			if (next !== null) {
+				next.prev = item;
+				next.e.prev = item.e;
+			}
+
+			return item;
+		} finally {
+		}
+	}
+
+	/**
+	 * @param {EachItem} item
+	 * @param {EachItem | null} next
+	 * @param {Text | Element | Comment} anchor
+	 */
+	function move(item, next, anchor) {
+		var end = item.next ? /** @type {TemplateNode} */ (item.next.e.nodes_start) : anchor;
+
+		var dest = next ? /** @type {TemplateNode} */ (next.e.nodes_start) : anchor;
+		var node = /** @type {TemplateNode} */ (item.e.nodes_start);
+
+		while (node !== end) {
+			var next_node = /** @type {TemplateNode} */ (get_next_sibling(node));
+			dest.before(node);
+			node = next_node;
+		}
+	}
+
+	/**
+	 * @param {EachState} state
+	 * @param {EachItem | null} prev
+	 * @param {EachItem | null} next
+	 */
+	function link(state, prev, next) {
+		if (prev === null) {
+			state.first = next;
+		} else {
+			prev.next = next;
+			prev.e.next = next && next.e;
+		}
+
+		if (next !== null) {
+			next.prev = prev;
+			next.e.prev = prev && prev.e;
+		}
+	}
+
+	/**
+	 * Sets the `selected` attribute on an `option` element.
+	 * Not set through the property because that doesn't reflect to the DOM,
+	 * which means it wouldn't be taken into account when a form is reset.
+	 * @param {HTMLOptionElement} element
+	 * @param {boolean} selected
+	 */
+	function set_selected(element, selected) {
+		if (selected) {
+			// The selected option could've changed via user selection, and
+			// setting the value without this check would set it back.
+			if (!element.hasAttribute('selected')) {
+				element.setAttribute('selected', '');
+			}
+		} else {
+			element.removeAttribute('selected');
+		}
+	}
+
+	/**
+	 * @param {Element} element
+	 * @param {string} attribute
+	 * @param {string | null} value
+	 * @param {boolean} [skip_warning]
+	 */
+	function set_attribute(element, attribute, value, skip_warning) {
+		// @ts-expect-error
+		var attributes = (element.__attributes ??= {});
+
+		if (attributes[attribute] === (attributes[attribute] = value)) return;
+
+		if (attribute === 'style' && '__styles' in element) {
+			// reset styles to force style: directive to update
+			element.__styles = {};
+		}
+
+		if (attribute === 'loading') {
+			// @ts-expect-error
+			element[LOADING_ATTR_SYMBOL] = value;
+		}
+
+		if (value == null) {
+			element.removeAttribute(attribute);
+		} else if (typeof value !== 'string' && get_setters(element).includes(attribute)) {
+			// @ts-ignore
+			element[attribute] = value;
+		} else {
+			element.setAttribute(attribute, value);
+		}
+	}
+
+	/** @type {Map<string, string[]>} */
+	var setters_cache = new Map();
+
+	/** @param {Element} element */
+	function get_setters(element) {
+		var setters = setters_cache.get(element.nodeName);
+		if (setters) return setters;
+		setters_cache.set(element.nodeName, (setters = []));
+
+		var descriptors;
+		var proto = element; // In the case of custom elements there might be setters on the instance
+		var element_proto = Element.prototype;
+
+		// Stop at Element, from there on there's only unnecessary setters we're not interested in
+		// Do not use contructor.name here as that's unreliable in some browser environments
+		while (element_proto !== proto) {
+			descriptors = get_descriptors(proto);
+
+			for (var key in descriptors) {
+				if (descriptors[key].set) {
+					setters.push(key);
+				}
+			}
+
+			proto = get_prototype_of(proto);
+		}
+
+		return setters;
+	}
+
+	/** @import { ComponentContextLegacy } from '#client' */
+
+	/**
+	 * Legacy-mode only: Call `onMount` callbacks and set up `beforeUpdate`/`afterUpdate` effects
+	 * @param {boolean} [immutable]
+	 */
+	function init(immutable = false) {
+		const context = /** @type {ComponentContextLegacy} */ (component_context);
+
+		const callbacks = context.l.u;
+		if (!callbacks) return;
+
+		let props = () => deep_read_state(context.s);
+
+		if (immutable) {
+			let version = 0;
+			let prev = /** @type {Record<string, any>} */ ({});
+
+			// In legacy immutable mode, before/afterUpdate only fire if the object identity of a prop changes
+			const d = derived(() => {
+				let changed = false;
+				const props = context.s;
+				for (const key in props) {
+					if (props[key] !== prev[key]) {
+						prev[key] = props[key];
+						changed = true;
+					}
+				}
+				if (changed) version++;
+				return version;
+			});
+
+			props = () => get(d);
+		}
+
+		// beforeUpdate
+		if (callbacks.b.length) {
+			user_pre_effect(() => {
+				observe_all(context, props);
+				run_all(callbacks.b);
+			});
+		}
+
+		// onMount (must run before afterUpdate)
+		user_effect(() => {
+			const fns = untrack(() => callbacks.m.map(run));
+			return () => {
+				for (const fn of fns) {
+					if (typeof fn === 'function') {
+						fn();
+					}
+				}
+			};
+		});
+
+		// afterUpdate
+		if (callbacks.a.length) {
+			user_effect(() => {
+				observe_all(context, props);
+				run_all(callbacks.a);
+			});
+		}
+	}
+
+	/**
+	 * Invoke the getter of all signals associated with a component
+	 * so they can be registered to the effect this function is called in.
+	 * @param {ComponentContextLegacy} context
+	 * @param {(() => void)} props
+	 */
+	function observe_all(context, props) {
+		if (context.l.s) {
+			for (const signal of context.l.s) get(signal);
+		}
+
+		props();
+	}
+
+	/** @import { StoreReferencesContainer } from '#client' */
+	/** @import { Store } from '#shared' */
+
+	/**
+	 * Whether or not the prop currently being read is a store binding, as in
+	 * `<Child bind:x={$y} />`. If it is, we treat the prop as mutable even in
+	 * runes mode, and skip `binding_property_non_reactive` validation
+	 */
+	let is_store_binding = false;
+
+	/**
+	 * Returns a tuple that indicates whether `fn()` reads a prop that is a store binding.
+	 * Used to prevent `binding_property_non_reactive` validation false positives and
+	 * ensure that these props are treated as mutable even in runes mode
+	 * @template T
+	 * @param {() => T} fn
+	 * @returns {[T, boolean]}
+	 */
+	function capture_store_binding(fn) {
+		var previous_is_store_binding = is_store_binding;
+
+		try {
+			is_store_binding = false;
+			return [fn(), is_store_binding];
+		} finally {
+			is_store_binding = previous_is_store_binding;
+		}
+	}
+
+	/** @import { Source } from './types.js' */
+
+	/**
+	 * @template T
+	 * @param {() => T} fn
+	 * @returns {T}
+	 */
+	function with_parent_branch(fn) {
+		var effect = active_effect;
+		var previous_effect = active_effect;
+
+		while (effect !== null && (effect.f & (BRANCH_EFFECT | ROOT_EFFECT)) === 0) {
+			effect = effect.parent;
+		}
+		try {
+			set_active_effect(effect);
+			return fn();
+		} finally {
+			set_active_effect(previous_effect);
+		}
+	}
+
+	/**
+	 * This function is responsible for synchronizing a possibly bound prop with the inner component state.
+	 * It is used whenever the compiler sees that the component writes to the prop, or when it has a default prop_value.
+	 * @template V
+	 * @param {Record<string, unknown>} props
+	 * @param {string} key
+	 * @param {number} flags
+	 * @param {V | (() => V)} [fallback]
+	 * @returns {(() => V | ((arg: V) => V) | ((arg: V, mutation: boolean) => V))}
+	 */
+	function prop(props, key, flags, fallback) {
+		var immutable = (flags & PROPS_IS_IMMUTABLE) !== 0;
+		var runes = !legacy_mode_flag || (flags & PROPS_IS_RUNES) !== 0;
+		var bindable = (flags & PROPS_IS_BINDABLE) !== 0;
+		var lazy = (flags & PROPS_IS_LAZY_INITIAL) !== 0;
+		var is_store_sub = false;
+		var prop_value;
+
+		if (bindable) {
+			[prop_value, is_store_sub] = capture_store_binding(() => /** @type {V} */ (props[key]));
+		} else {
+			prop_value = /** @type {V} */ (props[key]);
+		}
+
+		// Can be the case when someone does `mount(Component, props)` with `let props = $state({...})`
+		// or `createClassComponent(Component, props)`
+		var is_entry_props = STATE_SYMBOL in props || LEGACY_PROPS in props;
+
+		var setter =
+			(bindable &&
+				(get_descriptor(props, key)?.set ??
+					(is_entry_props && key in props && ((v) => (props[key] = v))))) ||
+			undefined;
+
+		var fallback_value = /** @type {V} */ (fallback);
+		var fallback_dirty = true;
+		var fallback_used = false;
+
+		var get_fallback = () => {
+			fallback_used = true;
+			if (fallback_dirty) {
+				fallback_dirty = false;
+				if (lazy) {
+					fallback_value = untrack(/** @type {() => V} */ (fallback));
+				} else {
+					fallback_value = /** @type {V} */ (fallback);
+				}
+			}
+
+			return fallback_value;
+		};
+
+		if (prop_value === undefined && fallback !== undefined) {
+			if (setter && runes) {
+				props_invalid_value(key);
+			}
+
+			prop_value = get_fallback();
+			if (setter) setter(prop_value);
+		}
+
+		/** @type {() => V} */
+		var getter;
+		if (runes) {
+			getter = () => {
+				var value = /** @type {V} */ (props[key]);
+				if (value === undefined) return get_fallback();
+				fallback_dirty = true;
+				fallback_used = false;
+				return value;
+			};
+		} else {
+			// Svelte 4 did not trigger updates when a primitive value was updated to the same value.
+			// Replicate that behavior through using a derived
+			var derived_getter = with_parent_branch(() =>
+				(immutable ? derived : derived_safe_equal)(() => /** @type {V} */ (props[key]))
+			);
+			derived_getter.f |= LEGACY_DERIVED_PROP;
+			getter = () => {
+				var value = get(derived_getter);
+				if (value !== undefined) fallback_value = /** @type {V} */ (undefined);
+				return value === undefined ? fallback_value : value;
+			};
+		}
+
+		// easy mode — prop is never written to
+		if ((flags & PROPS_IS_UPDATED) === 0) {
+			return getter;
+		}
+
+		// intermediate mode — prop is written to, but the parent component had
+		// `bind:foo` which means we can just call `$$props.foo = value` directly
+		if (setter) {
+			var legacy_parent = props.$$legacy;
+			return function (/** @type {any} */ value, /** @type {boolean} */ mutation) {
+				if (arguments.length > 0) {
+					// We don't want to notify if the value was mutated and the parent is in runes mode.
+					// In that case the state proxy (if it exists) should take care of the notification.
+					// If the parent is not in runes mode, we need to notify on mutation, too, that the prop
+					// has changed because the parent will not be able to detect the change otherwise.
+					if (!runes || !mutation || legacy_parent || is_store_sub) {
+						/** @type {Function} */ (setter)(mutation ? getter() : value);
+					}
+					return value;
+				} else {
+					return getter();
+				}
+			};
+		}
+
+		// hard mode. this is where it gets ugly — the value in the child should
+		// synchronize with the parent, but it should also be possible to temporarily
+		// set the value to something else locally.
+		var from_child = false;
+		var was_from_child = false;
+
+		// The derived returns the current value. The underlying mutable
+		// source is written to from various places to persist this value.
+		var inner_current_value = mutable_source(prop_value);
+		var current_value = with_parent_branch(() =>
+			derived(() => {
+				var parent_value = getter();
+				var child_value = get(inner_current_value);
+
+				if (from_child) {
+					from_child = false;
+					was_from_child = true;
+					return child_value;
+				}
+
+				was_from_child = false;
+				return (inner_current_value.v = parent_value);
+			})
+		);
+
+		if (!immutable) current_value.equals = safe_equals;
+
+		return function (/** @type {any} */ value, /** @type {boolean} */ mutation) {
+
+			if (arguments.length > 0) {
+				const new_value = mutation ? get(current_value) : runes && bindable ? proxy(value) : value;
+
+				if (!current_value.equals(new_value)) {
+					from_child = true;
+					set(inner_current_value, new_value);
+					// To ensure the fallback value is consistent when used with proxies, we
+					// update the local fallback_value, but only if the fallback is actively used
+					if (fallback_used && fallback_value !== undefined) {
+						fallback_value = new_value;
+					}
+					untrack(() => get(current_value)); // force a synchronisation immediately
+				}
+
+				return value;
+			}
+			return get(current_value);
+		};
+	}
+
+	/**
+	 * @param {string} method
+	 * @param  {...any} objects
+	 */
+	function log_if_contains_state(method, ...objects) {
+		untrack(() => {
+			try {
+				let has_state = false;
+				const transformed = [];
+
+				for (const obj of objects) {
+					if (obj && typeof obj === 'object' && STATE_SYMBOL in obj) {
+						transformed.push(snapshot(obj, true));
+						has_state = true;
+					} else {
+						transformed.push(obj);
+					}
+				}
+
+				if (has_state) {
+					console_log_state(method);
+
+					// eslint-disable-next-line no-console
+					console.log('%c[snapshot]', 'color: grey', ...transformed);
+				}
+			} catch {}
+		});
+
+		return objects;
+	}
+
+	/** @import { ComponentContext, ComponentContextLegacy } from '#client' */
+	/** @import { EventDispatcher } from './index.js' */
+	/** @import { NotFunction } from './internal/types.js' */
+
+	if (DEV) {
+		/**
+		 * @param {string} rune
+		 */
+		function throw_rune_error(rune) {
+			if (!(rune in globalThis)) {
+				// TODO if people start adjusting the "this can contain runes" config through v-p-s more, adjust this message
+				/** @type {any} */
+				let value; // let's hope noone modifies this global, but belts and braces
+				Object.defineProperty(globalThis, rune, {
+					configurable: true,
+					// eslint-disable-next-line getter-return
+					get: () => {
+						if (value !== undefined) {
+							return value;
+						}
+
+						rune_outside_svelte(rune);
+					},
+					set: (v) => {
+						value = v;
+					}
+				});
+			}
+		}
+
+		throw_rune_error('$state');
+		throw_rune_error('$effect');
+		throw_rune_error('$derived');
+		throw_rune_error('$inspect');
+		throw_rune_error('$props');
+		throw_rune_error('$bindable');
+	}
+
+	/**
+	 * The `onMount` function schedules a callback to run as soon as the component has been mounted to the DOM.
+	 * It must be called during the component's initialisation (but doesn't need to live *inside* the component;
+	 * it can be called from an external module).
+	 *
+	 * If a function is returned _synchronously_ from `onMount`, it will be called when the component is unmounted.
+	 *
+	 * `onMount` does not run inside [server-side components](https://svelte.dev/docs/svelte/svelte-server#render).
+	 *
+	 * @template T
+	 * @param {() => NotFunction<T> | Promise<NotFunction<T>> | (() => any)} fn
+	 * @returns {void}
+	 */
+	function onMount(fn) {
+		if (component_context === null) {
+			lifecycle_outside_component('onMount');
+		}
+
+		if (legacy_mode_flag && component_context.l !== null) {
+			init_update_callbacks(component_context).m.push(fn);
+		} else {
+			user_effect(() => {
+				const cleanup = untrack(fn);
+				if (typeof cleanup === 'function') return /** @type {() => void} */ (cleanup);
+			});
+		}
+	}
+
+	/**
+	 * @template [T=any]
+	 * @param {string} type
+	 * @param {T} [detail]
+	 * @param {any}params_0
+	 * @returns {CustomEvent<T>}
+	 */
+	function create_custom_event(type, detail, { bubbles = false, cancelable = false } = {}) {
+		return new CustomEvent(type, { detail, bubbles, cancelable });
+	}
+
+	/**
+	 * Creates an event dispatcher that can be used to dispatch [component events](https://svelte.dev/docs/svelte/legacy-on#Component-events).
+	 * Event dispatchers are functions that can take two arguments: `name` and `detail`.
+	 *
+	 * Component events created with `createEventDispatcher` create a
+	 * [CustomEvent](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent).
+	 * These events do not [bubble](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#Event_bubbling_and_capture).
+	 * The `detail` argument corresponds to the [CustomEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/detail)
+	 * property and can contain any type of data.
+	 *
+	 * The event dispatcher can be typed to narrow the allowed event names and the type of the `detail` argument:
+	 * ```ts
+	 * const dispatch = createEventDispatcher<{
+	 *  loaded: never; // does not take a detail argument
+	 *  change: string; // takes a detail argument of type string, which is required
+	 *  optional: number | null; // takes an optional detail argument of type number
+	 * }>();
+	 * ```
+	 *
+	 * @deprecated Use callback props and/or the `$host()` rune instead — see [migration guide](https://svelte.dev/docs/svelte/v5-migration-guide#Event-changes-Component-events)
+	 * @template {Record<string, any>} [EventMap = any]
+	 * @returns {EventDispatcher<EventMap>}
+	 */
+	function createEventDispatcher() {
+		const active_component_context = component_context;
+		if (active_component_context === null) {
+			lifecycle_outside_component('createEventDispatcher');
+		}
+
+		return (type, detail, options) => {
+			const events = /** @type {Record<string, Function | Function[]>} */ (
+				active_component_context.s.$$events
+			)?.[/** @type {any} */ (type)];
+
+			if (events) {
+				const callbacks = is_array(events) ? events.slice() : [events];
+				// TODO are there situations where events could be dispatched
+				// in a server (non-DOM) environment?
+				const event = create_custom_event(/** @type {string} */ (type), detail, options);
+				for (const fn of callbacks) {
+					fn.call(active_component_context.x, event);
+				}
+				return !event.defaultPrevented;
+			}
+
+			return true;
+		};
+	}
+
+	/**
+	 * Legacy-mode: Init callbacks object for onMount/beforeUpdate/afterUpdate
+	 * @param {ComponentContext} context
+	 */
+	function init_update_callbacks(context) {
+		var l = /** @type {ComponentContextLegacy} */ (context).l;
+		return (l.u ??= { a: [], b: [], m: [] });
+	}
+
+	// generated during release, do not modify
+
+	const PUBLIC_VERSION = '5';
+
+	if (typeof window !== 'undefined')
+		// @ts-ignore
+		(window.__svelte ||= { v: new Set() }).v.add(PUBLIC_VERSION);
+
+	enable_legacy_mode_flag();
+
+	mark_module_start();
+	VideoDashboard[FILENAME] = 'src/VideoDashboard.svelte';
+
+	var root_2$1 = add_locations(template(`<option></option>`), VideoDashboard[FILENAME], [[160, 12]]);
+
+	var root_1$2 = add_locations(template(`<div class="mb-4"><div class="flex justify-stretch items-center space-x-4 items-center"><button class="w-full px-4 py-2 bg-gray-300 rounded transition-colors duration-200 hover:bg-gray-400 text-gray-700"><span style="color: black;"> </span></button> <button class="px-4 py-2 bg-gray-300 rounded transition-colors duration-200 hover:bg-gray-400 text-gray-700"><span style="color: yellow;">⬅️</span></button> <select class="px-4 py-2 bg-gray-300 rounded transition-colors duration-200"></select> <button class="px-4 py-2 bg-gray-300 rounded transition-colors duration-200 hover:bg-gray-400 text-gray-700"><span style="color: yellow;">➡️</span></button> <button class="px-4 py-2 bg-gray-300 rounded transition-colors duration-200 hover:bg-gray-400 text-gray-700"><span style="color: yellow;"> </span></button></div></div>`), VideoDashboard[FILENAME], [
+		[
+			137,
+			4,
+			[
+				[
+					138,
+					6,
+					[
+						[140, 8, [[142, 10]]],
+						[145, 8, [[150, 10]]],
+						[152, 8],
+						[165, 8, [[170, 10]]],
+						[172, 8, [[176, 10]]]
+					]
+				]
+			]
+		]
+	]);
+
+	var root$2 = add_locations(template(`<div style="width: 100%; height: 88vh;"><!> <div class="video" style="width: 100%; height: 100%;"><div id="player" style="width: 100%; height: 100%;"></div></div></div>`), VideoDashboard[FILENAME], [
+		[
+			134,
+			0,
+			[[182, 2, [[183, 4]]]]
+		]
+	]);
+
+	function VideoDashboard($$anchor, $$props) {
+		check_target(new.target);
+		push($$props, false, VideoDashboard);
+
+		let videoId = prop($$props, 'videoId', 8);
+		let persons = prop($$props, 'persons', 24, () => []);
+		let pauseVideoTime = prop($$props, 'pauseVideoTime', 12, 1);
+		let currentPage = mutable_state();
+		let isPlaying = mutable_state(false);
+
+		const togglePlayPause = () => {
+			const iframe = document.querySelector('iframe');
+
+			if (iframe && iframe.contentWindow) {
+				if (get(isPlaying)) {
+					iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'pauseVideo' }), '*');
+					set(isPlaying, false);
+				} else {
+					const sequence = persons()[0].sequences[get(currentPage) - 1];
+
+					if (sequence) {
+						seekVideo(sequence.start, sequence.end);
+					}
+
+					set(isPlaying, true);
+				}
+			}
+		};
+
+		const initializePage = () => {
+			set(currentPage, 1);
+
+			if (persons().length > 0) {
+				goToPage(1, persons()[0].sequences);
+			}
+		};
+
+		const seekVideo = (start, end) => {
+			const iframe = document.querySelector('iframe');
+
+			if (iframe && iframe.contentWindow) {
+				iframe.contentWindow.postMessage(
+					JSON.stringify({
+						event: 'command',
+						func: 'seekTo',
+						args: [start, true]
+					}),
+					'*'
+				);
+
+				iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'playVideo' }), '*');
+				pauseVideoTime(end);
+				set(isPlaying, true);
+			} else {
+				console.log(...log_if_contains_state('log', 'Iframe not yet loaded'));
+			}
+		};
+
+		const goToPage = (page, sequences) => {
+			set(currentPage, page);
+
+			const sequence = sequences[page - 1];
+
+			if (sequence) {
+				// console.log(sequence)
+				seekVideo(sequence.start, sequence.end);
+			}
+		};
+
+		let stopPlayTimer;
+		let player = mutable_state();
+
+		// This code loads the IFrame Player API code asynchronously.
+		onMount(() => {
+			if (!window.YT) {
+				const tag = document.createElement("script");
+
+				tag.src = "https://www.youtube.com/iframe_api";
+
+				const firstScriptTag = document.getElementsByTagName("script")[0];
+
+				firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+			} else {
+				initializePlayer();
+			}
+
+			window.onYouTubeIframeAPIReady = initializePlayer;
+		});
+
+		function initializePlayer() {
+			if (get(player)) {
+				get(player).destroy();
+			}
+
+			set(player, new YT.Player("player", {
+				"width": "100%",
+				"videoId": videoId(),
+				"events": {
+					"onReady": onPlayerReady,
+					"onStateChange": onPlayerStateChange
+				}
+			}));
+		}
+
+		// The API will call this function when the video player is ready.
+		function onPlayerReady(event) {
+			event.target.playVideo();
+		}
+
+		// The API calls this function when the player's state changes.
+		function onPlayerStateChange(event) {
+			let time, rate, remainingTime;
+
+			clearTimeout(stopPlayTimer);
+
+			if (equals(event.data, YT.PlayerState.PLAYING)) {
+				time = get(player).getCurrentTime();
+
+				// Add .4 of a second to the time in case it's close to the current time
+				// (The API kept returning ~9.7 when hitting play after stopping at 10s)
+				if (time + .4 < pauseVideoTime()) {
+					rate = get(player).getPlaybackRate();
+					remainingTime = (pauseVideoTime() - time) / rate;
+					stopPlayTimer = setTimeout(pauseVideo, remainingTime * 1000);
+				}
+			}
+		}
+
+		function pauseVideo() {
+			get(player).pauseVideo();
+		}
+
+		legacy_pre_effect(() => (get(currentPage)), () => {
+			if (!get(currentPage)) {
+				initializePage();
+			}
+		});
+
+		legacy_pre_effect(
+			() => (
+				get(player),
+				deep_read_state(videoId())
+			),
+			() => {
+				if (get(player) && videoId()) {
+					get(player).cueVideoById(videoId());
+				}
+			}
+		);
+
+		legacy_pre_effect_reset();
+		init();
+
+		var div = root$2();
+		var node = child(div);
+
+		each(node, 1, persons, index, ($$anchor, person) => {
+			var div_1 = root_1$2();
+			var div_2 = child(div_1);
+			var button = child(div_2);
+			var span = child(button);
+			var text = child(span);
+
+			var button_1 = sibling(button, 2);
+			var select = sibling(button_1, 2);
+
+			each(select, 5, () => get(person).sequences, index, ($$anchor, _, index) => {
+				var option = root_2$1();
+
+				option.value = null == (option.__value = index + 1) ? '' : index + 1;
+				option.textContent = `Sequence ${index + 1 ?? ''}`;
+				template_effect(() => set_selected(option, strict_equals(get(currentPage), index + 1)));
+				append($$anchor, option);
+			});
+
+			var button_2 = sibling(select, 2);
+			var button_3 = sibling(button_2, 2);
+			var span_1 = child(button_3);
+			var text_1 = child(span_1);
+
+			template_effect(() => {
+				set_text(text, get(person).name);
+				button_1.disabled = strict_equals(get(currentPage), 1);
+				button_2.disabled = strict_equals(get(currentPage), get(person).sequences.length);
+				set_text(text_1, get(isPlaying) ? '⏸️' : '▶️');
+			});
+
+			event('click', button_1, () => goToPage(Math.max(get(currentPage) - 1, 1), get(person).sequences));
+
+			event('change', select, (event) => {
+				const selectedPage = parseInt(event.target.value);
+
+				goToPage(selectedPage, get(person).sequences);
+			});
+
+			event('click', button_2, () => goToPage(Math.min(get(currentPage) + 1, get(person).sequences.length), get(person).sequences));
+			event('click', button_3, togglePlayPause);
+			append($$anchor, div_1);
+		});
+		append($$anchor, div);
+		return pop({ ...legacy_api() });
+	}
+
+	mark_module_end(VideoDashboard);
+
+	mark_module_start();
+	VideoList[FILENAME] = 'src/VideoList.svelte';
+
+	var root_1$1 = add_locations(template(`<div class="video-card svelte-dh3ava"><h3> </h3> <p> </p></div>`), VideoList[FILENAME], [[19, 4, [[20, 6], [21, 6]]]]);
+	var root$1 = add_locations(template(`<div class="video-list svelte-dh3ava"></div>`), VideoList[FILENAME], [[17, 0]]);
+
+	function VideoList($$anchor, $$props) {
+		check_target(new.target);
+		push($$props, false, VideoList);
+
+		const videos = [
+			{
+				id: 'Q_FNGS4liw0',
+				title: 'Video 1',
+				description: 'Description for Video 1'
+			},
+			{
+				id: 'A_BCD3efgh1',
+				title: 'Video 2',
+				description: 'Description for Video 2'
+			} // Add more videos as needed
+		];
+
+		const dispatch = createEventDispatcher();
+
+		function selectVideo(video) {
+			dispatch('select', video);
+		}
+
+		init();
+
+		var div = root$1();
+
+		each(div, 5, () => videos, index, ($$anchor, video) => {
+			var div_1 = root_1$1();
+			var h3 = child(div_1);
+			var text = child(h3);
+
+			var p = sibling(h3, 2);
+			var text_1 = child(p);
+
+			template_effect(() => {
+				set_text(text, get(video).title);
+				set_text(text_1, get(video).description);
+			});
+
+			event('click', div_1, () => selectVideo(get(video)));
+			append($$anchor, div_1);
+		});
+		append($$anchor, div);
+		return pop({ ...legacy_api() });
+	}
+
+	mark_module_end(VideoList);
+
+	var shifts = [
+		{
+			name: "01-goalie",
+			shifts: [
+				{
+					start: 266,
+					end: 294
+				},
+				{
+					start: 323,
+					end: 333
+				},
+				{
+					start: 376,
+					end: 392
+				},
+				{
+					start: 466,
+					end: 476
+				},
+				{
+					start: 799,
+					end: 822
+				},
+				{
+					start: 865,
+					end: 954
+				},
+				{
+					start: 985,
+					end: 994
+				},
+				{
+					start: 1063,
+					end: 1092
+				},
+				{
+					start: 1212,
+					end: 1223
+				},
+				{
+					start: 1532,
+					end: 1595
+				},
+				{
+					start: 2109,
+					end: 2185
+				},
+				{
+					start: 2208,
+					end: 2255
+				},
+				{
+					start: 2392,
+					end: 2409
+				},
+				{
+					start: 2640,
+					end: 2672
+				},
+				{
+					start: 3191,
+					end: 3206
+				},
+				{
+					start: 3302,
+					end: 3309
+				},
+				{
+					start: 3383,
+					end: 3451
+				},
+				{
+					start: 3477,
+					end: 3613
+				},
+				{
+					start: 3718,
+					end: 3797
+				},
+				{
+					start: 3900,
+					end: 3958
+				},
+				{
+					start: 3994,
+					end: 4009
+				},
+				{
+					start: 4052,
+					end: 4070
+				}
+			]
+		},
+		{
+			name: "02-lavallee",
+			shifts: [
+				{
+					start: 45,
+					end: 118
+				},
+				{
+					start: 287,
+					end: 336
+				},
+				{
+					start: 514,
+					end: 586
+				},
+				{
+					start: 794,
+					end: 839
+				},
+				{
+					start: 1042,
+					end: 1096
+				},
+				{
+					start: 1207,
+					end: 1249
+				},
+				{
+					start: 1430,
+					end: 1495
+				},
+				{
+					start: 1708,
+					end: 1790
+				},
+				{
+					start: 1930,
+					end: 2014
+				},
+				{
+					start: 2150,
+					end: 2229
+				},
+				{
+					start: 2276,
+					end: 2330
+				},
+				{
+					start: 2432,
+					end: 2482
+				},
+				{
+					start: 2787,
+					end: 2844
+				},
+				{
+					start: 3031,
+					end: 3123
+				},
+				{
+					start: 3316,
+					end: 3422
+				},
+				{
+					start: 3737,
+					end: 3805
+				},
+				{
+					start: 4019,
+					end: 4067
+				}
+			]
+		},
+		{
+			name: "03-deraspe",
+			shifts: [
+				{
+					start: 0,
+					end: 40
+				},
+				{
+					start: 175,
+					end: 282
+				},
+				{
+					start: 416,
+					end: 529
+				},
+				{
+					start: 699,
+					end: 790
+				},
+				{
+					start: 890,
+					end: 1019
+				},
+				{
+					start: 1254,
+					end: 1370
+				},
+				{
+					start: 1501,
+					end: 1615
+				},
+				{
+					start: 1797,
+					end: 1888
+				},
+				{
+					start: 2035,
+					end: 2097
+				},
+				{
+					start: 2223,
+					end: 2285
+				},
+				{
+					start: 2339,
+					end: 2428
+				},
+				{
+					start: 2593,
+					end: 2665
+				},
+				{
+					start: 2718,
+					end: 2792
+				},
+				{
+					start: 2984,
+					end: 3033
+				},
+				{
+					start: 3103,
+					end: 3221
+				},
+				{
+					start: 3527,
+					end: 3614
+				},
+				{
+					start: 3687,
+					end: 3742
+				},
+				{
+					start: 3922,
+					end: 4027
+				},
+				{
+					start: 4062,
+					end: 4069
+				}
+			]
+		},
+		{
+			name: "04-beland",
+			shifts: [
+				{
+					start: 278,
+					end: 417
+				},
+				{
+					start: 752,
+					end: 846
+				},
+				{
+					start: 1014,
+					end: 1124
+				},
+				{
+					start: 1250,
+					end: 1419
+				},
+				{
+					start: 1517,
+					end: 1531
+				},
+				{
+					start: 1605,
+					end: 1768
+				},
+				{
+					start: 1928,
+					end: 2017
+				},
+				{
+					start: 2217,
+					end: 2284
+				},
+				{
+					start: 2321,
+					end: 2334
+				},
+				{
+					start: 2493,
+					end: 2686
+				},
+				{
+					start: 2726,
+					end: 2739
+				},
+				{
+					start: 2893,
+					end: 3009
+				},
+				{
+					start: 3201,
+					end: 3330
+				},
+				{
+					start: 3529,
+					end: 3746
+				},
+				{
+					start: 3856,
+					end: 4070
+				}
+			]
+		},
+		{
+			name: "05-duchesne",
+			shifts: [
+				{
+					start: 82,
+					end: 180
+				},
+				{
+					start: 341,
+					end: 426
+				},
+				{
+					start: 591,
+					end: 634
+				},
+				{
+					start: 834,
+					end: 930
+				},
+				{
+					start: 1124,
+					end: 1274
+				},
+				{
+					start: 1513,
+					end: 1600
+				},
+				{
+					start: 1872,
+					end: 1911
+				},
+				{
+					start: 2082,
+					end: 2154
+				},
+				{
+					start: 2380,
+					end: 2506
+				},
+				{
+					start: 2792,
+					end: 2837
+				},
+				{
+					start: 2864,
+					end: 2908
+				},
+				{
+					start: 3110,
+					end: 3228
+				},
+				{
+					start: 3492,
+					end: 3573
+				},
+				{
+					start: 3806,
+					end: 3898
+				}
+			]
+		},
+		{
+			name: "06-gauthier",
+			shifts: [
+				{
+					start: 341,
+					end: 438
+				},
+				{
+					start: 596,
+					end: 736
+				},
+				{
+					start: 826,
+					end: 955
+				},
+				{
+					start: 1102,
+					end: 1203
+				},
+				{
+					start: 1605,
+					end: 1650
+				},
+				{
+					start: 1675,
+					end: 1687
+				},
+				{
+					start: 1874,
+					end: 1930
+				},
+				{
+					start: 2107,
+					end: 2159
+				},
+				{
+					start: 2491,
+					end: 2601
+				},
+				{
+					start: 2844,
+					end: 2964
+				},
+				{
+					start: 3031,
+					end: 3123
+				},
+				{
+					start: 3226,
+					end: 3309
+				},
+				{
+					start: 3623,
+					end: 3691
+				},
+				{
+					start: 3774,
+					end: 3911
+				}
+			]
+		},
+		{
+			name: "07-dion",
+			shifts: [
+				{
+					start: 0,
+					end: 36
+				},
+				{
+					start: 185,
+					end: 288
+				},
+				{
+					start: 417,
+					end: 523
+				},
+				{
+					start: 642,
+					end: 749
+				},
+				{
+					start: 928,
+					end: 1031
+				},
+				{
+					start: 1421,
+					end: 1506
+				},
+				{
+					start: 1750,
+					end: 1926
+				},
+				{
+					start: 2015,
+					end: 2115
+				},
+				{
+					start: 2289,
+					end: 2397
+				},
+				{
+					start: 2703,
+					end: 2779
+				},
+				{
+					start: 2975,
+					end: 3123
+				},
+				{
+					start: 3325,
+					end: 3426
+				},
+				{
+					start: 3696,
+					end: 3809
+				}
+			]
+		},
+		{
+			name: "08-drolet",
+			shifts: [
+				{
+					start: 166,
+					end: 200
+				},
+				{
+					start: 340,
+					end: 415
+				},
+				{
+					start: 599,
+					end: 715
+				},
+				{
+					start: 848,
+					end: 899
+				},
+				{
+					start: 1110,
+					end: 1217
+				},
+				{
+					start: 1341,
+					end: 1417
+				},
+				{
+					start: 1607,
+					end: 1686
+				},
+				{
+					start: 1879,
+					end: 1929
+				},
+				{
+					start: 2103,
+					end: 2155
+				},
+				{
+					start: 2282,
+					end: 2321
+				},
+				{
+					start: 2488,
+					end: 2601
+				},
+				{
+					start: 2862,
+					end: 2972
+				},
+				{
+					start: 3113,
+					end: 3220
+				},
+				{
+					start: 3493,
+					end: 3515
+				},
+				{
+					start: 3682,
+					end: 3697
+				},
+				{
+					start: 3717,
+					end: 3736
+				},
+				{
+					start: 3812,
+					end: 3854
+				},
+				{
+					start: 3908,
+					end: 3922
+				}
+			]
+		},
+		{
+			name: "10-parent",
+			shifts: [
+				{
+					start: 1,
+					end: 38
+				},
+				{
+					start: 166,
+					end: 284
+				},
+				{
+					start: 440,
+					end: 524
+				},
+				{
+					start: 628,
+					end: 763
+				},
+				{
+					start: 916,
+					end: 1044
+				},
+				{
+					start: 1422,
+					end: 1506
+				},
+				{
+					start: 1775,
+					end: 1864
+				},
+				{
+					start: 2016,
+					end: 2128
+				},
+				{
+					start: 2289,
+					end: 2386
+				},
+				{
+					start: 2975,
+					end: 3130
+				},
+				{
+					start: 3327,
+					end: 3422
+				},
+				{
+					start: 3681,
+					end: 3806
+				},
+				{
+					start: 4020,
+					end: 4065
+				}
+			]
+		},
+		{
+			name: "11-chaput",
+			shifts: [
+				{
+					start: 29,
+					end: 138
+				},
+				{
+					start: 303,
+					end: 333
+				},
+				{
+					start: 527,
+					end: 589
+				},
+				{
+					start: 795,
+					end: 857
+				},
+				{
+					start: 1028,
+					end: 1094
+				},
+				{
+					start: 1207,
+					end: 1224
+				},
+				{
+					start: 1244,
+					end: 1267
+				},
+				{
+					start: 1710,
+					end: 1775
+				},
+				{
+					start: 1930,
+					end: 2004
+				},
+				{
+					start: 2340,
+					end: 2421
+				},
+				{
+					start: 2782,
+					end: 2843
+				},
+				{
+					start: 3316,
+					end: 3422
+				},
+				{
+					start: 3524,
+					end: 3614
+				},
+				{
+					start: 3735,
+					end: 3805
+				},
+				{
+					start: 4010,
+					end: 4062
+				}
+			]
+		},
+		{
+			name: "12-pelletier",
+			shifts: [
+				{
+					start: 188,
+					end: 306
+				},
+				{
+					start: 440,
+					end: 531
+				},
+				{
+					start: 653,
+					end: 764
+				},
+				{
+					start: 911,
+					end: 1048
+				},
+				{
+					start: 1743,
+					end: 1873
+				},
+				{
+					start: 2020,
+					end: 2099
+				},
+				{
+					start: 2224,
+					end: 2276
+				},
+				{
+					start: 2717,
+					end: 2784
+				},
+				{
+					start: 2973,
+					end: 3123
+				},
+				{
+					start: 3326,
+					end: 3417
+				},
+				{
+					start: 3679,
+					end: 3807
+				},
+				{
+					start: 4011,
+					end: 4066
+				}
+			]
+		},
+		{
+			name: "13-trudelle",
+			shifts: [
+				{
+					start: 0,
+					end: 37
+				},
+				{
+					start: 208,
+					end: 298
+				},
+				{
+					start: 420,
+					end: 502
+				},
+				{
+					start: 720,
+					end: 787
+				},
+				{
+					start: 1267,
+					end: 1337
+				},
+				{
+					start: 1510,
+					end: 1596
+				},
+				{
+					start: 1812,
+					end: 1875
+				},
+				{
+					start: 2018,
+					end: 2098
+				},
+				{
+					start: 2222,
+					end: 2277
+				},
+				{
+					start: 2430,
+					end: 2483
+				},
+				{
+					start: 2613,
+					end: 2673
+				},
+				{
+					start: 2722,
+					end: 2778
+				},
+				{
+					start: 2984,
+					end: 3027
+				},
+				{
+					start: 3225,
+					end: 3309
+				},
+				{
+					start: 3624,
+					end: 3684
+				},
+				{
+					start: 3919,
+					end: 4010
+				},
+				{
+					start: 4064,
+					end: 4070
+				}
+			]
+		},
+		{
+			name: "14-bergeron",
+			shifts: [
+				{
+					start: 41,
+					end: 91
+				},
+				{
+					start: 291,
+					end: 346
+				},
+				{
+					start: 529,
+					end: 589
+				},
+				{
+					start: 746,
+					end: 854
+				},
+				{
+					start: 1023,
+					end: 1126
+				},
+				{
+					start: 1268,
+					end: 1430
+				},
+				{
+					start: 1607,
+					end: 1764
+				},
+				{
+					start: 1924,
+					end: 2021
+				},
+				{
+					start: 2155,
+					end: 2250
+				},
+				{
+					start: 2507,
+					end: 2660
+				},
+				{
+					start: 2894,
+					end: 2980
+				},
+				{
+					start: 3219,
+					end: 3329
+				},
+				{
+					start: 3517,
+					end: 3717
+				},
+				{
+					start: 3905,
+					end: 4011
+				},
+				{
+					start: 4061,
+					end: 4067
+				}
+			]
+		},
+		{
+			name: "15-rochette",
+			shifts: [
+				{
+					start: 38,
+					end: 87
+				},
+				{
+					start: 283,
+					end: 345
+				},
+				{
+					start: 526,
+					end: 590
+				},
+				{
+					start: 755,
+					end: 845
+				},
+				{
+					start: 998,
+					end: 1126
+				},
+				{
+					start: 1266,
+					end: 1416
+				},
+				{
+					start: 1605,
+					end: 1774
+				},
+				{
+					start: 1926,
+					end: 2018
+				},
+				{
+					start: 2135,
+					end: 2241
+				},
+				{
+					start: 2484,
+					end: 2664
+				},
+				{
+					start: 2893,
+					end: 2979
+				},
+				{
+					start: 3222,
+					end: 3342
+				},
+				{
+					start: 3487,
+					end: 3551
+				},
+				{
+					start: 3615,
+					end: 3686
+				},
+				{
+					start: 3907,
+					end: 4009
+				}
+			]
+		},
+		{
+			name: "16-dorval",
+			shifts: [
+				{
+					start: 81,
+					end: 190
+				},
+				{
+					start: 343,
+					end: 432
+				},
+				{
+					start: 555,
+					end: 646
+				},
+				{
+					start: 837,
+					end: 926
+				},
+				{
+					start: 1121,
+					end: 1283
+				},
+				{
+					start: 1504,
+					end: 1608
+				},
+				{
+					start: 1869,
+					end: 1934
+				},
+				{
+					start: 2101,
+					end: 2159
+				},
+				{
+					start: 2385,
+					end: 2507
+				},
+				{
+					start: 2792,
+					end: 2904
+				},
+				{
+					start: 3127,
+					end: 3227
+				},
+				{
+					start: 3427,
+					end: 3487
+				},
+				{
+					start: 3806,
+					end: 3899
+				},
+				{
+					start: 4062,
+					end: 4069
+				}
+			]
+		},
+		{
+			name: "17-gauthier",
+			shifts: [
+				{
+					start: 82,
+					end: 185
+				},
+				{
+					start: 342,
+					end: 427
+				},
+				{
+					start: 594,
+					end: 648
+				},
+				{
+					start: 825,
+					end: 928
+				},
+				{
+					start: 1128,
+					end: 1265
+				},
+				{
+					start: 1485,
+					end: 1616
+				},
+				{
+					start: 1863,
+					end: 1929
+				},
+				{
+					start: 2097,
+					end: 2158
+				},
+				{
+					start: 2384,
+					end: 2493
+				},
+				{
+					start: 2790,
+					end: 2917
+				},
+				{
+					start: 3109,
+					end: 3229
+				},
+				{
+					start: 3418,
+					end: 3486
+				},
+				{
+					start: 3804,
+					end: 3900
+				},
+				{
+					start: 4062,
+					end: 4068
+				}
+			]
+		}
+	];
+
+	mark_module_start();
+	App[FILENAME] = 'src/App.svelte';
+
+	var root_2 = add_locations(template(`<button><img width="auto" height="40" style="margin-right: 10px;"> <span> </span></button>`), App[FILENAME], [[45, 8, [[49, 10], [50, 10]]]]);
+
+	var root_1 = add_locations(template(`<div style="display: flex; align-items: flex-start; width: 100%;"><button style="margin-right: 10px;">☰</button> <div><button style="margin: 10px;">Back to Video List</button> <!></div> <!></div>`), App[FILENAME], [
+		[
+			36,
+			2,
+			[[37, 4], [40, 4, [[41, 6]]]]
+		]
+	]);
+
+	var root = add_locations(template(`<!> <main style="margin-top: 20px;"></main>`, 1), App[FILENAME], [[63, 0]]);
+
+	function App($$anchor, $$props) {
+		check_target(new.target);
+		push($$props, false, App);
+
+		let selectedVideo = mutable_state(null);
+
+		const players = [
+			'01-goalie',
+			'02-lavallee',
+			'03-deraspe',
+			'04-beland',
+			'05-duchesne',
+			'06-gauthier',
+			'07-dion',
+			'08-drolet',
+			'10-parent',
+			'11-chaput',
+			'12-pelletier',
+			'13-trudelle',
+			'14-bergeron',
+			'15-rochette',
+			'16-dorval',
+			'17-gauthier'
+		];
+
+		// console.log(seq)
+		let selectedPlayer = mutable_state(null);
+		let isCollapsed = mutable_state(false);
+		let persons = [];
+
+		players.forEach((e, i) => {
+			persons.push({
+				name: shifts[i]['name'],
+				sequences: shifts[i]['shifts'],
+				image: `./images/players/${e}.webp`
+			});
+		});
+
+		console.log(...log_if_contains_state('log', persons)); // const persons = [
+
+		legacy_pre_effect(() => (get(selectedPlayer)), () => {
+			if (persons.length > 0 && !get(selectedPlayer)) {
+				set(selectedPlayer, persons[0]);
+			}
+		});
+
+		legacy_pre_effect_reset();
+		init();
+
+		var fragment = root();
+		var node = first_child(fragment);
+
+		{
+			var consequent_1 = ($$anchor) => {
+				var div = root_1();
+				var button = child(div);
+				var div_1 = sibling(button, 2);
+				var button_1 = child(div_1);
+				var node_1 = sibling(button_1, 2);
+
+				each(node_1, 1, () => persons, index, ($$anchor, person) => {
+					var button_2 = root_2();
+					var img = child(button_2);
+					var span = sibling(img, 2);
+					var text = child(span);
+
+					template_effect(() => {
+						set_attribute(button_2, 'style', `display: flex; align-items: center; padding: 10px; cursor: pointer; background-color: ${(strict_equals(get(selectedPlayer), get(person)) ? '#f0f0f0' : 'transparent') ?? ''};`);
+						set_attribute(img, 'src', get(person).image);
+						set_attribute(img, 'alt', get(person).name);
+						set_text(text, get(person).name);
+					});
+
+					event('click', button_2, () => set(selectedPlayer, get(person)));
+					append($$anchor, button_2);
+				});
+
+				var node_2 = sibling(div_1, 2);
+
+				{
+					var consequent = ($$anchor) => {
+						const expression = derived_safe_equal(() => [get(selectedPlayer)]);
+
+						VideoDashboard($$anchor, {
+							get videoId() {
+								return get(selectedVideo).id;
+							},
+							get persons() {
+								return get(expression);
+							}
+						});
+					};
+
+					if_block(node_2, ($$render) => {
+						if (get(selectedPlayer)) $$render(consequent);
+					});
+				}
+				template_effect(() => set_attribute(div_1, 'style', `width: 250px; overflow-y: auto; max-height: 600px; border-right: 1px solid #ccc; display: ${(get(isCollapsed) ? 'none' : 'block') ?? ''};`));
+				event('click', button, () => set(isCollapsed, !get(isCollapsed)));
+				event('click', button_1, () => set(selectedVideo, null));
+				append($$anchor, div);
+			};
+
+			var alternate = ($$anchor) => {
+				VideoList($$anchor, {
+					$$events: {
+						select: (event) => set(selectedVideo, event.detail)
+					}
+				});
+			};
+
+			if_block(node, ($$render) => {
+				if (get(selectedVideo)) $$render(consequent_1); else $$render(alternate, false);
+			});
+		}
+		append($$anchor, fragment);
+		return pop({ ...legacy_api() });
+	}
+
+	mark_module_end(App);
+
+	const app = mount(App, { target: document.body });
+
+	return app;
+
+})();
 //# sourceMappingURL=bundle.js.map
