@@ -34,7 +34,7 @@ $: if (persons.length > 0 && !selectedPlayer) {
     </button>
     <div style="width: 250px; overflow-y: auto; height: 100vh; border-right: 1px solid #ccc; display: {isCollapsed ? 'none' : 'block'};">
       <button on:click={() => selectedVideo = null} style="margin: 10px;">
-        Back to Video List
+        Back to Games
       </button>
       {#each persons as person}
         <button
