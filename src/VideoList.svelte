@@ -1,16 +1,13 @@
 <script>
-  import { createEventDispatcher } from 'svelte';
-
   const videos = [
     { id: 'Q_FNGS4liw0', title: 'Video 1', description: 'Description for Video 1' },
     { id: 'A_BCD3efgh1', title: 'Video 2', description: 'Description for Video 2' },
     // Add more videos as needed
   ];
 
-  const dispatch = createEventDispatcher();
-
   function selectVideo(video) {
-    dispatch('select', video);
+    const event = new CustomEvent('select', { detail: video });
+    dispatchEvent(event);
   }
 </script>
 
