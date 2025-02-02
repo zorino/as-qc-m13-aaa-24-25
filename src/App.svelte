@@ -39,7 +39,10 @@ $: if (persons.length > 0 && !selectedPlayer) {
       {#each persons as person}
         <button
           on:click={() => selectedPlayer = person}
-          style="display: flex; align-items: center; padding: 10px; cursor: pointer; background-color: {selectedPlayer === person ? '#f0f0f0' : 'transparent'}; width: 100%;"
+          style="display: flex; align-items: center; padding: 10px; cursor: pointer; background-color: {selectedPlayer === person ? '#ffffe0' : 'transparent'}; width: 100%;"
+          on:mousedown={() => event.currentTarget.style.backgroundColor = '#ffff00'}
+          on:mouseup={() => event.currentTarget.style.backgroundColor = selectedPlayer === person ? '#ffffe0' : 'transparent'}
+          on:mouseleave={() => event.currentTarget.style.backgroundColor = selectedPlayer === person ? '#ffffe0' : 'transparent'}
         >
           <img src={person.image} alt={person.name} width="auto" height="40" style="margin-right: 10px;" />
           <span>{person.name}</span>
