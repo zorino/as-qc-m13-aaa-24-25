@@ -32,7 +32,7 @@ $: if (persons.length > 0 && !selectedPlayer) {
     <button on:click={() => isCollapsed = !isCollapsed} style="margin-right: 10px;">
       ☰
     </button>
-    <div style="width: 250px; overflow-y: auto; max-height: 600px; border-right: 1px solid #ccc; display: {isCollapsed ? 'none' : 'block'};">
+    <div style="width: 250px; overflow-y: auto; height: 100vh; border-right: 1px solid #ccc; display: {isCollapsed ? 'none' : 'block'};">
       <button on:click={() => selectedVideo = null} style="margin: 10px;">
         Back to Video List
       </button>
