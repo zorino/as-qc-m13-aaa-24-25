@@ -1,5 +1,5 @@
 <script>
-  import videos from './data/games.json';
+  import videos from '../data/games.json';
 
 
   function selectVideo(video) {
