@@ -1,11 +1,6 @@
 <script>
-  export let onSelectVideo;
+  import videos from './data/games.json';
 
-  const videos = [
-    { id: 'Q_FNGS4liw0', title: 'Video 1', description: 'Description for Video 1' },
-    { id: 'A_BCD3efgh1', title: 'Video 2', description: 'Description for Video 2' },
-    // Add more videos as needed
-  ];
 
   function selectVideo(video) {
     onSelectVideo(video);
