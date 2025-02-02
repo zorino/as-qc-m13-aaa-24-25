@@ -24,12 +24,7 @@ $: if (persons.length > 0 && !selectedPlayer) {
   selectedPlayer = persons[0];
 }
 
-console.log(persons)
-// const persons = [
-//   { name: '01-lavallee', sequences: seq },
-//   { name: 'Person 2', sequences: [{ label: 'Opening', start: 60 }, { label: 'Interview', start: 120 }] },
-// ];
-//
+
 </script>
 
 {#if selectedVideo}
