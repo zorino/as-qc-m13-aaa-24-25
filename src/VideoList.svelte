@@ -1,6 +1,8 @@
 <script>
   import videos from './data/games.json';
 
+  export let onSelectVideo;
+
 
   function selectVideo(video) {
     onSelectVideo(video);
