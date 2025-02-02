@@ -54,7 +54,7 @@ $: if (persons.length > 0 && !selectedPlayer) {
     {/if}
   </div>
 {:else}
-  <VideoList on:select={(event) => selectedVideo = event.detail} />
+  <VideoList onSelectVideo={(video) => selectedVideo = video} />
 {/if}
 
 <main style="margin-top: 20px;">

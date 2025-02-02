@@ -1,4 +1,6 @@
 <script>
+  export let onSelectVideo;
+
   const videos = [
     { id: 'Q_FNGS4liw0', title: 'Video 1', description: 'Description for Video 1' },
     { id: 'A_BCD3efgh1', title: 'Video 2', description: 'Description for Video 2' },
@@ -6,8 +8,7 @@
   ];
 
   function selectVideo(video) {
-    const event = new CustomEvent('select', { detail: video });
-    dispatchEvent(event);
+    onSelectVideo(video);
   }
 </script>
 
