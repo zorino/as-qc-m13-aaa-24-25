@@ -39,7 +39,7 @@ $: if (persons.length > 0 && !selectedPlayer) {
       {#each persons as person}
         <button
           on:click={() => selectedPlayer = person}
-          style="display: flex; align-items: center; padding: 10px; cursor: pointer; background-color: {selectedPlayer === person ? '#f0f0f0' : 'transparent'};"
+          style="display: flex; align-items: center; padding: 10px; cursor: pointer; background-color: {selectedPlayer === person ? '#f0f0f0' : 'transparent'}; width: 100%;"
         >
           <img src={person.image} alt={person.name} width="auto" height="40" style="margin-right: 10px;" />
           <span>{person.name}</span>
