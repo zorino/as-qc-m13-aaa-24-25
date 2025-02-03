@@ -11,7 +11,7 @@ let isCollapsed = false;
 let persons = [];
 
 $: if (selectedVideo) {
-  fetch(`./data/${selectedVideo.id}_shifts.json`)
+  fetch(`/games/${selectedVideo.id}.json`)
     .then(response => response.json())
     .then(data => {
       shifts = data;
