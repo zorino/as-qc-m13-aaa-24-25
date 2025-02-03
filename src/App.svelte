@@ -6,11 +6,13 @@ let selectedVideo = null;
 const players = ['01-goalie','02-lavallee','03-deraspe','04-beland','05-duchesne','06-gauthier','07-dion','08-drolet','10-parent','11-chaput','12-pelletier','13-trudelle','14-bergeron','15-rochette','16-dorval','17-gauthier']
 
 let selectedPlayer = null;
+let previousVideo = null;
 let shifts = [];
 let isCollapsed = false;
 let persons = [];
 
-$: if (selectedVideo) {
+$: if (selectedVideo && selectedVideo !== previousVideo) {
+  previousVideo = selectedVideo;
   fetch(`/games/${selectedVideo.id}.json`)
     .then(response => response.json())
     .then(data => {
