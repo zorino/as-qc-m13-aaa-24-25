@@ -3,10 +3,12 @@ import VideoDashboard from './VideoDashboard.svelte';
 import VideoList from './VideoList.svelte';
 
 let selectedVideo = null;
-const players = ['01-goalie','02-lavallee','03-deraspe','04-beland','05-duchesne','06-gauthier','07-dion','08-drolet','10-parent','11-chaput','12-pelletier','13-trudelle','14-bergeron','15-rochette','16-dorval','17-gauthier']
+ const players = ['01-goalie','02-lavallee','03-deraspe','04-beland','05-duchesne','06-gauthier','07-dion','08-drolet','10-parent','11-chaput','12-pelletier','13-trudelle','14-bergeron','15-rochette','16-dorval','17-gauthier']
 
-let selectedPlayer = null;
-let previousVideo = null;
+ const player_names = ['#1/#30 Goalie', '#2 Lavallée', '#3 Déraspe', '#4 Béland', '#5 Duchesne', '#6 Gauthier', '#7 Dion', '#8 Drolet', '#10 Parent', '#11 Chaput', '#12 Pelletier', '#13 Trudelle', '#14 Bergeron', '#15 Rochette', '#16 Dorval', '#17 Gauthier']
+
+ let selectedPlayer = null;
+ let previousVideo = null;
 let shifts = [];
 let isCollapsed = false;
 let persons = [];
@@ -14,12 +16,12 @@ let persons = [];
 $: if (selectedVideo && selectedVideo !== previousVideo) {
   previousVideo = selectedVideo;
   selectedPlayer = null;
-  fetch(`/games/${selectedVideo.id}.json`)
+  fetch(`./games/${selectedVideo.id}.json`)
     .then(response => response.json())
     .then(data => {
       shifts = data;
       persons = players.map((e, i) => ({
-        name: shifts[i]['name'],
+        name: player_names[i],
         sequences: shifts[i]['shifts'],
         image: `./images/players/${e}.webp`
       }));
