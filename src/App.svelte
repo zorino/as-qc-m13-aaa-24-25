@@ -5,12 +5,7 @@ import VideoList from './VideoList.svelte';
 let selectedVideo = null;
 const players = ['01-goalie','02-lavallee','03-deraspe','04-beland','05-duchesne','06-gauthier','07-dion','08-drolet','10-parent','11-chaput','12-pelletier','13-trudelle','14-bergeron','15-rochette','16-dorval','17-gauthier']
 
-import gameData from './data/game.json';
-
-let shifts;
-import(gameData.shifts).then(module => {
-  shifts = module.default;
-});
+import shifts from './data/player_shifts';
 
 let selectedPlayer = null;
 let isCollapsed = false;

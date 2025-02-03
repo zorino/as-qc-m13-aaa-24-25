@@ -9,11 +9,14 @@
   }
 </script>
 
+<h1>As de Qc saison 2024/25</h1>
+<!-- <h2>games annotées</h2> -->
 <div class="video-list">
   {#each videos as video}
     <div class="video-card" on:click={() => selectVideo(video)}>
       <h3>{video.title}</h3>
-      <p>{video.description}</p>
+      <p>{video.date}</p>
+      <p>{video.arena}</p>
     </div>
   {/each}
 </div>
