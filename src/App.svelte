@@ -13,6 +13,7 @@ let persons = [];
 
 $: if (selectedVideo && selectedVideo !== previousVideo) {
   previousVideo = selectedVideo;
+  selectedPlayer = null;
   fetch(`/games/${selectedVideo.id}.json`)
     .then(response => response.json())
     .then(data => {
