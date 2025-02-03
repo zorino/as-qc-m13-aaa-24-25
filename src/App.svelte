@@ -16,8 +16,8 @@ $: if (persons.length > 0 && !selectedPlayer) {
   selectedPlayer = persons[0];
 }
 
-$: if (selectedVideo) {
-  shifts = fetch("./data/{selectedPlayer.shifts}");
+$: if (selectedVideo && selectedPlayer) {
+  shifts = fetch(`./data/${selectedPlayer.shifts}`);
 }
 
 players.forEach((e, i) => {
