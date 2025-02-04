@@ -1,15 +1,18 @@
 <script>
-  import videos from './data/games.json';
+import videos from './data/games.json';
 
-  export let onSelectVideo;
+export let onSelectVideo;
 
 
-  function selectVideo(video) {
-    onSelectVideo(video);
-  }
+function selectVideo(video) {
+  onSelectVideo(video);
+}
 </script>
 
-<h1 class="centered">As de Qc saison 2024/25</h1>
+
+<h1 class="centered"><img src="./images/teams/as.png"/></h1>
+<h1 class="centered">M13 AAA</h1>
+<h2 class="centered">saison 2024-2025</h2>
 <!-- <h2>games annotées</h2> -->
 <div class="video-list centered">
   {#each videos as video}
@@ -26,9 +29,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: line;
   }
-  
   .video-list {
     display: flex;
     flex-wrap: wrap;
@@ -40,7 +42,7 @@
     border: 1px solid #ccc;
     padding: 10px;
     cursor: pointer;
-    flex: 1 1 calc(33.33% - 20px);
+    /* flex: 1 1 calc(33.33% - 20px); */
     box-sizing: border-box;
   }
 </style>

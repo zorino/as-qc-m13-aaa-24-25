@@ -6302,15 +6302,20 @@ ${properties}`
 	mark_module_start();
 	VideoList[FILENAME] = 'src/VideoList.svelte';
 
-	var root_1$1 = add_locations(template(`<div class="video-card svelte-dh3ava"><h3> </h3> <p> </p> <p> </p></div>`), VideoList[FILENAME], [
+	var root_1$1 = add_locations(template(`<div class="video-card svelte-1d3u622"><h3> </h3> <p> </p> <p> </p></div>`), VideoList[FILENAME], [
 		[
-			16,
+			19,
 			4,
-			[[17, 6], [18, 6], [19, 6]]
+			[[20, 6], [21, 6], [22, 6]]
 		]
 	]);
 
-	var root$1 = add_locations(template(`<h1>As de Qc saison 2024/25</h1> <div class="video-list svelte-dh3ava"></div>`, 1), VideoList[FILENAME], [[12, 0], [14, 0]]);
+	var root$1 = add_locations(template(`<h1 class="centered svelte-1d3u622"><img src="./images/teams/as.png"></h1> <h1 class="centered svelte-1d3u622">M13 AAA</h1> <h2 class="centered svelte-1d3u622">saison 2024-2025</h2> <div class="video-list centered svelte-1d3u622"></div>`, 1), VideoList[FILENAME], [
+		[13, 0, [[13, 21]]],
+		[14, 0],
+		[15, 0],
+		[17, 0]
+	]);
 
 	function VideoList($$anchor, $$props) {
 		check_target(new.target);
@@ -6325,7 +6330,7 @@ ${properties}`
 		init();
 
 		var fragment = root$1();
-		var div = sibling(first_child(fragment), 2);
+		var div = sibling(first_child(fragment), 6);
 
 		each(div, 5, () => videos, index, ($$anchor, video) => {
 			var div_1 = root_1$1();

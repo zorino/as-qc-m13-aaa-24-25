@@ -1,13 +1,22 @@
 
-  .video-list.svelte-dh3ava {
+  .centered.svelte-1d3u622 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: line;
+  }
+  .video-list.svelte-1d3u622 {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    width: 80%;
+    margin: 0 auto;
   }
-  .video-card.svelte-dh3ava {
+  .video-card.svelte-1d3u622 {
     border: 1px solid #ccc;
     padding: 10px;
     cursor: pointer;
-    width: 200px;
+    /* flex: 1 1 calc(33.33% - 20px); */
+    box-sizing: border-box;
   }
 
