@@ -1,5 +1,5 @@
 <script>
-import { Play, Pause, SkipBack, SkipForward } from 'lucide-svelte';
+import { Play, Pause, SkipBack, SkipForward, ChevronDown } from 'lucide-svelte';
 import { onMount } from 'svelte';
 
 export let videoId;
@@ -149,11 +149,11 @@ function pauseVideo() {
           <span style="color: gold;"><SkipBack /></span>
         </button>
         <select
-          class="px-4 py-3 bg-gray-300 rounded transition-colors duration-200"
+          class="h-24 px-4 py-3 bg-gray-300 rounded transition-colors duration-200"
           on:change={(event) => {
-            const selectedPage = parseInt(event.target.value);
-            goToPage(selectedPage, person.sequences);
-          }}
+                    const selectedPage = parseInt(event.target.value);
+                    goToPage(selectedPage, person.sequences);
+                    }}
           >
           {#each person.sequences as _, index}
             <option value={index + 1} selected={currentPage === (index + 1)}>
