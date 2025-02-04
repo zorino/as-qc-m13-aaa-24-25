@@ -9,9 +9,9 @@
   }
 </script>
 
-<h1>As de Qc saison 2024/25</h1>
+<h1 class="centered">As de Qc saison 2024/25</h1>
 <!-- <h2>games annotées</h2> -->
-<div class="video-list">
+<div class="video-list centered">
   {#each videos as video}
     <div class="video-card" on:click={() => selectVideo(video)}>
       <h3>{video.title}</h3>
@@ -22,6 +22,13 @@
 </div>
 
 <style>
+  .centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
   .video-list {
     display: flex;
     flex-wrap: wrap;
