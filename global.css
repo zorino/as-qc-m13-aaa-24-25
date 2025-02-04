@@ -77,3 +77,9 @@ button:not(:disabled):active {
 button:focus {
 	border-color: #666;
 }
+
+.lucide {
+  width: 20px;
+  height: 16px;
+  stroke-width: 3;
+}
