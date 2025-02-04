@@ -137,7 +137,7 @@ function pauseVideo() {
       <div class="flex justify-stretch items-center space-x-4 items-center">
         <!-- <img src={person.image} alt={person.name} style="height: 60px;" /> -->
         <button
-          class="w-32 px-4 py-2 bg-yellow-300 rounded transition-colors duration-200 hover:bg-yellow-400 text-gray-700 text-lg">
+          class="w-32 px-4 py-3 bg-yellow-300 rounded transition-colors duration-200 hover:bg-yellow-400 text-gray-700 text-lg">
           <span style="color: black;">{person.name}</span>
         </button>
 
@@ -149,7 +149,7 @@ function pauseVideo() {
           <span style="color: gold;"><SkipBack /></span>
         </button>
         <select
-          class="px-4 py-2 bg-gray-300 rounded transition-colors duration-200"
+          class="px-4 py-3 bg-gray-300 rounded transition-colors duration-200"
           on:change={(event) => {
             const selectedPage = parseInt(event.target.value);
             goToPage(selectedPage, person.sequences);
