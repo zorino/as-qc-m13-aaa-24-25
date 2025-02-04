@@ -33,11 +33,14 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    width: 80%;
+    margin: 0 auto;
   }
   .video-card {
     border: 1px solid #ccc;
     padding: 10px;
     cursor: pointer;
-    width: 200px;
+    flex: 1 1 calc(33.33% - 20px);
+    box-sizing: border-box;
   }
 </style>
