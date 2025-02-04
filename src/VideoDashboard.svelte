@@ -1,6 +1,5 @@
 <script>
-// This function creates an <iframe> (and YouTube player)
-// after the API code downloads.
+import { Play, Pause, SkipBack, SkipForward } from 'lucide-svelte';
 import { onMount } from 'svelte';
 
 export let videoId;
@@ -138,7 +137,7 @@ function pauseVideo() {
       <div class="flex justify-stretch items-center space-x-4 items-center">
         <!-- <img src={person.image} alt={person.name} style="height: 60px;" /> -->
         <button
-          class="w-32 px-4 py-2 bg-yellow-300 rounded transition-colors duration-200 hover:bg-yellow-400 text-gray-700">
+          class="w-32 px-4 py-2 bg-yellow-300 rounded transition-colors duration-200 hover:bg-yellow-400 text-gray-700 text-lg">
           <span style="color: black;">{person.name}</span>
         </button>
 
@@ -147,7 +146,7 @@ function pauseVideo() {
           on:click={() => goToPage(Math.max(currentPage - 1, 1), person.sequences)}
           disabled={currentPage === 1}
           >
-          <span style="color: yellow;">⬅️</span>
+          <span style="color: gold;"><SkipBack /></span>
         </button>
         <select
           class="px-4 py-2 bg-gray-300 rounded transition-colors duration-200"
@@ -167,13 +166,19 @@ function pauseVideo() {
           on:click={() => goToPage(Math.min(currentPage + 1, person.sequences.length), person.sequences)}
           disabled={currentPage === person.sequences.length}
           >
-          <span style="color: yellow;">➡️</span>
+          <span style="color: gold;"><SkipForward /></span>
         </button>
         <button
           class="w-32 px-4 py-2 bg-yellow-300 rounded transition-colors duration-200 hover:bg-yellow-400 text-gray-700"
           on:click={togglePlayPause}
         >
-          <span style="color: yellow;">{isPlaying ? '⏸️' : '▶️'}</span>
+          <span style="color: gold;">
+            {#if isPlaying}
+              <Pause />
+            {:else}
+              <Play />
+            {/if}
+          </span>
         </button>
       </div>
     </div>
