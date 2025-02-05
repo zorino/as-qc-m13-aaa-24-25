@@ -33,5 +33,12 @@
       "arena": "Pavillon de la jeunesse",
       "gamesheet": "https://masculin.lheq.ca/vProd/fr/service/apps/json/SportsDynastyGame/getOfficialGameSheetForStats/?idGame=1601070",
       "shifts": "Q_FNGS4liw0.json"
+    },
+    { "id": "YFxmxH80PUw",
+      "date": "2025-01-24",
+      "title": "Seigneurs (5) vs As (2)",
+      "arena": "Pavillon de la jeunesse",
+      "gamesheet": "Aréna Jacques-Chagnon, Waterloo",
+      "shifts": "YFxmxH80PUw.json"
     }
 ]
