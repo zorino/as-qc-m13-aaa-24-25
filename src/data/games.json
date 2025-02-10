@@ -38,7 +38,14 @@
       "date": "2025-01-24",
       "title": "Seigneurs (5) vs As (2)",
       "arena": "Pavillon de la jeunesse",
-      "gamesheet": "Aréna Jacques-Chagnon, Waterloo",
+      "gamesheet": "",
       "shifts": "YFxmxH80PUw.json"
+    },
+    { "id": "y89dwNf6IQs",
+      "date": "2025-01-24",
+      "title": "Nord-Côtiers (1) vs As (1)",
+      "arena": "Pavillon de la jeunesse",
+      "gamesheet": "https://masculin.lheq.ca/vProd/fr/service/apps/json/SportsDynastyGame/getOfficialGameSheetForStats/?idGame=1601092",
+      "shifts": "y89dwNf6IQs.json"
     }
 ]
